@@ -1,10 +1,12 @@
 package abidAbedJasMinigame;
 
-public class AbedRoom
+import caveExplorer.NPCRoom;
+
+public class AbedRoom extends NPCRoom
 {
-	public AbedRoom()
+	public AbedRoom(String description)
 	{
-		
+		super(description)
 	}
 
 }
