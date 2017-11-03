@@ -43,7 +43,12 @@ public class NPC {
 		CaveExplorer.print("Later, friend!");
 		active = false;
 	}
-
+	public void setDescription(String dis) {
+		this.activeDescription = dis;
+	}
+	public void setInactivedescription(String dis) {
+		this.inactiveDescription = dis;
+	}
 	public String getDescription() {
 		return activeDescription;
 	}
