@@ -1,21 +1,12 @@
 package caveExplorer;
 
 public class Door {
-<<<<<<< HEAD
 
 	private boolean locked;
 	private boolean open;
 	private String description;
 	private String details;
 	
-=======
-	
-	private boolean locked;
-	private boolean open;
-	private String description;
-	private String details;
-
->>>>>>> branch 'master' of https://github.com/jsingh6619/textGame.git
 	public Door() {
 		locked = false;
 		open = true;
