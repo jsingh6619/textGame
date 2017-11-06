@@ -1,6 +1,6 @@
 package abidAbedJasMinigame;
 
-import caveExplorer.NPC;
+import caveExplorer.*;
 
 public class Gary extends NPC{
 

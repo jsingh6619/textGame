@@ -2,6 +2,8 @@ package caveExplorer;
 
 import java.util.Scanner;
 
+import abidAbedJasMinigame.*;
+
 public class CaveExplorer {
 	
 	public static CaveRoom[][] caves;
@@ -10,6 +12,7 @@ public class CaveExplorer {
 	public static Inventory inventory;
 	public static boolean playing = true;
 	public static NPC[] npcs;
+	public static Gary gary;
 
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
