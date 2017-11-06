@@ -1,5 +1,7 @@
 package caveExplorer;
 
+import abidAbedJasMinigame.JasRoom;
+
 public class CaveRoom {
 
 	private String description;
@@ -160,9 +162,10 @@ public class CaveRoom {
 		}
 		//3. Replace some default rooms with custom rooms (SAVE FOR LATER)
 		NPC testNPC = new NPC();
-		testNPC.setPosition(1,2);
+		testNPC.setPosition(1, 2);
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
+		c[1][2] = new JasRoom("Free Reward");
 		
 		//4.set starting room
 		CaveExplorer.currentRoom = c[0][1];

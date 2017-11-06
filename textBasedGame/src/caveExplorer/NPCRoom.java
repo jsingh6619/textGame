@@ -4,6 +4,14 @@ public class NPCRoom extends CaveRoom {
 
 	private NPC npc;
 	
+	public NPC getNPC() {
+		return npc;
+	}
+
+	public void setNPC(NPC npc) {
+		this.npc = npc;
+	}
+
 	public NPCRoom(String description) {
 		super(description);
 		// TODO Auto-generated constructor stub
