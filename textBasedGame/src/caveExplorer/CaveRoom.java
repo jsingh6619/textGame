@@ -184,7 +184,7 @@ public class CaveRoom {
 		//moving up and down (3D array, i.e. make a starway room)
 		
 		AbidRoom SpongeHouse = new AbidRoom("This is your home. ");
-
+		
 		
 		
 	}

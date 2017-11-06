@@ -1,9 +1,11 @@
 package abidAbedJasMinigame;
 
-public class Gary {
+import caveExplorer.NPC;
+
+public class Gary extends NPC{
 
 	public Gary() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }
