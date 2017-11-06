@@ -1,5 +1,7 @@
 package caveExplorer;
 
+import annieJoannaMinigame.AnnieRoom;
+
 public class CaveRoom {
 	
 	private String description;
@@ -89,19 +91,25 @@ public class CaveRoom {
 	}
 	
 	public static void setUpCaves() {
-		CaveExplorer.caves = new NPCRoom[5][5];
+		CaveExplorer.caves = new CaveRoom[5][5];
 		CaveRoom[][] c = CaveExplorer.caves;
 		for(int row = 0; row < c.length; row++)
 			for(int col = 0; col < c[row].length; col++)
 				c[row][col] = new NPCRoom("This cave has coordinates (" + row + ", " + col + ").");
-		NPC testNPC = new NPC();
-		testNPC.setPosition(1, 2);
-		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = testNPC;
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
-		c[0][1].setConnection(SOUTH, c[1][1], new Door());
-		c[1][1].setConnection(EAST, c[1][2], new Door());
+		c[3][3] = new AnnieRoom("This cave has coordinates (" + 3 + ", " + 3 + ").", 20);
+		c[4][1] = new AnnieRoom("This cave has coordinates (" + 4 + ", " + 1 + ").", 30);
+		c[2][0] = new AnnieRoom("This cave has coordinates (" + 2 + ", " + 0 + ").", 50);
+		for(int row = 0; row < c.length - 1; row++)
+			for(int col = 0; col < c[row].length - 1; col++) {
+				c[row][col].setConnection(SOUTH, c[row + 1][col], new Door());
+				c[row][col].setConnection(EAST, c[row][col + 1], new Door());
+			}
+		for(int row = 0; row < c.length - 1; row++)
+			c[row][c[row].length - 1].setConnection(SOUTH, c[row + 1][c[row].length - 1], new Door());
+		for(int col = 0; col < c[c.length - 1].length - 1; col++)
+			c[c[c.length - 1].length - 1][col].setConnection(EAST, c[c[c.length - 1].length - 1][col + 1], new Door());
 	}
 
 	public void goToRoom(int direction) {
