@@ -1,10 +1,10 @@
 package annieJoannaMinigame;
 
-import caveExplorer.NPCRoom;
-import caveExplorer.CaveExplorer; 
+import caveExplorer.CaveExplorer;
+import caveExplorer.CaveRoom;
 
-public class AnnieRoom extends NPCRoom {
-
+public class AnnieRoom extends CaveRoom {
+	
 	private int amount;
 	private boolean visited;
 	private String contents;
