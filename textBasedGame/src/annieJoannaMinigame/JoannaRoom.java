@@ -21,7 +21,7 @@ public class JoannaRoom extends NPCRoom {
 			
 			
 		
-			
+			 
 		
 		
 		else {
