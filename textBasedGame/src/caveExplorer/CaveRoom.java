@@ -103,7 +103,7 @@ public class CaveRoom {
 		c[4][1] = new AnnieRoom("This cave has coordinates (" + 4 + ", " + 1 + ").", 30);
 		c[2][0] = new AnnieRoom("This cave has coordinates (" + 2 + ", " + 0 + ").", 50);
 		
-		c[2][2]= new JoannaRoom("This cave has coordinates (" + 2 + ", " + 2 + ").And it's the jellyfish room...Gotta catch them all!!!!");
+		c[2][2]= new JoannaRoom("This cave has coordinates (" + 2 + ", " + 2 + ").And it's the jellyfish room...Gotta catch them all!!!!press 'p' to play, but first you need a net so press 'n'");
 		for(int row = 0; row < c.length - 1; row++)
 			for(int col = 0; col < c[row].length - 1; col++) {
 				c[row][col].setConnection(SOUTH, c[row + 1][col], new Door());
