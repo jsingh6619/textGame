@@ -1,9 +1,9 @@
 package annieJoannaMinigame;
 
-import caveExplorer.CaveRoom;
+import caveExplorer.NPCRoom;
 import caveExplorer.CaveExplorer;
 
-public class AnnieRoom extends CaveRoom {
+public class AnnieRoom extends NPCRoom {
 
 	private int amount;
 	private boolean visited;
@@ -13,7 +13,7 @@ public class AnnieRoom extends CaveRoom {
 		super(description);
 		this.amount = amount;
 		this.visited = false;
-		this.contents = "T";
+		this.contents = "$";
 	}
 	
 	public void performAction(int direction) {

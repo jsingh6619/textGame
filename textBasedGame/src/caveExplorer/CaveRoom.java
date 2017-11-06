@@ -91,7 +91,7 @@ public class CaveRoom {
 	}
 	
 	public static void setUpCaves() {
-		CaveExplorer.caves = new CaveRoom[5][5];
+		CaveExplorer.caves = new NPCRoom[5][5];
 		CaveRoom[][] c = CaveExplorer.caves;
 		for(int row = 0; row < c.length; row++)
 			for(int col = 0; col < c[row].length; col++)
