@@ -1,7 +1,7 @@
 package annieJoannaMinigame;
 
 import caveExplorer.NPCRoom;
-import caveExplorer.CaveExplorer;
+import caveExplorer.CaveExplorer; 
 
 public class AnnieRoom extends NPCRoom {
 
