@@ -13,24 +13,24 @@ public class JoannaRoom extends NPCRoom {
 	
 	public void performAction(int direction) {
 		if(direction ==  4) {
-			CaveExplorer.print("You obtained the net, now you can play. Press 'p' to play");
+			CaveExplorer.print("You play the game like....."); //instructions for game
+		}
 			if(direction == 5 ) {
 					//mini game
 				}
-			else {
-				System.out.println("You can only enter 'w', 'a', 's', or 'd' to move or you can press 'p' to play since you already have a net.");
-			}
-		}
+			
+			
+		
 			
 		
 		
-		else
+		else {
 			CaveExplorer.print("That key does nothing.");
 		printValidMoves();
 	}
-	
+	}
 	public void printValidMoves() {
-		System.out.println("You can only enter 'w', 'a', 's', or 'd' to move or you can press 'p' to play, but first you need a net so press 'n'");
+		System.out.println("You can only enter 'w', 'a', 's', or 'd' to move or you can press 'p' to play, but first make sure you have a net");
 	}
 	
 	public String validMoves() {
