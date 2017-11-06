@@ -23,7 +23,7 @@ public class JoannaRoom extends NPCRoom {
 		}
 			
 		
-		
+		 
 		else
 			CaveExplorer.print("That key does nothing.");
 		printValidMoves();

@@ -92,7 +92,7 @@ public class CaveRoom {
 	}
 	
 	public static void setUpCaves() {
-		CaveExplorer.caves = new NPCRoom[5][5];
+		CaveExplorer.caves = new CaveRoom[5][5];
 		CaveRoom[][] c = CaveExplorer.caves;
 		for(int row = 0; row < c.length; row++)
 			for(int col = 0; col < c[row].length; col++)
@@ -102,8 +102,12 @@ public class CaveRoom {
 		c[3][3] = new AnnieRoom("This cave has coordinates (" + 3 + ", " + 3 + ").", 20);
 		c[4][1] = new AnnieRoom("This cave has coordinates (" + 4 + ", " + 1 + ").", 30);
 		c[2][0] = new AnnieRoom("This cave has coordinates (" + 2 + ", " + 0 + ").", 50);
+<<<<<<< HEAD
 		
 		c[2][2]= new JoannaRoom("This cave has coordinates (" + 2 + ", " + 2 + ").And it's the jellyfish room...Gotta catch them all!!!!press 'p' to play, but first you need a net so press 'n'");
+=======
+		c[2][2] = new JoannaRoom("This cave has coordinates (" + 2 + ", " + 2 + "). And it's the jellyfish room... Gotta catch them all!!!!");
+>>>>>>> branch 'develop' of https://github.com/jsingh6619/textGame.git
 		for(int row = 0; row < c.length - 1; row++)
 			for(int col = 0; col < c[row].length - 1; col++) {
 				c[row][col].setConnection(SOUTH, c[row + 1][col], new Door());
@@ -121,6 +125,8 @@ public class CaveRoom {
 			CaveExplorer.currentRoom = borderingRooms[direction];
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
+			if(CaveExplorer.currentRoom instanceof AnnieRoom)
+				CaveExplorer.currentRoom.performAction(-1);
 		} else
 			System.out.println("You can't do that!");
 	}
