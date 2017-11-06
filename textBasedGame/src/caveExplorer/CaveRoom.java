@@ -1,5 +1,8 @@
 package caveExplorer;
 
+import abidAbedJasMinigame.AbedRoom;
+import abidAbedJasMinigame.AbidRoom;
+
 public class CaveRoom {
 
 	private String description;
@@ -161,6 +164,7 @@ public class CaveRoom {
 		//3. Replace some default rooms with custom rooms (SAVE FOR LATER)
 		NPC testNPC = new NPC();
 		testNPC.setPosition(1,2);
+		
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
 		
@@ -179,6 +183,8 @@ public class CaveRoom {
 		//make  a boss follow you (spawn after entry)
 		//moving up and down (3D array, i.e. make a starway room)
 		
+		AbidRoom SpongeHouse = new AbidRoom("This is your home. ");
+
 		
 		
 	}

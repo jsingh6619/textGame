@@ -6,7 +6,7 @@ public class NPCRoom extends CaveRoom {
 	
 	public NPCRoom(String description) {
 		super(description);
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public boolean canEnter() {
