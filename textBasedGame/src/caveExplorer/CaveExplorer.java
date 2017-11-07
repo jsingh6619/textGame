@@ -1,7 +1,6 @@
 package caveExplorer;
 
 import java.util.Scanner;
-
 import abidAbedJasMinigame.*;
 
 public class CaveExplorer {
