@@ -7,13 +7,11 @@ public class AnnieRoom extends CaveRoom {
 	
 	private int amount;
 	private boolean visited;
-	private String contents;
 
 	public AnnieRoom(String description, int amount) {
 		super(description);
 		this.amount = amount;
 		this.visited = false;
-		this.contents = "$";
 	}
 	
 	public void performAction(int direction) {
@@ -26,7 +24,7 @@ public class AnnieRoom extends CaveRoom {
 	
 	public String getContents() {
 		if(!visited)
-			return contents;
+			return "$";
 		else
 			return super.getContents();
 	}
