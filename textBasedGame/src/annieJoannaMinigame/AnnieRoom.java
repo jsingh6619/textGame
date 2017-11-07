@@ -21,8 +21,7 @@ public class AnnieRoom extends CaveRoom {
 			CaveExplorer.print("You've stumbled upon treasure!");
 			CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney() + amount);
 			visited = true;
-		} else
-			CaveExplorer.print("You've already collected the treasure in this area.");
+		}
 	}
 	
 	public String getContents() {
