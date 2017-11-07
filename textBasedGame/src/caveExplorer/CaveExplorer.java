@@ -13,6 +13,7 @@ public class CaveExplorer {
 	public static boolean playing = true;
 	public static NPC[] npcs;
 	public static Gary gary;
+	public static Plankton p;
 
 	public static void main(String[] args) {
 		in = new Scanner(System.in);

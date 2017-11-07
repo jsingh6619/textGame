@@ -2,6 +2,7 @@ package caveExplorer;
 
 
 //qq
+import abidAbedJasMinigame.Plankton;
 import abidAbedJasMinigame.AbedRoom;
 import abidAbedJasMinigame.AbidRoom;
 import abidAbedJasMinigame.Gary;
@@ -167,15 +168,15 @@ public class CaveRoom {
 		}
 		//3. Replace some default rooms with custom rooms (SAVE FOR LATER)
 		c[1][2] = new JasRoom("Free Reward");
-		
+		c[2][3] = new AbedRoom("The Krusty Krab");
 		//4.set starting room
-		CaveExplorer.currentRoom = c[0][1];
+		CaveExplorer.currentRoom = c[2][2];
 		CaveExplorer.currentRoom.enter();
 		
 		//5. Set up doors
-		c[0][1].setConnection(SOUTH, c[1][1], new Door());
-		c[1][1].setConnection(EAST, c[1][2], new Door());
-		
+
+		c[2][2].setConnection(SOUTH, c[3][2], new Door());
+		c[2][2].setConnection(EAST, c[2][3], new Door());
 		
 		//make doors lock after you walk in
 		//teleport to a different room
@@ -184,10 +185,13 @@ public class CaveRoom {
 		//moving up and down (3D array, i.e. make a starway room)
 		
 		c[3][4] = new AbidRoom("This is your home.");
+		CaveExplorer.p = new Plankton();
 		CaveExplorer.gary = new Gary();
 		CaveExplorer.gary.setPosition(3, 4);
-		CaveExplorer.npcs = new NPC[1];
+		CaveExplorer.npcs = new NPC[2];
 		CaveExplorer.npcs[0] = CaveExplorer.gary;
+		CaveExplorer.p.setPosition(2,3);
+		CaveExplorer.npcs[1] = CaveExplorer.p;
 		
 	}
 	
