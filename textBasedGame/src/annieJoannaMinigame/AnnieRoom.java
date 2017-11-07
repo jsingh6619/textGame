@@ -1,7 +1,6 @@
 package annieJoannaMinigame;
 
-import caveExplorer.CaveExplorer;
-import caveExplorer.CaveRoom;
+import caveExplorer.*;
 
 public class AnnieRoom extends CaveRoom {
 	
