@@ -1,5 +1,8 @@
 package caveExplorer;
 
+import abidAbedJasMinigame.AbedRoom;
+import abidAbedJasMinigame.Plankton;
+
 public class CaveRoom {
 
 	private String description;
@@ -159,18 +162,20 @@ public class CaveRoom {
 			}
 		}
 		//3. Replace some default rooms with custom rooms (SAVE FOR LATER)
-		NPC testNPC = new NPC();
-		testNPC.setPosition(1,2);
+		AbedRoom a = new AbedRoom("Welcome to the Krusty Krab!");
+		c[1][4] = a;
+		Plankton p = new Plankton();
+		p.setPosition(1, 4);
 		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = testNPC;
+		CaveExplorer.npcs[0] = p;
 		
 		//4.set starting room
-		CaveExplorer.currentRoom = c[0][1];
+		CaveExplorer.currentRoom = c[0][4];
 		CaveExplorer.currentRoom.enter();
 		
 		//5. Set up doors
-		c[0][1].setConnection(SOUTH, c[1][1], new Door());
-		c[1][1].setConnection(EAST, c[1][2], new Door());
+		c[0][4].setConnection(SOUTH, c[1][4], new Door());
+		c[0][3].setConnection(WEST, c[0][3], new Door());
 		
 		
 		//make doors lock after you walk in
