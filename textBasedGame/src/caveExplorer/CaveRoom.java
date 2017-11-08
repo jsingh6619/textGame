@@ -111,13 +111,15 @@ public class CaveRoom {
 		
 
 		c[1][2] = new JasRoom("Free Reward");
-		c[2][3] = new AbedRoom("The Krusty Krab");
-		c[3][4] = new AbidRoom("This is your home.");
+		c[3][2] = new AbedRoom("The Krusty Krab");
+		c[2][1] = new AbidRoom("This is your home.");
+		
 		Plankton p = new Plankton();
-		p.setPosition(2,3);
+		p.setPosition(3,2);
 		Gary gary = new Gary();
 		gary.setPosition(3, 4);
-		CaveExplorer.npcs = new NPC[2];
+
+	
 		
 		
         CaveExplorer.currentRoom = c[0][1];
@@ -133,6 +135,9 @@ public class CaveRoom {
 		for(int col = 0; col < c[c.length - 1].length - 1; col++)
 			c[c[c.length - 1].length - 1][col].setConnection(EAST, c[c[c.length - 1].length - 1][col + 1], new Door());
 
+
+
+		
 
 	}
 	

@@ -25,7 +25,7 @@ public class Plankton extends NPC
 		PlanktonFight game = new PlanktonFight();
 		CaveExplorer.print("So you think you can stop me?");
 		String s = CaveExplorer.in.nextLine();
-		while(!s.equalsIgnoreCase("yes")) 
+		while(!s.equals("yes")) 
 		{
 			CaveExplorer.print("Cmon i want a challenge try AGAIN!!!!!");
 		}
