@@ -26,7 +26,7 @@ public class ShopKeeper extends NPC {
 	public boolean isActive() {
 		return active;
 	}
-	public boolean buyNet() {
+	public boolean buyNet(int money) {
 		
 	}
 	
