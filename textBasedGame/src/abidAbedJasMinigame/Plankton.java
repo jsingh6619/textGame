@@ -11,17 +11,18 @@ public class Plankton extends NPC
 	private boolean active;
 	public Plankton()
 	{
-		
+		active = true;
 		this.activeDescription = "HAHAHA THE FORMULA WILL BE MINE";
-		this.inactiveDescription = "Leave me alpne, plan  xyz hasn't started yet.";
+		this.inactiveDescription = "Leave me alone, plan  xyz hasn't started yet.";
 		
 	}
 	public String getSymbol() 
 	{
-		return "Pl";
+		return "P";
 	}
 	public void interact()
 	{
+		
 		PlanktonFight game = new PlanktonFight();
 		CaveExplorer.print("So you think you can stop me?");
 		String s = CaveExplorer.in.nextLine();
@@ -30,7 +31,8 @@ public class Plankton extends NPC
 			CaveExplorer.print("Cmon i want a challenge try AGAIN!!!!!");
 		}
 		game.start();
-		
+		active = falsed
+				;
 		
 	}
 	public boolean isActive()
