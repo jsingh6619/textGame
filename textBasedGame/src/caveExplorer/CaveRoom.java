@@ -96,12 +96,12 @@ public class CaveRoom {
 		for(int row = 0; row < c.length; row++)
 			for(int col = 0; col < c[row].length; col++)
 				c[row][col] = new NPCRoom("This cave has coordinates (" + row + ", " + col + ").");
-		CaveExplorer.currentRoom = c[0][1];
-		CaveExplorer.currentRoom.enter();
 		c[3][3] = new AnnieRoom("This cave has coordinates (" + 3 + ", " + 3 + ").", 20);
 		c[4][1] = new AnnieRoom("This cave has coordinates (" + 4 + ", " + 1 + ").", 30);
 		c[2][0] = new AnnieRoom("This cave has coordinates (" + 2 + ", " + 0 + ").", 50);
 		c[2][2] = new JoannaRoom("This cave has coordinates (" + 2 + ", " + 2 + "). And it's the jellyfish room... Gotta catch them all!!!!");
+		CaveExplorer.currentRoom = c[0][1];
+		CaveExplorer.currentRoom.enter();
 		for(int row = 0; row < c.length - 1; row++)
 			for(int col = 0; col < c[row].length - 1; col++) {
 				c[row][col].setConnection(SOUTH, c[row + 1][col], new Door());
