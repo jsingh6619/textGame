@@ -99,6 +99,8 @@ public class CaveRoom {
 		c[3][3] = new AnnieRoom("This cave has coordinates (" + 3 + ", " + 3 + ").", 20);
 		c[4][1] = new AnnieRoom("This cave has coordinates (" + 4 + ", " + 1 + ").", 30);
 		c[2][0] = new AnnieRoom("This cave has coordinates (" + 2 + ", " + 0 + ").", 50);
+		NPC merchant = new AnnieNPC();
+		merchant.setPosition(3, 1);
 		c[2][2] = new JoannaRoom("This cave has coordinates (" + 2 + ", " + 2 + "). And it's the jellyfish room... Gotta catch them all!!!!");
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();

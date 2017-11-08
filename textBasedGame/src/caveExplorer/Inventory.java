@@ -4,9 +4,10 @@ public class Inventory {
 	
 	private String map;
 	private int money;
+	private int nets;
 
 	public Inventory() {
-		money = 0;
+		money = nets = 0;
 		updateMap();
 	}
 	
@@ -39,8 +40,12 @@ public class Inventory {
 	}
 	
 	public String getDescription() {
-		return map;
-//		return "There is nothing in your inventory.";
+		String description = map;
+		if(money > 0)
+			description += "\n" + "You have $" + money + ".";
+		if(nets > 0)
+			description += "\n" + "You have " + nets + " net(s).";
+		return description;
 	}
 
 	public int getMoney() {
@@ -49,6 +54,14 @@ public class Inventory {
 
 	public void setMoney(int money) {
 		this.money = money;
+	}
+	
+	public int getNets() {
+		return nets;
+	}
+
+	public void setNets(int nets) {
+		this.nets = nets;
 	}
 
 }
