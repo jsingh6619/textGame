@@ -97,19 +97,22 @@ public class CaveRoom {
 			for(int col = 0; col < c[row].length; col++)
 				c[row][col] = new NPCRoom("This cave has coordinates (" + row + ", " + col + ").");
 		c[1][2] = new JasRoom("Free Reward");
-		c[2][3] = new AbedRoom("The Krusty Krab");
-		c[3][4] = new AbidRoom("This is your home.");
+		c[3][2] = new AbedRoom("The Krusty Krab");
+		c[2][1] = new AbidRoom("This is your home.");
+		
 		Plankton p = new Plankton();
-		p.setPosition(2,3);
+		p.setPosition(3,2);
 		Gary gary = new Gary();
 		gary.setPosition(3, 4);
-		CaveExplorer.npcs = new NPC[2];
-		CaveExplorer.npcs[0] = gary;
-		CaveExplorer.npcs[1] = p;
+		
+		
+		
 		CaveExplorer.currentRoom = c[2][2];
 		CaveExplorer.currentRoom.enter();
+		
 		c[2][2].setConnection(SOUTH, c[3][2], new Door());
-		c[2][2].setConnection(EAST, c[2][3], new Door());
+		c[2][2].setConnection(WEST, c[2][1], new Door());
+		c[2][2].setConnection(NORTH, c[1][2], new Door());
 	}
 	
 	public void goToRoom(int direction) {

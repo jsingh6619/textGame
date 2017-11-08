@@ -24,7 +24,7 @@ public class CaveExplorer {
 
 	private static void startExploring() {
 		while(playing) {
-			moveNPCs();
+			
 			print(inventory.getDescription());
 			print("You currently have $" + inventory.getMoney() + ".");
 			print(currentRoom.getDescription());
