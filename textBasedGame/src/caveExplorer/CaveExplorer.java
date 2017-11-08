@@ -10,7 +10,8 @@ public class CaveExplorer {
 	public static Inventory inventory;
 	public static boolean playing = true;
 	public static NPC[] npcs;
-
+	
+	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
 		CaveRoom.setUpCaves();
@@ -26,7 +27,9 @@ public class CaveExplorer {
 		while(playing) {
 //			moveNPCs();
 			print(inventory.getDescription());
+
 			print(currentRoom.getDescription()); 
+			print("You currently have $" + inventory.getMoney() + ".");
 			print(currentRoom.getDirections());
 			print("What would you like to do?");
 			currentRoom.interpretInput(in.nextLine());
