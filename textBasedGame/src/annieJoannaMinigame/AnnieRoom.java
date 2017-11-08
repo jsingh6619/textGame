@@ -3,7 +3,7 @@ package annieJoannaMinigame;
 import caveExplorer.*;
 
 public class AnnieRoom extends NPCRoom {
-	
+
 	private int amount;
 	private boolean visited;
 

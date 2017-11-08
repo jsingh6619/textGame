@@ -89,7 +89,7 @@ public class CaveRoom {
 	private boolean isValid(String input) {
 		return validMoves().indexOf(input) > -1 && input.length() == 1;
 	}
-	
+
 	public static void setUpCaves() {
 		CaveExplorer.caves = new NPCRoom[5][5];
 		CaveRoom[][] c = CaveExplorer.caves;
