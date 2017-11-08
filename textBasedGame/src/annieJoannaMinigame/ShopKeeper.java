@@ -1,6 +1,6 @@
 package annieJoannaMinigame;
 
-import caveExplorer.NPC;
+import caveExplorer.*;
 
 public class ShopKeeper extends NPC {
 	private boolean active;
@@ -27,7 +27,7 @@ public class ShopKeeper extends NPC {
 		return active;
 	}
 	public boolean buyNet(int money) {
-		
+		return true;
 	}
 	
 }

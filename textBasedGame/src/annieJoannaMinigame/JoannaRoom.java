@@ -6,7 +6,7 @@ import caveExplorer.NPCRoom;
 
 public class JoannaRoom extends NPCRoom {
 
-	
+	private ShopKeeper fishchant; 
 	public JoannaRoom(String description) {
 		super(description);
 	}	 
@@ -21,7 +21,7 @@ public class JoannaRoom extends NPCRoom {
 				}
 			if(direction ==6)
 			{
-				F.
+				fishchant.buyNet(100);
 			}
 			
 
