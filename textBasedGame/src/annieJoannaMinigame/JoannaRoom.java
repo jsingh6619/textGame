@@ -6,6 +6,7 @@ import caveExplorer.NPCRoom;
 
 public class JoannaRoom extends NPCRoom {
 
+	private 
 	public JoannaRoom(String description) {
 		super(description);
 	}	 
@@ -28,11 +29,12 @@ public class JoannaRoom extends NPCRoom {
 	}
 	}
 	public void printValidMoves() {
-		System.out.println("You can only enter 'w', 'a', 's', or 'd' to move or you can press 'p' to play, but first make sure you have a net");
+		System.out.println("You can only enter 'w', 'a', 's', or 'd' to move or you can press 'p' to play, but first make sure you have a net" 
+				= "'e' to talk to the Fishchant.");
 	}
 	
 	public String validMoves() {
-		return "wdsaip";
+		return "wdsaipe";
 	}
 
 }
