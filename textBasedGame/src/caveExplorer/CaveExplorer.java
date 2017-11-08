@@ -1,34 +1,32 @@
 package caveExplorer;
 
 import java.util.Scanner;
-import abidAbedJasMinigame.*;
 
 public class CaveExplorer {
 	
 	public static CaveRoom[][] caves;
-	public static Scanner in;//for user input
-	public static CaveRoom currentRoom;//change as the user moves
+	public static Scanner in;
+	public static CaveRoom currentRoom;
 	public static Inventory inventory;
 	public static boolean playing = true;
 	public static NPC[] npcs;
-	public static Gary gary;
-	public static Plankton p;
-
+	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
-		CaveRoom.setUpCaves();//creates caves and starting room
+		CaveRoom.setUpCaves();
 		inventory = new Inventory();
 		startExploring();
 	}
-
+	
 	public static void print(String s) {
-		System.out.println(s);//LATER: consider replacing with the more sophisticated "printMultiLine
+		System.out.println(s);
 	}
 
 	private static void startExploring() {
 		while(playing) {
 			moveNPCs();
 			print(inventory.getDescription());
+			print("You currently have $" + inventory.getMoney() + ".");
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
 			print("What would you like to do?");
@@ -37,9 +35,9 @@ public class CaveExplorer {
 	}
 
 	private static void moveNPCs() {
-		for(NPC n: npcs) {
+		for(NPC n: npcs)
 			n.autoMove();
-		}
 		inventory.updateMap();
 	}
+
 }
