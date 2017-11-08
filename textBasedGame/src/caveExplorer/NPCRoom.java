@@ -8,6 +8,14 @@ public class NPCRoom extends CaveRoom {
 		super(description);
 	}
 	
+	public NPC getNPC() {
+		return npc;
+	}
+
+	public void setNPC(NPC npc) {
+		this.npc = npc;
+	}
+
 	public boolean canEnter() {
 		return npc == null;
 	}

@@ -1,9 +1,13 @@
 package caveExplorer;
 
+
 import annieJoannaMinigame.*;
  
+import abidAbedJasMinigame.*;
+
+
 public class CaveRoom {
-	
+
 	private String description;
 	private String directions;
 	private String contents;
@@ -96,6 +100,7 @@ public class CaveRoom {
 		for(int row = 0; row < c.length; row++)
 			for(int col = 0; col < c[row].length; col++)
 				c[row][col] = new NPCRoom("This cave has coordinates (" + row + ", " + col + ").");
+
 		c[3][3] = new AnnieRoom("This cave has coordinates (" + 3 + ", " + 3 + ").", 20);
 		c[4][1] = new AnnieRoom("This cave has coordinates (" + 4 + ", " + 1 + ").", 30);
 		c[2][0] = new AnnieRoom("This cave has coordinates (" + 2 + ", " + 0 + ").", 50);
@@ -104,8 +109,21 @@ public class CaveRoom {
 		NPC fishchant = new ShopKeeper();
 		fishchant.setPosition(2, 1);
 		c[2][2] = new JoannaRoom("This cave has coordinates (" + 2 + ", " + 2 + "). And it's the jellyfish room... Gotta catch them all!!!!");
-		CaveExplorer.currentRoom = c[0][1];
-		CaveExplorer.currentRoom.enter();
+		
+
+		c[1][2] = new JasRoom("Free Reward");
+		c[2][3] = new AbedRoom("The Krusty Krab");
+		c[3][4] = new AbidRoom("This is your home.");
+		Plankton p = new Plankton();
+		p.setPosition(2,3);
+		Gary gary = new Gary();
+		gary.setPosition(3, 4);
+		CaveExplorer.npcs = new NPC[2];
+		
+		
+        CaveExplorer.currentRoom = c[0][1];
+        CaveExplorer.currentRoom.enter();
+		
 		for(int row = 0; row < c.length - 1; row++)
 			for(int col = 0; col < c[row].length - 1; col++) {
 				c[row][col].setConnection(SOUTH, c[row + 1][col], new Door());
@@ -115,8 +133,10 @@ public class CaveRoom {
 			c[row][c[row].length - 1].setConnection(SOUTH, c[row + 1][c[row].length - 1], new Door());
 		for(int col = 0; col < c[c.length - 1].length - 1; col++)
 			c[c[c.length - 1].length - 1][col].setConnection(EAST, c[c[c.length - 1].length - 1][col + 1], new Door());
-	}
 
+
+	}
+	
 	public void goToRoom(int direction) {
 		if(borderingRooms[direction] != null && doors[direction] != null && doors[direction].isOpen()) {
 			CaveExplorer.currentRoom.leave();

@@ -1,13 +1,23 @@
 package caveExplorer;
 
 public class Inventory {
+<<<<<<< HEAD
 	
 	private String map;
 	private int money;
 	private int nets;
+=======
+>>>>>>> refs/remotes/origin/abedAbidJasBranch
 
+	private String map;
+	private int money;
+	
 	public Inventory() {
+<<<<<<< HEAD
 		money = nets = 0;
+=======
+		money = 0;
+>>>>>>> refs/remotes/origin/abedAbidJasBranch
 		updateMap();
 	}
 	
@@ -62,6 +72,14 @@ public class Inventory {
 
 	public void setNets(int nets) {
 		this.nets = nets;
+	}
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
 	}
 
 }
