@@ -9,19 +9,15 @@
 
 package abidAbedJasMinigame;
 
-import caveExplorer.CaveExplorer;
-import caveExplorer.NPC;
-import caveExplorer.NPCRoom;
+import caveExplorer.*;
 
 public class JasRoom extends NPCRoom {
 
 	private int reward;
-	private NPC carl;
 
 	public JasRoom(String description) {
 		super(description);
 		reward = (int)((Math.random()*5)*1000);
-		setNPC(carl);
 	}
 	
 	public void giveReward(){
