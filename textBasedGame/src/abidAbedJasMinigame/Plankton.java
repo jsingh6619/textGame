@@ -31,8 +31,7 @@ public class Plankton extends NPC
 			CaveExplorer.print("Cmon i want a challenge try AGAIN!!!!!");
 		}
 		game.start();
-		active = falsed
-				;
+		active = false;
 		
 	}
 	public boolean isActive()
