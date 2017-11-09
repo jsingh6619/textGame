@@ -1,19 +1,18 @@
 package caveExplorer;
 
 public class Inventory {
-
 	
 	private String map;
 	private int money;
 	private int nets;
-
+	private int jellyfish;
+	private String[] tasks;
+	private boolean[] done;
 	
 	public Inventory() {
-
-		money = nets = 0;
-
-		money = 0;
-
+		money = nets = jellyfish = 0;
+		String[] temp = {"Feed Gary breakfast", "Go jellyfishing", "Feed Gary lunch", "Go to work", "Get cake from Sandy"};
+		tasks = temp;
 		updateMap();
 	}
 	
