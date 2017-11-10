@@ -6,7 +6,9 @@ public class JoannaNPC extends NPC {
 
 	private boolean cake;
 	public JoannaNPC() {
-		// TODO Auto-generated constructor stub
+		cake = true;
+		
+	
 	}
 
 	public String getSymbol() {
@@ -20,6 +22,9 @@ public class JoannaNPC extends NPC {
 		return cake;
 	}
 
-	
+	public boolean giveCake() {
+		
+		
+	}
 	
 }
