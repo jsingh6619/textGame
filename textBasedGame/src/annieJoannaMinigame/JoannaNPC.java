@@ -22,7 +22,7 @@ public class JoannaNPC extends NPC {
 		return cake;
 	}
 
-	public boolean giveCake() {
+	public void interact() {
 		
 		
 	}
