@@ -16,7 +16,7 @@ public class Inventory {
 		tasks = temp;
 		updateMap();
 		
-		String[] arr = {"Eggs", "Milk", "Flour", };
+		String[] arr = {"eggs", "milk", "flour"};
 		tasks = arr;
 		boolean[] gotten = {false,false,false};
 		have = gotten;

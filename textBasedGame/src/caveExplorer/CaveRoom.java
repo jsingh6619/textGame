@@ -106,6 +106,8 @@ public class CaveRoom {
 		c[2][0] = new AnnieRoom("This cave has coordinates (" + 2 + ", " + 0 + ").", 50);
 		NPC merchant = new AnnieNPC();
 		merchant.setPosition(3, 1);
+		NPC sandy = new JoannaNPC();
+		sandy.setPosition(3, 3);
 		
 		c[2][2] = new JoannaRoom("This cave has coordinates (" + 2 + ", " + 2 + "). And it's the jellyfish room... Gotta catch them all!!!!");
 		
