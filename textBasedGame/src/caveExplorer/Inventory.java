@@ -8,12 +8,19 @@ public class Inventory {
 	private int jellyfish;
 	private String[] tasks;
 	private boolean[] done;
-	
+	private String[] ingredients;
+	private boolean[] have;
 	public Inventory() {
 		money = nets = jellyfish = 0;
 		String[] temp = {"Feed Gary breakfast", "Go jellyfishing", "Feed Gary lunch", "Go to work", "Get cake from Sandy"};
 		tasks = temp;
 		updateMap();
+		
+		String[] arr = {"Feed Gary breakfast", "Go jellyfishing", "Feed Gary lunch", "Go to work", "Get cake from Sandy"};
+		tasks = arr;
+		boolean[] gotten = {false,false,false};
+		have = gotten;
+		
 	}
 	
 	public void updateMap() {
@@ -68,6 +75,18 @@ public class Inventory {
 	public void setNets(int nets) {
 		this.nets = nets;
 	}
+
+	public String[] getIngredients() {
+		return ingredients;
+	}
+
+	public boolean[] getHave() {
+		return have;
+	}
+
+
+
+	
 
 	
 
