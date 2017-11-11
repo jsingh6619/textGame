@@ -10,17 +10,18 @@ public class Inventory {
 	private boolean[] done;
 	private String[] ingredients;
 	private boolean[] have;
+	
 	public Inventory() {
 		money = nets = jellyfish = 0;
-		String[] temp = {"Feed Gary breakfast", "Go jellyfishing", "Feed Gary lunch", "Go to work", "Get cake from Sandy"};
+		String[] temp = {"Feed Gary breakfast", "Go jellyfishing", "Feed Gary lunch", "Go to work", "Get cake from Sandy", "Feed Gary dinner", "Go to Squidward's concert"};
 		tasks = temp;
-		updateMap();
-		
+		boolean[] temp2 = {false, false, false, false, false, false, false};
+		done = temp2;
 		String[] arr = {"eggs", "milk", "flour"};
-		tasks = arr;
-		boolean[] gotten = {false,false,false};
+		ingredients = arr;
+		boolean[] gotten = {false, false, false};
 		have = gotten;
-		
+		updateMap();
 	}
 	
 	public void updateMap() {
@@ -52,12 +53,22 @@ public class Inventory {
 	}
 	
 	public String getDescription() {
-		String description = map;
+		String description = map + "\n" + listTasks();
 		if(money > 0)
 			description += "\n" + "You have $" + money + ".";
 		if(nets > 0)
 			description += "\n" + "You have " + nets + " net(s).";
+		if(jellyfish > 0)
+			description += "\n" + "You have " + jellyfish + " jellyfish. You can sell your jellyfish to Mr. Krabs.";
 		return description;
+	}
+
+	private String listTasks() {
+		String list = "Things you need to do:\n";
+		for(int i = 0; i < tasks.length; i++)
+			if(!done[i])
+				list += "- " + tasks[i] + "\n";
+		return list;
 	}
 
 	public int getMoney() {
@@ -76,18 +87,12 @@ public class Inventory {
 		this.nets = nets;
 	}
 
-	public String[] getIngredients() {
-		return ingredients;
+	public String getStrAtIndex(String[] arr, int index) {
+		return arr[index];
 	}
 
-	public boolean[] getHave() {
-		return have;
+	public boolean getBoolAtIndex(boolean[] arr, int index) {
+		return arr[index];
 	}
-
-
-
-	
-
-	
 
 }
