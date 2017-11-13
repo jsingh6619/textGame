@@ -3,7 +3,7 @@ package caveExplorer;
 public class Inventory {
 	
 	private String map;
-	private int garyFood;
+	private int food;
 	private int money;
 	private int nets;
 	private int jellyfish;
@@ -12,7 +12,7 @@ public class Inventory {
 	private boolean[] done;
 	private String[] ingredients;
 	private boolean[] have;
-	
+
 	public Inventory() {
 		money = nets = jellyfish = 0;
 		gotClarinet = false;
@@ -24,7 +24,14 @@ public class Inventory {
 		ingredients = arr;
 		boolean[] gotten = {false, false, false};
 		have = gotten;
-		updateMap();
+	}
+	
+	public int getFood() {
+		return food;
+	}
+
+	public void setFood(int food) {
+		this.food = food;
 	}
 	
 	public void updateMap() {
@@ -61,6 +68,8 @@ public class Inventory {
 			description += "\n" + "You have $" + money + ".";
 		if(nets > 0)
 			description += "\n" + "You have " + nets + " net(s).";
+		if(food > 0)
+			description += "\n" + "You have " + food + "can(s) of snail food.";
 		if(jellyfish > 0)
 			description += "\n" + "You have " + jellyfish + " jellyfish (you can sell it to Mr. Krabs for money).";
 		return description;
@@ -89,7 +98,19 @@ public class Inventory {
 	public void setNets(int nets) {
 		this.nets = nets;
 	}
+
+	public int getJellyfish() {
+		return jellyfish;
+	}
+
+	public void setJellyfish(int jellyfish) {
+		this.jellyfish = jellyfish;
+	}
 	
+	public void resetJellyfish() {
+		jellyfish = 0;
+	}
+
 	public String[] getTasks() {
 		return tasks;
 	}
@@ -121,14 +142,6 @@ public class Inventory {
 	public void setGotClarinet(boolean value) {
 		this.gotClarinet = value;
 	}
-
-	public int getGaryFood() {
-		return garyFood;
-	}
-
-	public void setGaryFood(int garyFood) {
-		this.garyFood = garyFood;
-	}
 	
 	public int numTasksLeft() {
 		int count = 0;
@@ -137,5 +150,5 @@ public class Inventory {
 				count++;
 		return count;
 	}
-
+	
 }
