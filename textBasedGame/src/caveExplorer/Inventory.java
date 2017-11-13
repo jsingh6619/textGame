@@ -24,6 +24,7 @@ public class Inventory {
 		ingredients = arr;
 		boolean[] gotten = {false, false, false};
 		have = gotten;
+		updateMap();
 	}
 	
 	public int getFood() {
