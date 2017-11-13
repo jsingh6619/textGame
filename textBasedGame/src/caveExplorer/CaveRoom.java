@@ -143,13 +143,20 @@ public class CaveRoom {
 
 	private static void setUpTree() {
 		setBlock(new int[] {4, 0}, new int[] {4, 2});
+		setDoorway(NORTH, c[4][2], c[3][2]);
 	}
 
 	private static void setUpMarket() {
 		setBlock(new int[] {2, 0}, new int[] {2, 1});
+		setDoorway(NORTH, c[2][0], c[1][0]);
 	}
 
 	private static void setUpConcertHall() {
+		for(int row = 0; row <= 1; row++)
+			for(int col = 8; col <= 9; col++) {
+				String description = c[row][col].getDescription();
+				c[row][col].setDescription(description + " You're at the Philharmonic Concert Hall.");
+			}
 		setBlock(new int[] {0, 8}, new int[] {1, 9});
 	}
 	
@@ -163,6 +170,7 @@ public class CaveRoom {
 			c[1][col] = new AbedRoom(description + " This is the Krusty Krab.");
 		}
 		setBlock(new int[] {1, 5}, new int[] {1, 7});
+		setDoorway(SOUTH, c[1][5], c[2][5]);
 	}
 
 	private static void setUpPineapple() {
@@ -191,8 +199,8 @@ public class CaveRoom {
 	}
 	
 	private static void setUpTreasure() {
-		int[][] coords = {{3, 3}, {4, 1}, {2, 0}};
-		int[] amounts = {20, 30, 50};
+		int[][] coords = {{0, 6}, {3, 9}, {4, 4}, {2, 3}};
+		int[] amounts = {10, 20, 30, 40};
 		for(int i = 0; i < coords.length; i++) {
 			String description = c[coords[i][0]][coords[i][1]].getDescription();
 			c[coords[i][0]][coords[i][1]] = new AnnieRoom(description, amounts[i]);

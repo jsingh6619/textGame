@@ -94,6 +94,10 @@ public class Inventory {
 		return tasks;
 	}
 
+	public void setTaskAtIndex(int index, String task) {
+		tasks[index] = task;
+	}
+
 	public String[] getIngredients() {
 		return ingredients;
 	}
@@ -101,7 +105,7 @@ public class Inventory {
 	public boolean[] getDone() {
 		return done;
 	}
-
+	
 	public boolean[] getHave() {
 		return have;
 	}
