@@ -6,6 +6,7 @@ public class Inventory {
 	private String map;
 	private int money;
 	private int nets;
+	private int jellyfish;
 
 	
 	public Inventory() {
@@ -70,6 +71,16 @@ public class Inventory {
 		this.nets = nets;
 	}
 
+	public int getJellyfish() {
+		return jellyfish;
+	}
+
+	public void setJellyfish(int jellyfish) {
+		this.jellyfish += jellyfish;
+	}
 	
+	public void resetJellyfish() {
+		jellyfish = 0;
+	}
 
 }
