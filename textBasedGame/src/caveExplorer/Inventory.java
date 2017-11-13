@@ -7,8 +7,17 @@ public class Inventory {
 	private int money;
 	private int nets;
 	private int jellyfish;
+	private int food;
 
 	
+	public int getFood() {
+		return food;
+	}
+
+	public void setFood(int food) {
+		this.food = food;
+	}
+
 	public Inventory() {
 
 		money = nets = 0;
