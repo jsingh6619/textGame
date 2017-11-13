@@ -171,6 +171,7 @@ public class CaveRoom {
 			c[0][col] = new AbidRoom(description + " This is your home.");
 		}
 		setBlock(new int[] {0, 1}, new int[] {0, 2});
+		setDoorway(SOUTH, c[0][2], c[1][2]);
 	}
 
 	private static void setUpRoads() {

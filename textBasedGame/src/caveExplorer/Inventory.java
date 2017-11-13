@@ -16,7 +16,7 @@ public class Inventory {
 	public Inventory() {
 		money = nets = jellyfish = 0;
 		gotClarinet = false;
-		String[] temp = {"Feed Gary breakfast", "Go jellyfishing", "Feed Gary lunch", "Go to work", "Get cake from Sandy", "Feed Gary dinner", "Go to Squidward's recital"};
+		String[] temp = {"Feed Gary breakfast", "Catch jellyfish", "Feed Gary lunch", "Go to work", "Get cake from Sandy", "Feed Gary dinner", "Go to Squidward's recital"};
 		tasks = temp;
 		boolean[] temp2 = {false, false, false, false, false, false, false};
 		done = temp2;
