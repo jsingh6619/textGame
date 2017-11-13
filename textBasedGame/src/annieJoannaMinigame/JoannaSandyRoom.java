@@ -1,6 +1,7 @@
 package annieJoannaMinigame;
 
-import caveExplorer.NPCRoom;
+import caveExplorer.*;
+
 
 public class JoannaSandyRoom extends NPCRoom{
 
@@ -10,12 +11,24 @@ public class JoannaSandyRoom extends NPCRoom{
 	}
 	
 	public void performAction(int direction) {
-		if(direction ==  4)
-			if(npc != null && npc.isActive())
-				npc.interact();
+		if( direction  == 4) {
+		for(int i=0; i < CaveExplorer.inventory.getHave().length; i++)
+		{
+			while(CaveExplorer.inventory.getHave()[i] == false) {
+				
+				System.out.println("You're missing either eggs,milk, or flour.");
+			}
+			
+		}
+		}
+		else {
+			System.out.println("Here's your cake!");
+		}
+		
+			
+		
 		
 	}
-
 	public String validMoves() {
 		return "wdsae";
 	}

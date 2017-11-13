@@ -135,7 +135,7 @@ public class CaveRoom {
 	private static void setUpJFF() {
 		for(int col = 5; col <= 8; col++) {
 			String description = c[4][col].getDescription();
-			c[4][col] = new JoannaRoom(description + " You're in the Jellyfish Fields.");
+			c[4][col] = new JoannaRoom(description + " You're in the Jellyfish Fields. Press 'i'.");
 		}
 		setBlock(new int[] {4, 5}, new int[] {4, 8});
 		setDoorway(NORTH, c[4][8], c[3][8]);
