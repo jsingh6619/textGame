@@ -13,7 +13,7 @@ public class AnnieNPC extends NPC {
 	}
 	
 	public String getSymbol() {
-		return "F";
+		return "N";
 	}
 	
 	public String getDescription() {
@@ -30,6 +30,6 @@ public class AnnieNPC extends NPC {
 			} else
 				CaveExplorer.print("You don't have enough money for a net.");
 		else
-			CaveExplorer.print("There are no more nets.");
+			CaveExplorer.print("The merchant does not have any more nets.");
 	}
 }

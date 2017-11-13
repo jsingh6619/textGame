@@ -23,13 +23,20 @@ public class CaveExplorer {
 	}
 
 	private static void startExploring() {
+		print("Your name is Spongebob and you live in Bikini Bottom. \nYour objective is to get through the day.");
 		while(playing) {
+			if(inventory.numTasksLeft() == 1)
+				CaveRoom.openConcertHall();
 			print(inventory.getDescription());
-			print(currentRoom.getDescription() + "\n"); 
+			print(currentRoom.getDescription()); 
 			print(currentRoom.getDirections());
 			print("What would you like to do?");
 			currentRoom.interpretInput(in.nextLine());
+			if(inventory.numTasksLeft() == 0)
+				playing = false;
 		}
+		print("\nSquidward was able to put on his recital and you completed the day!" +
+				"\nYOU WIN!");
 	}
 
 }

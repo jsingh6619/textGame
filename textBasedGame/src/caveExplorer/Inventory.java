@@ -3,9 +3,11 @@ package caveExplorer;
 public class Inventory {
 	
 	private String map;
+	private int garyFood;
 	private int money;
 	private int nets;
 	private int jellyfish;
+	private boolean gotClarinet;
 	private String[] tasks;
 	private boolean[] done;
 	private String[] ingredients;
@@ -13,7 +15,8 @@ public class Inventory {
 	
 	public Inventory() {
 		money = nets = jellyfish = 0;
-		String[] temp = {"Feed Gary breakfast", "Go jellyfishing", "Feed Gary lunch", "Go to work", "Get cake from Sandy", "Feed Gary dinner", "Go to Squidward's concert"};
+		gotClarinet = false;
+		String[] temp = {"Feed Gary breakfast", "Go jellyfishing", "Feed Gary lunch", "Go to work", "Get cake from Sandy", "Feed Gary dinner", "Go to Squidward's recital"};
 		tasks = temp;
 		boolean[] temp2 = {false, false, false, false, false, false, false};
 		done = temp2;
@@ -59,7 +62,7 @@ public class Inventory {
 		if(nets > 0)
 			description += "\n" + "You have " + nets + " net(s).";
 		if(jellyfish > 0)
-			description += "\n" + "You have " + jellyfish + " jellyfish. You can sell your jellyfish to Mr. Krabs.";
+			description += "\n" + "You have " + jellyfish + " jellyfish (you can sell it to Mr. Krabs for money).";
 		return description;
 	}
 
@@ -86,13 +89,49 @@ public class Inventory {
 	public void setNets(int nets) {
 		this.nets = nets;
 	}
-
-	public String getStrAtIndex(String[] arr, int index) {
-		return arr[index];
+	
+	public String[] getTasks() {
+		return tasks;
 	}
 
-	public boolean getBoolAtIndex(boolean[] arr, int index) {
-		return arr[index];
+	public String[] getIngredients() {
+		return ingredients;
+	}
+	
+	public boolean[] getDone() {
+		return done;
+	}
+
+	public boolean[] getHave() {
+		return have;
+	}
+	
+	public void setBooleanAtIndex(boolean[] arr, int index, boolean value) {
+		arr[index] = value;
+	}
+
+	public boolean gotClarinet() {
+		return gotClarinet;
+	}
+
+	public void setGotClarinet(boolean value) {
+		this.gotClarinet = value;
+	}
+
+	public int getGaryFood() {
+		return garyFood;
+	}
+
+	public void setGaryFood(int garyFood) {
+		this.garyFood = garyFood;
+	}
+	
+	public int numTasksLeft() {
+		int count = 0;
+		for(int i = 0; i < done.length; i++)
+			if(!done[i])
+				count++;
+		return count;
 	}
 
 }

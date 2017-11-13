@@ -1,12 +1,11 @@
 package caveExplorer;
 
-
 import annieJoannaMinigame.*;
- 
 import abidAbedJasMinigame.*;
 
-
 public class CaveRoom {
+	
+	private static CaveRoom[][] c;
 
 	private String description;
 	private String directions;
@@ -95,52 +94,127 @@ public class CaveRoom {
 	}
 
 	public static void setUpCaves() {
-		CaveExplorer.caves = new NPCRoom[5][5];
-		CaveRoom[][] c = CaveExplorer.caves;
+		CaveExplorer.caves = new CaveRoom[5][10];
+		c = CaveExplorer.caves;
 		for(int row = 0; row < c.length; row++)
 			for(int col = 0; col < c[row].length; col++)
-				c[row][col] = new NPCRoom("This cave has coordinates (" + row + ", " + col + ").");
-
-		c[3][3] = new AnnieRoom("This cave has coordinates (" + 3 + ", " + 3 + ").", 20);
-		c[4][1] = new AnnieRoom("This cave has coordinates (" + 4 + ", " + 1 + ").", 30);
-		c[2][0] = new AnnieRoom("This cave has coordinates (" + 2 + ", " + 0 + ").", 50);
-		NPC merchant = new AnnieNPC();
-		merchant.setPosition(3, 1);
-		NPC sandy = new JoannaNPC();
-		sandy.setPosition(2, 3);
-		
-		c[2][2] = new JoannaRoom("This cave has coordinates (" + 2 + ", " + 2 + "). And it's the jellyfish room... Gotta catch them all!!!!");
-		
-
+				c[row][col] = new NPCRoom("You are at (" + row + ", " + col + ").");
+/*		
 		c[1][2] = new JasRoom("Free Reward");
-		c[3][2] = new AbedRoom("The Krusty Krab");
-		c[2][1] = new AbidRoom("This is your home.");
-		
-		Plankton p = new Plankton();
-		p.setPosition(3,2);
-		Gary gary = new Gary();
-		gary.setPosition(3, 4);
-
-	
-		
-		
-        CaveExplorer.currentRoom = c[0][1];
+*/
+		setUpTreasure();
+		setUpRoads();
+        setUpBuildings();
+        setUpNPCs();
+        CaveExplorer.currentRoom = c[0][2];
         CaveExplorer.currentRoom.enter();
-		
-		for(int row = 0; row < c.length - 1; row++)
-			for(int col = 0; col < c[row].length - 1; col++) {
-				c[row][col].setConnection(SOUTH, c[row + 1][col], new Door());
+	}
+	
+	private static void setUpNPCs() {		
+		NPC sandy = new JoannaNPC();
+		sandy.setPosition(4, 0);
+		NPC squid = new AnnieSquidwardNPC();
+		squid.setPosition(0, 8);
+		NPC merchant = new AnnieNPC();
+		merchant.setPosition(4, 5);
+		Plankton plankton = new Plankton();
+		plankton.setPosition(1, 5);
+		Gary gary = new Gary();
+		gary.setPosition(0, 1);
+ 	}
+
+	private static void setUpBuildings() {
+		setUpPineapple();
+		setUpKK();
+		setUpConcertHall();
+		setUpMarket();
+		setUpTree();
+		setUpJFF();
+	}
+
+	private static void setUpJFF() {
+		for(int col = 5; col <= 8; col++) {
+			String description = c[4][col].getDescription();
+			c[4][col] = new JoannaRoom(description + " You're in the Jellyfish Fields.");
+		}
+		setBlock(new int[] {4, 5}, new int[] {4, 8});
+		setDoorway(NORTH, c[4][8], c[3][8]);
+	}
+
+	private static void setUpTree() {
+		setBlock(new int[] {4, 0}, new int[] {4, 2});
+	}
+
+	private static void setUpMarket() {
+		setBlock(new int[] {2, 0}, new int[] {2, 1});
+	}
+
+	private static void setUpConcertHall() {
+		setBlock(new int[] {0, 8}, new int[] {1, 9});
+	}
+	
+	public static void openConcertHall() {
+		setDoorway(SOUTH, c[2][9], c[3][9]);
+	}
+
+	private static void setUpKK() {
+		for(int col = 5; col <= 7; col++) {
+			String description = c[1][col].getDescription();
+			c[1][col] = new AbedRoom(description + " This is the Krusty Krab.");
+		}
+		setBlock(new int[] {1, 5}, new int[] {1, 7});
+	}
+
+	private static void setUpPineapple() {
+		for(int col = 1; col <= 2; col++) {
+			String description = c[0][col].getDescription();
+			c[0][col] = new AbidRoom(description + " This is your home.");
+		}
+		setBlock(new int[] {0, 1}, new int[] {0, 2});
+	}
+
+	private static void setUpRoads() {
+		int[][][] coords = {
+				{{0, 3}, {0, 7}}, 
+				{{0, 0}, {1, 0}}, 
+				{{1, 0}, {1, 4}},
+				{{1, 2}, {3, 4}},
+				{{2, 2}, {3, 9}}, 
+				{{3, 0}, {3, 9}}, 
+				{{0, 3}, {4, 4}}, 
+				{{2, 5}, {3, 9}}, 
+				{{3, 9}, {4, 9}}, 
+		};
+		for(int i = 0; i < coords.length; i++)
+			setBlock(coords[i][0], coords[i][1]);
+	}
+	
+	private static void setUpTreasure() {
+		int[][] coords = {{3, 3}, {4, 1}, {2, 0}};
+		int[] amounts = {20, 30, 50};
+		for(int i = 0; i < coords.length; i++) {
+			String description = c[coords[i][0]][coords[i][1]].getDescription();
+			c[coords[i][0]][coords[i][1]] = new AnnieRoom(description, amounts[i]);
+		}
+	}
+
+	public static void setDoorway(int direction, CaveRoom room, CaveRoom otherRoom) {
+		Door door = new Door();
+		door.setDescription("doorway");
+		room.setConnection(direction, otherRoom, door);
+	}
+
+	public static void setBlock(int[] topLeft, int[] bottomRight) { // a "block" is a rectangle in which all connections are made
+		CaveRoom[][] c = CaveExplorer.caves;
+		for(int row = topLeft[0]; row < bottomRight[0]; row++)
+			for(int col = topLeft[1]; col < bottomRight[1]; col++) {
+				c[row][col].setConnection(SOUTH, c[row + 1][col], new Door());	
 				c[row][col].setConnection(EAST, c[row][col + 1], new Door());
 			}
-		for(int row = 0; row < c.length - 1; row++)
-			c[row][c[row].length - 1].setConnection(SOUTH, c[row + 1][c[row].length - 1], new Door());
-		for(int col = 0; col < c[c.length - 1].length - 1; col++)
-			c[c[c.length - 1].length - 1][col].setConnection(EAST, c[c[c.length - 1].length - 1][col + 1], new Door());
-
-
-
-		
-
+		for(int row = topLeft[0]; row < bottomRight[0]; row++)
+			c[row][bottomRight[1]].setConnection(SOUTH, c[row + 1][bottomRight[1]], new Door());	
+		for(int col = topLeft[1]; col < bottomRight[1]; col++)
+			c[bottomRight[0]][col].setConnection(EAST, c[bottomRight[0]][col + 1], new Door());
 	}
 	
 	public void goToRoom(int direction) {
