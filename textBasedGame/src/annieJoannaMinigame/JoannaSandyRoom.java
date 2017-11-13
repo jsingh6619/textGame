@@ -12,6 +12,7 @@ public class JoannaSandyRoom extends NPCRoom{
 	
 	public void performAction(int direction) {
 		if( direction  == 4) {
+			JoannaNPC.interact();
 		for(int i=0; i < CaveExplorer.inventory.getHave().length; i++)
 		{
 			while(CaveExplorer.inventory.getHave()[i] == false) {
