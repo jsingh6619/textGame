@@ -1,3 +1,6 @@
+/*
+ * have method that checks if card is there or not before placing
+ */
 package abidAbedJasMinigame;
 
 public class JasBackend implements AbidSupportBack, AbedSupportBack{
