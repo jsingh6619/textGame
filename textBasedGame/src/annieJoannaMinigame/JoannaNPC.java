@@ -26,12 +26,12 @@ public class JoannaNPC extends NPC {
 	public void interact() {
 		if(!checkBookleanList())
 		{
-			System.out.println("You're missing either eggs,milk, or flour.");
+			CaveExplorer.print("You're missing either eggs,milk, or flour.");
 			
 		}
 		else {
 			CaveExplorer.inventory.setCake(true);
-			System.out.println("Here's the cake!");
+			CaveExplorer.print("Here's the cake!");
 			
 			
 		}
