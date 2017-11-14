@@ -1,5 +1,6 @@
 package annieJoannaMinigame;
 
+import caveExplorer.CaveExplorer;
 import caveExplorer.NPC;
 
 public class JoannaNPC extends NPC {
@@ -15,7 +16,7 @@ public class JoannaNPC extends NPC {
 		return "S";
 	}
 	public String getDescription() {
-		return "Hi I'm Sandy! Press 'e' to interact with me.";
+		return "Hi I'm Sandy! Press 'e' to interact with me. hehe";
 	}
 
 	public boolean isCake() {
@@ -23,8 +24,39 @@ public class JoannaNPC extends NPC {
 	}
 
 	public void interact() {
+		if(!checkBookleanList())
+		{
+			System.out.println("You're missing either eggs,milk, or flour.");
+			
+		}
+		else {
+			CaveExplorer.inventory.setCake(true);
+			System.out.println("Here's the cake!");
+			
+			
+		}
 		
+			
+			
 		
 	}
 	
-}
+			//System.out.println("Here's your cake!");
+		
+		public boolean checkBookleanList() {
+			for(int i=0; i < CaveExplorer.inventory.getHave().length; i++)
+			{
+				if(CaveExplorer.inventory.getHave()[i] == false) {
+					
+					return false;
+				}
+				
+			}
+			
+			return true;
+		}
+		
+	}
+	
+
+
