@@ -99,9 +99,6 @@ public class CaveRoom {
 		for(int row = 0; row < c.length; row++)
 			for(int col = 0; col < c[row].length; col++)
 				c[row][col] = new NPCRoom("You are at (" + row + ", " + col + ").");
-/*		
-		c[1][2] = new JasRoom("Free Reward");
-*/
 		setUpTreasure();
 		setUpRoads();
         setUpBuildings();
@@ -110,17 +107,19 @@ public class CaveRoom {
         CaveExplorer.currentRoom.enter();
 	}
 	
-	private static void setUpNPCs() {		
+	private static void setUpNPCs() {
 		NPC sandy = new JoannaNPC();
 		sandy.setPosition(4, 0);
 		NPC squid = new AnnieSquidwardNPC();
 		squid.setPosition(0, 8);
 		NPC merchant = new AnnieNPC();
 		merchant.setPosition(4, 5);
-		Plankton plankton = new Plankton();
-		plankton.setPosition(1, 5);
-		Gary gary = new Gary();
+		NPC plankton = new Plankton();
+		plankton.setPosition(1, 6);
+		NPC gary = new Gary();
 		gary.setPosition(0, 1);
+		NPC krabs = new JasKrabsNPC();
+		krabs.setPosition(1, 7);
  	}
 
 	private static void setUpBuildings() {
@@ -138,17 +137,21 @@ public class CaveRoom {
 			c[4][col] = new JoannaRoom(description + " You're in the Jellyfish Fields. Press 'i'.");
 		}
 		setBlock(new int[] {4, 5}, new int[] {4, 8});
-		setDoorway(NORTH, c[4][8], c[3][8]);
+		setDoorway(c[4][8], c[3][8], NORTH, true);
 	}
 
 	private static void setUpTree() {
+		for(int col = 0; col <= 2; col++) {
+				String description = c[4][col].getDescription();
+				c[4][col].setDescription(description + " You're at Sandy's treedome.");
+		}
 		setBlock(new int[] {4, 0}, new int[] {4, 2});
-		setDoorway(NORTH, c[4][2], c[3][2]);
+		setDoorway(c[4][2], c[3][2], NORTH, true);
 	}
 
 	private static void setUpMarket() {
 		setBlock(new int[] {2, 0}, new int[] {2, 1});
-		setDoorway(NORTH, c[2][0], c[1][0]);
+		setDoorway(c[2][0], c[1][0], NORTH, true);
 	}
 
 	private static void setUpConcertHall() {
@@ -158,28 +161,35 @@ public class CaveRoom {
 				c[row][col].setDescription(description + " You're at the Philharmonic Concert Hall.");
 			}
 		setBlock(new int[] {0, 8}, new int[] {1, 9});
+		openCloseCH(false);
 	}
 	
-	public static void openConcertHall() {
-		setDoorway(SOUTH, c[2][9], c[3][9]);
+	public static void openCloseCH(boolean open) {
+		setDoorway(c[1][9], c[2][9], SOUTH, open);
 	}
-
+	
 	private static void setUpKK() {
 		for(int col = 5; col <= 7; col++) {
 			String description = c[1][col].getDescription();
-			c[1][col] = new AbedRoom(description + " This is the Krusty Krab.");
+			if(col == 6)
+				c[1][col] = new AbedRoom(description);
+			c[1][col].setDescription(description + " This is the Krusty Krab.");
 		}
 		setBlock(new int[] {1, 5}, new int[] {1, 7});
-		setDoorway(SOUTH, c[1][5], c[2][5]);
+		openCloseKK(true);
 	}
-
+	
+	public static void openCloseKK(boolean open) {
+		setDoorway(c[1][5], c[2][5], SOUTH, open);
+	}
+	
 	private static void setUpPineapple() {
 		for(int col = 1; col <= 2; col++) {
 			String description = c[0][col].getDescription();
 			c[0][col] = new AbidRoom(description + " This is your home.");
 		}
 		setBlock(new int[] {0, 1}, new int[] {0, 2});
-		setDoorway(SOUTH, c[0][2], c[1][2]);
+		setDoorway(c[0][2], c[1][2], SOUTH, true);
 	}
 
 	private static void setUpRoads() {
@@ -207,13 +217,17 @@ public class CaveRoom {
 		}
 	}
 
-	public static void setDoorway(int direction, CaveRoom room, CaveRoom otherRoom) {
+	public static void setDoorway(CaveRoom room, CaveRoom otherRoom, int direction, boolean open) {
 		Door door = new Door();
-		door.setDescription("doorway");
+		door.setOpen(open);
+		if(!open)
+			door.setDescription("closed door");
+		else
+			door.setDescription("doorway");
 		room.setConnection(direction, otherRoom, door);
 	}
 
-	public static void setBlock(int[] topLeft, int[] bottomRight) { // a "block" is a rectangle in which all connections are made
+	public static void setBlock(int[] topLeft, int[] bottomRight) {
 		CaveRoom[][] c = CaveExplorer.caves;
 		for(int row = topLeft[0]; row < bottomRight[0]; row++)
 			for(int col = topLeft[1]; col < bottomRight[1]; col++) {
@@ -234,6 +248,10 @@ public class CaveRoom {
 			CaveExplorer.inventory.updateMap();
 			if(CaveExplorer.currentRoom instanceof AnnieRoom)
 				CaveExplorer.currentRoom.performAction(-1);
+			if(CaveExplorer.currentRoom instanceof AbedRoom && ((AbedRoom) CaveExplorer.currentRoom).getNPC().isActive())
+				openCloseKK(false);
+			else if(CaveExplorer.currentRoom instanceof AbedRoom && !((AbedRoom) CaveExplorer.currentRoom).getNPC().isActive())
+				openCloseKK(true);
 		} else
 			System.out.println("You can't do that!");
 	}

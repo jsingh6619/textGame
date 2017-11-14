@@ -26,7 +26,7 @@ public class CaveExplorer {
 		print("Your name is SpongeBob SquarePants and you live in a pineapple under the sea located in Bikini Bottom. \nYour objective is to get through the day.");
 		while(playing) {
 			if(inventory.numTasksLeft() == 1)
-				CaveRoom.openConcertHall();
+				CaveRoom.openCloseCH(true);
 			print(inventory.getDescription());
 			print(currentRoom.getDescription()); 
 			print(currentRoom.getDirections());

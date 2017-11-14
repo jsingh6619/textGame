@@ -11,7 +11,7 @@ public class AbedRoom extends NPCRoom
 	}
 	public String validMoves()
 	{
-		return "wasdz";
+		return "wdsaz";
 	}
 	public void printValidMoves() 
 	{
