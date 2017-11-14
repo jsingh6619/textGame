@@ -2,19 +2,25 @@ package annieJoannaMinigame;
 
 public class AnnieJoannaPlot {
 	
-	private int row;
-	private int col;
 	private boolean jellyfishPresent;
+	private String defaultContents;
 	private String contents;
+	
 
-	public AnnieJoannaPlot(int row, int col, boolean value) {
-		this.row = row;
-		this.col = col;
+	public AnnieJoannaPlot(boolean value) {
 		this.jellyfishPresent = value;
-		if(jellyfishPresent)
-			this.setContents("J");
-		else
-			this.setContents(" ");
+		defaultContents=" ";
+		if(value)
+		{
+			setContents("J");
+		}
+		else {
+			setContents(defaultContents);
+		}
+	}
+
+	public String getDefaultContents() {
+		return defaultContents;
 	}
 
 	public int getRow() {

@@ -16,7 +16,7 @@ public class JoannaNPC extends NPC {
 		return "S";
 	}
 	public String getDescription() {
-		return "Hi I'm Sandy! Press 'e' to interact with me. hehe";
+		return "Hi I'm Sandy! Press 'e' to interact with me.";
 	}
 
 	public boolean isCake() {
