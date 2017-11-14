@@ -18,4 +18,12 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		
 	}
 
+
+
+
+
+	public void computerMove() {
+		backend.getLastMove();
+	}
+
 }

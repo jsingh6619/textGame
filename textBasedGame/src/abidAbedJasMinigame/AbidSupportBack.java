@@ -6,4 +6,12 @@ public interface AbidSupportBack {
 
 	void setFrontend(AbidFrontend abidFrontend);
 
+	boolean stillPlaying();
+
+	String getValidUserInput();
+
+	boolean victorious();
+
+	void dealCards();
+
 }
