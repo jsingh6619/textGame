@@ -12,6 +12,7 @@ public class Inventory {
 	private boolean[] done;
 	private String[] ingredients;
 	private boolean[] have;
+	private boolean cake;
 	
 	public Inventory() {
 		money = nets = jellyfish = 0;
@@ -25,8 +26,17 @@ public class Inventory {
 		boolean[] gotten = {false, false, false};
 		have = gotten;
 		updateMap();
+		cake = false;
 	}
 	
+	public boolean isCake() {
+		return cake;
+	}
+
+	public void setCake(boolean cake) {
+		this.cake = cake;
+	}
+
 	public void updateMap() {
 		map = "\n ";
 		for(int i = 0; i < CaveExplorer.caves[0].length - 1; i++)
