@@ -48,7 +48,7 @@ public class AnnieBackend implements JoannaSupport {
 	}
 
 	public String getValidUserInput() {
-		return null;
+		return "";
 	}
 
 	public void computerMove() {
