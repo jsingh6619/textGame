@@ -1,16 +1,20 @@
 package annieJoannaMinigame;
 
+import caveExplorer.*;
+
 public class JoannaFrontend implements AnnieSupport{
 
 	private JoannaSupport backend;
 	private int playerCount;
 	private int opponentCount;
 	private boolean won;
+	private String opponentName;
 	
 	public JoannaFrontend() {
 		backend = new AnnieBackend(this);
 		playerCount = opponentCount = 0;
 		won = false;
+		opponentName = "Kevin C Cucumber";
 	} 
 
 	public static void main(String[] args) {
@@ -32,16 +36,25 @@ public class JoannaFrontend implements AnnieSupport{
 	}
 
 	private void instructions() {
-// print how game works		
+		CaveExplorer.print("");
 	}
 
 	private void printGameOverMessage(boolean victorious) {
-	if(victorious){
-				//print 	
-		}
-	else {
 		
+		String s = "GAME OVER";
+	if(victorious) {
+		won = true;
+		s+= determineWinner("Spongebob", getPlayerCount());
+		CaveExplorer.print(s);
+	} else {
+		s+= determineWinner(opponentName, getOpponentCount());
+		CaveExplorer.print(s);
 	}
+	
+	}
+
+	private String determineWinner(String name, int n) {
+		return "The winner is " + name +" with a total of " + n + " jellyfish.";
 	}
 
 	private void updateScore() {
@@ -49,7 +62,9 @@ public class JoannaFrontend implements AnnieSupport{
 	}
 
 	private void respondToInput(String input) {
-		
+		if( input.equals("")){
+			
+		}
 	}
 
 	private void displayScore() {
@@ -60,17 +75,19 @@ public class JoannaFrontend implements AnnieSupport{
 		
 	}
 
-	@Override
+	
 	public int getPlayerCount() {
 		
 		return playerCount;
 	}
 
-	@Override
+	
 	public int getOpponentCount() {
-		// TODO Auto-generated method stub
 		return opponentCount;
 	}
+
+	
+	
 	
 	
 
