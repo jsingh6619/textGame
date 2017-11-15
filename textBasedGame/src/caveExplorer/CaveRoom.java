@@ -186,7 +186,7 @@ public class CaveRoom {
 	private static void setUpPineapple() {
 		for(int col = 1; col <= 2; col++) {
 			String description = c[0][col].getDescription();
-			c[0][col] = new AbidRoom(description + " This is your home.");
+			c[0][col].setDescription(description + " This is your home.");
 		}
 		setBlock(new int[] {0, 1}, new int[] {0, 2});
 		setDoorway(c[0][2], c[1][2], SOUTH, true);
@@ -194,15 +194,14 @@ public class CaveRoom {
 
 	private static void setUpRoads() {
 		int[][][] coords = {
-				{{0, 3}, {0, 7}}, 
 				{{0, 0}, {1, 0}}, 
-				{{1, 0}, {1, 4}},
-				{{1, 2}, {3, 4}},
+				{{1, 0}, {1, 4}}, 
+				{{0, 3}, {0, 7}}, 
+				{{0, 3}, {4, 4}}, 
+				{{1, 2}, {3, 4}}, 
 				{{2, 2}, {3, 9}}, 
 				{{3, 0}, {3, 9}}, 
-				{{0, 3}, {4, 4}}, 
-				{{2, 5}, {3, 9}}, 
-				{{3, 9}, {4, 9}}, 
+				{{2, 9}, {4, 9}}, 
 		};
 		for(int i = 0; i < coords.length; i++)
 			setBlock(coords[i][0], coords[i][1]);
