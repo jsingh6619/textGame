@@ -7,61 +7,82 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 
 	private JasSupportFront frontend;
 	private JasSupportAI ai;
-	
-	
+	private int pScore;
+	private int sScore;
+	private AbidCard[] hand;
+
 	public JasBackend() {
+		setpScore(0);
+		setsScore(0);
+	}
+	
+	public int randomNum() {
+		return (int)(Math.random() * 9 + 1);
+	}
+	
+	public void generateHand() {
+		hand = new AbidCard[5];
+		for (int i = 0; i < hand.length; i++) {
+			hand[i] = new AbidCard(randomNum(), randomNum(), randomNum(), randomNum());
+		}
+	}
+	
+	public String winner(int sScore, int pScore) {
+		if(sScore > pScore) {
+			return "Spnogebob is the winner!";
+		}
+		else {
+			return "Plankton is the winner!";
+		}
+	}
+
+	/*
+	 * checks to see if hand is finished
+	 * it'll be your turn 
+	 */
+	public boolean stillPlaying() {
+		if(hand == null) {
+			return false;
+		}
+		return true;
+	}
+
+	/*
+	 * user enters what they can
+	 */
+	public String getValidUserInput() {
+		return "";
+	}
+
+	/*
+	 * give the user 5 cards
+	 * give AI 5 cards
+	 */
+	public void dealCards() {
 		
 	}
-
-	public void setFrontend(AbidFrontend abidFrontend) {
-		this.frontend = frontend;
+	
+	public int getpScore() {
+		return pScore;
 	}
 
+	public void setpScore(int pScore) {
+		this.pScore = pScore;
+	}
+
+	public int getsScore() {
+		return sScore;
+	}
+
+	public void setsScore(int sScore) {
+		this.sScore = sScore;
+	}
+	
+	public void setFrontend(AbidFrontend abidFrontend) {
+		this.frontend = abidFrontend;
+	}
 
 	public void setAI(AbedAI ai) {
 		this.ai= ai;
-	}
-	
-	public String winner() {
-		
-	}
-	/*
-	 * call the hasHigher() and whoever had that value is the winner --> need a method to get their scores
-	 * if computer wins return 'computer wins'
-	 * else 'user wins'
-	 */
-	
-	
-	public int hasHigher(int score1, int score2) {
-		if(score1 > score2) {
-			return score1;
-		}
-		else {
-			return score2;
-		}
-	}
-
-	@Override
-	public boolean stillPlaying() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String getValidUserInput() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean victorious() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void dealCards() {
-		// TODO Auto-generated method stub
-		
 	}
 }
