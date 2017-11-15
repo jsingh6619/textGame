@@ -20,6 +20,21 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		return (int)(Math.random() * 9 + 1);
 	}
 	
+	public void sScores() {
+		setsScore(getsScore() + 1);
+	}
+	
+	public void pScores() {
+		setpScore(getpScore() + 1);
+	}
+	public void sLoses() {
+		setsScore(getsScore() - 1);
+	}
+	
+	public void pLoses() {
+		setpScore(getpScore() - 1);
+	}
+	
 	public void generateHand() {
 		hand = new AbidCard[5];
 		for (int i = 0; i < hand.length; i++) {
@@ -27,8 +42,15 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		}
 	}
 	
-	public String winner(int sScore, int pScore) {
-		if(sScore > pScore) {
+	/*
+	 * index is the number the user inputs
+	 */
+	public void removeCard(int index) {
+		hand[index] = null;
+	}
+	
+	public String victorious() {
+		if(getsScore() > getpScore()) {
 			return "Spnogebob is the winner!";
 		}
 		else {
@@ -85,4 +107,17 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public void setAI(AbedAI ai) {
 		this.ai= ai;
 	}
+
+	@Override
+	public AbidCard[][] getLastMove() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AbidCard getLastCard() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
