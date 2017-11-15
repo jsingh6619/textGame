@@ -8,58 +8,22 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	
 	public static final void main(String[] args) {
 		AbidFrontend demo = new AbidFrontend();
-		demo.play();
+		demo.displayBoard();
 	}
 	
-	public void play(){
-		ai.dealCards();
-		backend.dealCards();
-	    while(backend.stillPlaying()){
-	        displayBoard();
-	        displayHand();
-	        displayScore();
-	        String input = backend.getValidUserInput();
-	        respondToInput(input);
-	        ai.computerMove();
-	        analyzeBoard();
-	        updateScore();
-	    }
-	        printGameOverMessage(backend.victorious());
-	}
 
-	private void displayHand() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void updateScore() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void analyzeBoard() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void respondToInput(String input) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public AbidFrontend() {
-		backend = new JasBackend();
-		ai = new AbedAI();
-		backend.setAI((AbedAI)ai);
-		ai.setBackend((JasBackend)backend);
-		backend.setFrontend(this);
-		ai.setFrontend(this);
-	}
-
-	@Override
+	
 	public void displayBoard() {
-		// TODO Auto-generated method stub
 		
+		for(int i = 0; i < 4; i++) {
+			System.out.print("_______\n|     |\n|     |\n|__ __|\n");
+		}
+		
+	/*	_______
+	    |  6  | 
+	    |6 S 6|
+	    |__6__|
+	*/
 	}
 
 	@Override

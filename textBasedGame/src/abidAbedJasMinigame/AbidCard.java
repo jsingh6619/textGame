@@ -6,6 +6,7 @@ public class AbidCard {
 	private int bottom;
 	private int left;
 	private int right;
+	private boolean owns;
 	
 	public AbidCard(int top, int bottom, int left, int right) {
 		this.top = top;

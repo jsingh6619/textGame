@@ -13,5 +13,7 @@ public interface AbidSupportBack {
 	boolean victorious();
 
 	void dealCards();
+	
+	AbidCard[] getBoard();
 
 }
