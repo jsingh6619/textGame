@@ -9,12 +9,14 @@ public class JoannaFrontend implements AnnieSupport{
 	private int opponentCount;
 	private boolean won;
 	private String opponentName;
+	private AnnieJoannaPlot[][] plots;
 	
 	public JoannaFrontend() {
 		backend = new AnnieBackend(this);
 		playerCount = opponentCount = 0;
 		won = false;
 		opponentName = "Kevin C Cucumber";
+		plots = backend.getPlots();
 	} 
 
 	public static void main(String[] args) {
@@ -36,7 +38,7 @@ public class JoannaFrontend implements AnnieSupport{
 	}
 
 	private void instructions() {
-		CaveExplorer.print("");
+		
 	}
 
 	private void printGameOverMessage(boolean victorious) {
@@ -68,14 +70,33 @@ public class JoannaFrontend implements AnnieSupport{
 	}
 
 	private void displayScore() {
-
+	
 	}
 
 	private void displayBoard() {
+		CaveExplorer.print(updateBoard());
+		for(int row = 0; row< plots.length; row++){
+			for(int col = 0; col< plots[row].length ; col ++){
+				System.out.print(plots[row][col].getContents());
+				}
+			System.out.print("\n");
+		}
 		
 	}
 
 	
+	private String updateBoard() {
+		String map ="";
+		for(int row = 0; row< plots.length; row++){
+			for(int col = 0; col< plots[row].length ; col ++){
+				map += "|";
+				}
+			map += "__";
+			System.out.print("\n");
+		}
+		return map;
+	}
+
 	public int getPlayerCount() {
 		
 		return playerCount;
