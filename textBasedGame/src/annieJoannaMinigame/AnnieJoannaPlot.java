@@ -38,4 +38,8 @@ public class AnnieJoannaPlot {
 		this.contents = contents;
 	}
 	
+	public String toString() {
+		return contents;
+	}
+	
 }
