@@ -5,7 +5,6 @@ public class AnnieJoannaPlot {
 	private boolean jellyfishPresent;
 	private String defaultContents;
 	private String contents;
-	
 
 	public AnnieJoannaPlot(boolean value) {
 		this.jellyfishPresent = value;
@@ -21,14 +20,6 @@ public class AnnieJoannaPlot {
 
 	public String getDefaultContents() {
 		return defaultContents;
-	}
-
-	public int getRow() {
-		return row;
-	}
-
-	public int getCol() {
-		return col;
 	}
 
 	public boolean isJellyfishPresent() {
