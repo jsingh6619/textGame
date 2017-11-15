@@ -1,7 +1,9 @@
 package abidAbedJasMinigame;
 
-public interface AbedSupportBack {
+public interface AbedSupportBack 
+{
 
-	void getLastMove();
+	AbidCard[][] getLastMove();
+	AbidCard getLastCard();
 
 }
