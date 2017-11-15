@@ -5,7 +5,7 @@ public class AnnieBackend implements JoannaSupport {
 	private AnnieSupport frontend;
 	private AnnieJoannaPlot[] jellyfishPlots;
 	private AnnieJoannaPlot[][] plots;
-
+	
 	public AnnieBackend(AnnieSupport frontend) {
 		this.frontend = frontend;
 		jellyfishPlots = new AnnieJoannaPlot[0];
