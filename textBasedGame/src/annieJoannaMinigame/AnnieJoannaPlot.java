@@ -37,9 +37,5 @@ public class AnnieJoannaPlot {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	
-	public String toString() {
-		return contents;
-	}
-	
+		
 }

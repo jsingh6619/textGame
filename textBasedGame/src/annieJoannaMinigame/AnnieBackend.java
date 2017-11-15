@@ -1,5 +1,7 @@
 package annieJoannaMinigame;
 
+import caveExplorer.CaveExplorer;
+
 public class AnnieBackend implements JoannaSupport {
 
 	private AnnieSupport frontend;
@@ -46,6 +48,7 @@ public class AnnieBackend implements JoannaSupport {
 	}
 
 	public String getValidUserInput() {
+		CaveExplorer.in.nextLine();
 		return "";
 	}
 
