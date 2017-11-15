@@ -11,7 +11,7 @@ public class JoannaFrontend implements AnnieSupport{
 		backend = new AnnieBackend(this);
 		playerCount = opponentCount = 0;
 		won = false;
-	}
+	} 
 
 	public static void main(String[] args) {
 		JoannaFrontend demo = new JoannaFrontend();
@@ -58,6 +58,18 @@ public class JoannaFrontend implements AnnieSupport{
 
 	private void displayBoard() {
 		
+	}
+
+	@Override
+	public int getPlayerCount() {
+		
+		return playerCount;
+	}
+
+	@Override
+	public int getOpponentCount() {
+		// TODO Auto-generated method stub
+		return opponentCount;
 	}
 	
 	
