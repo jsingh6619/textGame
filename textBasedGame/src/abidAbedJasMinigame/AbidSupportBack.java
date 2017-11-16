@@ -10,7 +10,7 @@ public interface AbidSupportBack {
 
 	String getValidUserInput();
 
-	boolean victorious();
+	String victorious();
 
 	void dealCards();
 	

@@ -8,9 +8,24 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	
 	public static final void main(String[] args) {
 		AbidFrontend demo = new AbidFrontend();
-		demo.displayBoard();
+		demo.play();
+	//demo.displayBoard();
 	}
-	
+	public void play(){
+			ai.dealCards();
+			backend.dealCards();
+			while(backend.stillPlaying()){
+				displayBoard();
+				displayHand();
+		        displayScore();
+		        String input = backend.getValidUserInput();
+		        respondToInput(input);
+		        ai.computerMove();
+		        analyzeBoard();
+		        updateScore();
+		    }
+		        printGameOverMessage(backend.victorious());
+		 	}
 
 	
 	public void displayBoard() {
