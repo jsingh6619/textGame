@@ -2,6 +2,7 @@ package annieJoannaMinigame;
 
 public class AnnieAI {
 	
+	private AnnieJoannaPlot[] visited;
 	private AnnieJoannaPlot currentPlot;
 	private String name;
 	private String symbol;
@@ -10,6 +11,7 @@ public class AnnieAI {
 	private int jellyfishCount;
 
 	public AnnieAI(String name, String symbol) {
+		visited = new AnnieJoannaPlot[0];
 		currentPlot = null;
 		this.name = name;
 		this.symbol = symbol;
@@ -25,6 +27,7 @@ public class AnnieAI {
 			currentRow = row;
 			currentCol = col;
 			currentPlot = plots[row][col];
+			addToVisited(currentPlot);
 			if(currentPlot.isJellyfishPresent()) {
 				currentPlot.catchJellyfish();
 				jellyfishCount++;
@@ -33,6 +36,14 @@ public class AnnieAI {
 		}
 	}
 		
+	private void addToVisited(AnnieJoannaPlot plot) {
+		AnnieJoannaPlot[] temp = new AnnieJoannaPlot[visited.length + 1];
+		for(int i = 0; i < visited.length; i++)
+			temp[i] = visited[i];
+		temp[temp.length - 1] = plot;
+		visited = temp;
+	}
+
 	public int getJellyfishCount() {
 		return jellyfishCount;
 	}
@@ -42,10 +53,25 @@ public class AnnieAI {
 	}
 	
 	public void move() {
+		AnnieJoannaPlot[][] plots = JoannaFrontend.plots;
 		int[] move = calcMove();
 		int newRow = move[0];
 		int newCol = move[1];
+		int loopCount = 0;
+		while(alreadyVisited(plots[newRow][newCol]) && loopCount < 4) {
+			move = calcMove();
+			newRow = move[0];
+			newCol = move[1];
+			loopCount++;
+		}
 		setPosition(newRow, newCol);
+	}
+
+	private boolean alreadyVisited(AnnieJoannaPlot plot) {
+		for(int i = 0; i < visited.length; i++)
+			if(visited[i].equals(plot))
+				return true;
+		return false;
 	}
 
 	private int[] calcMove() {
@@ -61,5 +87,7 @@ public class AnnieAI {
 		}
 		return newPosition;
 	}
+	
+	
 
 }

@@ -86,5 +86,13 @@ public class AnnieBackend implements JoannaSupport {
 	public boolean victorious() {
 		return frontend.getPlayerCount() > frontend.getOpponentCount();
 	}
+
+	public int getJellyfishNum() {
+		int count = 0;
+		for(int row = 0; row < plots.length; row++)
+			for(int col = 0; col < plots[row].length; col++)
+				count++;
+		return count;
+	}
 	
 }
