@@ -6,12 +6,19 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	private AbedSupportBack backend;
 	private AbidCard[] hand;
 
-	public void computerMove() 
+	public int getLastUserX() 
 	{
-		backend.getLastMove();
-		
+		return backend.getLastMoveX();
 	}
-
+	public int getLastUserY()
+	{
+		return backend.getLastMoveY();
+	}
+	public AbidCard getLastUserCard()
+	{
+		return backend.getLastCard();
+	}
+	
 	private int generateNum()
 	{
 		return (int)Math.random() * 9 + 1;
@@ -29,9 +36,28 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	}
 	public void determineFirstMove()
 	{
-		backend.
+		if()
 	}
+	private void determineNextMove() 
+	{
+		
+		
+	}
+	public void play()
+	{
+		dealCards();
+		determineFirstMove();
+		determineNextMove();
+	}
+	@Override
+	public void computerMove() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 
+	
+	
 
 
 

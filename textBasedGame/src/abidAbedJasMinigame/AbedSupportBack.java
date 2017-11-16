@@ -4,10 +4,12 @@ public interface AbedSupportBack
 {
 
 
-	void getLastMove();
-	int getScore();
 
-	AbidCard[][] getLastMove();//returns where the card was on board
+	int getUserScore();
+	int getAiScore();
+	
+	int getLastMoveX();//returns where the card was on board Xcoordinate
+	int getLastMoveY();//returns where the card was on board Ycoordinate
 	AbidCard getLastCard();///returns the class
 
 
