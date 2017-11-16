@@ -3,6 +3,8 @@
  */
 package abidAbedJasMinigame;
 
+import caveExplorer.CaveExplorer;
+
 public class JasBackend implements AbidSupportBack, AbedSupportBack{
 
 	private JasSupportFront frontend;
@@ -39,11 +41,11 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public void pScores() {
 		setpScore(getPlanktonScore() + 1);
 	}
-	public void sLoses() {
+	public void sLosesCard() {
 		setsScore(getSpongebobScore() - 1);
 	}
 	
-	public void pLoses() {
+	public void pLosesCard() {
 		setpScore(getPlanktonScore() - 1);
 	}
 	
@@ -70,10 +72,6 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		}
 	}
 
-	/*
-	 * checks to see if hand is finished
-	 * it'll be your turn 
-	 */
 	public boolean stillPlaying() {
 		if(hand == null) {
 			return false;
@@ -82,20 +80,70 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 
 	/*
-	 * user enters what they can
+	 * check to see if valid x,y coordinate
 	 */
-	public String getValidUserInput() {
-		return "";
+	public void cardChosen(int index) {
+		if(hand[index]!=null) {
+			CaveExplorer.print("Enter the x - coordinate of the board you want to place your card in");
+			int inputx = Integer.parseInt(CaveExplorer.in.nextLine());
+			CaveExplorer.print("Enter the y - coordinate of the board you want to place your card in");
+			int inputy = Integer.parseInt(CaveExplorer.in.nextLine());
+			placeCard(inputx, inputy);
+			removeCard(index);
+		}
+		else {
+			//asks the user to choose a different card
+		}
 	}
-
 	/*
-	 * give the user 5 cards
-	 * give AI 5 cards
+	 * if no card there already, it will place the card there
 	 */
-	public void dealCards() {
+	public void placeCard(int inputx, int inputy) {
+		if() {
 		
+		}
 	}
 	
+	public AbidCard getLastCard() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public AbidCard[][] getBoard() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//GETTERS & SETTERS
 	public int getPlanktonScore() {
 		return pScore;
 	}
@@ -134,16 +182,6 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 
 	public void setCardY(int cardY) {
 		this.cardY = cardY;
-	}
-
-	public AbidCard getLastCard() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public AbidCard[][] getBoard() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
