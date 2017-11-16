@@ -8,9 +8,10 @@ public class JoannaFrontend implements AnnieSupport{
 
 	private JoannaSupport backend;
 	private int playerCount;
-
+	private AnnieJoannaPlot currentRoom;
 	private boolean won;
-	
+	private int row;
+	private int col;
 	
 	public static AnnieJoannaPlot[][] plots;
 	
@@ -18,12 +19,14 @@ public class JoannaFrontend implements AnnieSupport{
 		backend = new AnnieBackend(this);
 		playerCount  = 0;
 		won = false;
-		
-		
+		row = 0;
+		col = 0;
+		currentRoom = plots[row][col];
 		CaveExplorer.in = new Scanner(System.in);
 	} 
 
 	public static void main(String[] args) {
+		
 		JoannaFrontend demo = new JoannaFrontend();
 		demo.play();
 	}
@@ -52,6 +55,7 @@ public class JoannaFrontend implements AnnieSupport{
 	}
 
 	private void instructions() {
+		
 		
 	}
 
