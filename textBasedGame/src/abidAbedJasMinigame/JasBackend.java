@@ -11,34 +11,42 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	private int sScore;
 	private AbidCard[] hand;
 
+	public AbidCard[] getHand() {
+		return hand;
+	}
+
 	public JasBackend() {
 		setpScore(0);
 		setsScore(0);
 	}
 	
+	public void setCard(int x, int y) {
+		
+	}
+	
 	public int randomNum() {
-		return (int)(Math.random() * 9 + 1);
+		return (int)(Math.random() * 9);
 	}
 	
 	public void sScores() {
-		setsScore(getsScore() + 1);
+		setsScore(getSpongebobScore() + 1);
 	}
 	
 	public void pScores() {
-		setpScore(getpScore() + 1);
+		setpScore(getPlanktonScore() + 1);
 	}
 	public void sLoses() {
-		setsScore(getsScore() - 1);
+		setsScore(getSpongebobScore() - 1);
 	}
 	
 	public void pLoses() {
-		setpScore(getpScore() - 1);
+		setpScore(getPlanktonScore() - 1);
 	}
 	
 	public void generateHand() {
 		hand = new AbidCard[5];
 		for (int i = 0; i < hand.length; i++) {
-			hand[i] = new AbidCard(randomNum(), randomNum(), randomNum(), randomNum());
+			hand[i] = new AbidCard(randomNum(), randomNum(), randomNum(), randomNum(), "S");
 		}
 	}
 	
@@ -50,7 +58,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 	
 	public String victorious() {
-		if(getsScore() > getpScore()) {
+		if(getSpongebobScore() > getPlanktonScore()) {
 			return "Spnogebob is the winner!";
 		}
 		else {
@@ -84,7 +92,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		
 	}
 	
-	public int getpScore() {
+	public int getPlanktonScore() {
 		return pScore;
 	}
 
@@ -92,7 +100,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		this.pScore = pScore;
 	}
 
-	public int getsScore() {
+	public int getSpongebobScore() {
 		return sScore;
 	}
 
@@ -108,14 +116,42 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		this.ai= ai;
 	}
 
-	@Override
-	public AbidCard[][] getLastMove() {
+	public AbidCard getLastCard() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	public void getLastMove() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	@Override
-	public AbidCard getLastCard() {
+	public int getUserScore() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getAiScore() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getLastMoveX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getLastMoveY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public AbidCard[][] getBoard() {
 		// TODO Auto-generated method stub
 		return null;
 	}

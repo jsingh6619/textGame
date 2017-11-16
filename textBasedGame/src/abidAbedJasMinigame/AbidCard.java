@@ -6,26 +6,14 @@ public class AbidCard {
 	private int bottom;
 	private int left;
 	private int right;
-	private boolean owns;
-	
-	public boolean isOwns() {
-		return owns;
-	}
-	public String getOwns() {
-		if(isOwns()) {
-			return "S";
-		}
-		return "P";
-	}
-	public void setOwns(boolean owns) {
-		this.owns = owns;
-	}
+	private String owner;
 
-	public AbidCard(int top, int bottom, int left, int right) {
+	public AbidCard(int top, int bottom, int left, int right, String owner) {
 		this.top = top;
 		this.bottom = bottom;
 		this.left = left;
 		this.right = right;
+		this.owner = owner;
 	}
 
 	public int getTop() {
