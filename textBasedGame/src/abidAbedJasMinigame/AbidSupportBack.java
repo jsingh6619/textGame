@@ -20,4 +20,6 @@ public interface AbidSupportBack {
 	
 	int getPlanktonScore(); //how many cards on the board plankton owns
 
+	void generateHand();
+
 }

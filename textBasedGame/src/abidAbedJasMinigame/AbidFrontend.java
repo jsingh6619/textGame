@@ -8,12 +8,15 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	
 	public static final void main(String[] args) {
 		AbidFrontend demo = new AbidFrontend();
+		
 		demo.play();
-	//demo.displayBoard();
+		demo.displayHand();
+		demo.displayBoard();
+		
 	}
 	public void play(){
 			ai.dealCards();
-			backend.dealCards();
+			backend.generateHand();
 			while(backend.stillPlaying()){
 				displayBoard();
 				displayHand();
@@ -63,11 +66,13 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	    |__ __|__ __|__ __|__ __|
 	*/
 	}
-
-	public void showCard(AbidCard stats) {
+	public void putDownCard() {
+		//places the card onto the board
+	}
+	public void displayCard(AbidCard stats) {
 		String card = "_______\n";
 		card += "|  "+stats.getTop() +"  |\n";
-		card += "|"+stats.getLeft()+" "+stats.getOwns()+" "+stats.getRight()+"|\n";
+		card += "|"+stats.getLeft()+" "+stats.getOwner()+" "+stats.getRight()+"|\n";
 		card += "|__"+stats.getBottom() +"__|";
 		
 		System.out.println(card);
@@ -79,10 +84,10 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 		 */
 		
 	}
-	public void showHand() {
-		AbidCard[] hand = JasBackend.getHand();
+	public void displayHand() {
+		AbidCard[] hand = backend.getHand();
 		for(int i = 0; i< hand.length; i++) {
-			showCard(hand[i]);
+			displayCard(hand[i]);
 		}
 	}
 	@Override
