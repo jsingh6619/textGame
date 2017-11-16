@@ -11,7 +11,7 @@ public class JoannaFrontend implements AnnieSupport{
 	private int opponentCount;
 	private boolean won;
 	private String opponentName;
-	private AnnieJoannaPlot[][] plots;
+	public static AnnieJoannaPlot[][] plots;
 	
 	public JoannaFrontend() {
 		backend = new AnnieBackend(this);
