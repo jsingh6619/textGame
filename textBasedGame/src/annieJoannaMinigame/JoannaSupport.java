@@ -10,6 +10,8 @@ public interface JoannaSupport {
 
 	boolean victorious();
 
+	AnnieAI getOpponent();
+
 	
 
 }

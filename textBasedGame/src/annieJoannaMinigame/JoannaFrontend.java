@@ -52,7 +52,7 @@ public class JoannaFrontend implements AnnieSupport{
 		s+= determineWinner("Spongebob", getPlayerCount());
 		CaveExplorer.print(s);
 	} else {
-		s+= determineWinner(backend.getName(), getOpponentCount());
+		s+= determineWinner(backend.getOpponent().getName(), getOpponentCount());
 		CaveExplorer.print(s);
 	}
 	
@@ -90,7 +90,7 @@ public class JoannaFrontend implements AnnieSupport{
 	
 	private String updateBoard() {
 		String map ="";
-		for(int i = 0; i < CaveExplorer.caves[0].length - 1; i++)
+		for(int i = 0; i < plots.length - 1; i++)
 			map += "____";
 		for(int row = 0; row< plots.length; row++){
 			for(int col = 0; col< plots[row].length ; col ++){
