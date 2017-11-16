@@ -6,7 +6,6 @@ public class AnnieBackend implements JoannaSupport {
 	
 	private AnnieSupport frontend;
 	private AnnieJoannaPlot[][] plots;
-	private AnnieJoannaPlot[] jellyfishPlots;
 	private AnnieAI opponent;
 	
 	public static final int NORTH = 0;
@@ -16,7 +15,6 @@ public class AnnieBackend implements JoannaSupport {
 
 	public AnnieBackend(AnnieSupport frontend) {
 		this.frontend = frontend;
-		jellyfishPlots = new AnnieJoannaPlot[0];
 		JoannaFrontend.plots = new AnnieJoannaPlot[6][6];
 		plots = JoannaFrontend.plots;
 		setUpPlots();
@@ -50,31 +48,20 @@ public class AnnieBackend implements JoannaSupport {
 			for(int col = 0; col < plots[row].length; col++)
 				if(row == 0 && col == 0 || row == plots.length - 1 && col == plots[row].length - 1)
 					plots[row][col] = new AnnieJoannaPlot(false);
-				else {
-					boolean jellyfishPresent = Math.random() < .33;
-					plots[row][col] = new AnnieJoannaPlot(jellyfishPresent);
-					if(jellyfishPresent)
-						addJellyfishPlot(plots[row][col]);
-				}
-	}
-
-	private void addJellyfishPlot(AnnieJoannaPlot plot) {
-		AnnieJoannaPlot[] temp = new AnnieJoannaPlot[jellyfishPlots.length + 1];
-		for(int i = 0; i < jellyfishPlots.length; i++)
-			temp[i] = jellyfishPlots[i];
-		temp[temp.length - 1] = plot;
-		jellyfishPlots = temp;
-	}
-
-	public AnnieJoannaPlot[] getJellyfishPlots() {
-		return jellyfishPlots;
+				else
+					plots[row][col] = new AnnieJoannaPlot(Math.random() < .33);
 	}
 
 	public boolean stillPlaying() {
-		for(int i = 0; i < jellyfishPlots.length; i++)
-			if(jellyfishPlots != null)
-				return true;
+		for(int row = 0; row < plots.length; row++)
+			for(int col = 0; col < plots[row].length; col++)
+				if(plots[row][col].isJellyfishPresent())
+					return true;
 		return false;
+	}
+
+	public AnnieAI getOpponent() {
+		return opponent;
 	}
 
 	public String getValidUserInput() {
