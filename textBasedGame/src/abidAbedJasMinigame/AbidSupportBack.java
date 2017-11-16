@@ -11,8 +11,6 @@ public interface AbidSupportBack {
 	String getValidUserInput();
 
 	String victorious();
-
-	void dealCards();
 	
 	AbidCard[][] getBoard(); // the 2D board
 	
