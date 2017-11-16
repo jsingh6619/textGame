@@ -8,6 +8,19 @@ public class AbidCard {
 	private int right;
 	private boolean owns;
 	
+	public boolean isOwns() {
+		return owns;
+	}
+	public String getOwns() {
+		if(isOwns()) {
+			return "S";
+		}
+		return "P";
+	}
+	public void setOwns(boolean owns) {
+		this.owns = owns;
+	}
+
 	public AbidCard(int top, int bottom, int left, int right) {
 		this.top = top;
 		this.bottom = bottom;

@@ -9,7 +9,7 @@ public class Gary extends NPC{
 	private int currentCol;
 
 	public Gary() {
-		this.isHungry = false;
+		this.isHungry = true;
 		this.currentRow = 3;
 		this.currentCol = 1;
 	}
@@ -20,6 +20,11 @@ public class Gary extends NPC{
 	public void setHungry(boolean isHungry) {
 		this.isHungry = isHungry;
 	}
-	
+	public boolean getIsHungry() {
+		return isHungry;
+	}
+	public String getSymbol() {
+		return "G";
+	}
 	
 }

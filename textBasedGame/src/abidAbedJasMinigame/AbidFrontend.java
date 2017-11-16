@@ -14,27 +14,65 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 
 	
 	public void displayBoard() {
-		
+		String board = "_";
 		for(int i = 0; i < 4; i++) {
-			System.out.print("_______\n|     |\n|     |\n|__ __|\n");
+			board += "______";
 		}
-		
-	/*	_______
-	    |  6  | 
-	    |6 S 6|
-	    |__6__|
+		for(int k = 0; k < 4; k++) {
+			for(int i = 0; i < 2; i++) {
+			board += "\n|";
+			
+				for(int j = 0; j < 4; j++) {
+					board += "     |";
+				}
+			}
+			board += "\n|";
+			for(int i = 0;i < 4; i++) {
+				board += "__ __|";
+			}
+		}
+		System.out.println(board);
+	/*	
+	    _________________________
+	    |  6  |     |     |     |
+	    |6 S 6|     |     |     |
+	    |__6__|__ __|__ __|__ __|
+	    |	  |     |     |     |  
+	    |	  |     |     |     |
+	    |__ __|__ __|__ __|__ __|
+	    |  6  |     |     |     |
+	    |6 S 6|     |     |     |
+	    |__6__|__ __|__ __|__ __|
+	    | 	  |     |     |     |
+	    |	  |     |     |     |
+	    |__ __|__ __|__ __|__ __|
 	*/
 	}
 
-	@Override
-	public void showCard() {
-		// TODO Auto-generated method stub
+	public void showCard(AbidCard stats) {
+		String card = "_______\n";
+		card += "|  "+stats.getTop() +"  |\n";
+		card += "|"+stats.getLeft()+" "+stats.getOwns()+" "+stats.getRight()+"|\n";
+		card += "|__"+stats.getBottom() +"__|";
+		
+		System.out.println(card);
+		/*
+		 _______
+		 |  6  |
+		 |6 S 6|
+		 |__6__|
+		 */
 		
 	}
-
+	public void showHand() {
+		AbidCard[] hand = JasBackend.getHand();
+		for(int i = 0; i< hand.length; i++) {
+			showCard(hand[i]);
+		}
+	}
 	@Override
 	public void displayScore() {
-		// TODO Auto-generated method stub
+		String score = "Plankton:" ;
 		
 	}
 }

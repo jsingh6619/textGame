@@ -14,6 +14,12 @@ public interface AbidSupportBack {
 
 	void dealCards();
 	
-	AbidCard[] getBoard();
+	AbidCard[][] getBoard(); // the 2D board
+	
+	AbidCard[] getHand(); // the hand of the user 
+	
+	int getSpongebobScore(); //how many cards on the board spongebob owns
+	
+	int getPlanktonScore(); //how many cards on the board plankton owns
 
 }
