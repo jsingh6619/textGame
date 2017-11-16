@@ -8,11 +8,11 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 
 	public int getLastUserX() 
 	{
-		return backend.getLastMoveX();
+		return backend.getCardX();
 	}
 	public int getLastUserY()
 	{
-		return backend.getLastMoveY();
+		return backend.getCardY();
 	}
 	public AbidCard getLastUserCard()
 	{
@@ -30,28 +30,28 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		hand = new AbidCard[5];
 		for(int i = 0; i < hand.length;i++)
 		{
-			hand[i] = new AbidCard(generateNum(),generateNum(),generateNum(),generateNum());
+			hand[i] = new AbidCard(generateNum(),generateNum(),generateNum(),generateNum(),"P");
 		}
 		
 	}
-	public void determineFirstMove()
+	public AbidCard[] strongestTop(AbidCard[] hand)
 	{
-		if()
+		for(int i = 0; i < hand.length;i++)
+		{
+			if(hand[i].getTop() < hand[i+1].getTop())
+			
+		}
+		return hand;
 	}
-	private void determineNextMove() 
-	{
-		
-		
-	}
+	
 	public void play()
 	{
 		dealCards();
-		determineFirstMove();
-		determineNextMove();
+		computerMove();
 	}
 	@Override
-	public void computerMove() {
-		// TODO Auto-generated method stub
+	public void computerMove() 
+	{
 		
 	}
 	

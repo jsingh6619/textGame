@@ -5,11 +5,11 @@ public interface AbedSupportBack
 
 
 
-	int getUserScore();
-	int getAiScore();
+	int getSpongebobScore();
+	int getPlanktonScore();
 	
-	int getLastMoveX();//returns where the card was on board Xcoordinate
-	int getLastMoveY();//returns where the card was on board Ycoordinate
+	int getCardX();//returns where the card was on board Xcoordinate
+	int getCardY();//returns where the card was on board Ycoordinate
 	AbidCard getLastCard();///returns the class
 
 
