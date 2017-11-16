@@ -8,17 +8,18 @@ public class JoannaFrontend implements AnnieSupport{
 
 	private JoannaSupport backend;
 	private int playerCount;
-	private int opponentCount;
+
 	private boolean won;
+	
 	
 	public static AnnieJoannaPlot[][] plots;
 	
 	public JoannaFrontend() {
 		backend = new AnnieBackend(this);
-		playerCount = opponentCount = 0;
+		playerCount  = 0;
 		won = false;
 		
-		plots = backend.getPlots();
+		
 		CaveExplorer.in = new Scanner(System.in);
 	} 
 
@@ -33,11 +34,21 @@ public class JoannaFrontend implements AnnieSupport{
 	        displayBoard();
 	        displayScore();
 	        String input = backend.getValidUserInput();
+	        if(input.equals("cheat")) {
+	        	
+	        	winGame();
+	        	break;
+	        }
 	        respondToInput(input);
 	        backend.computerMove();
 	        updateScore();
 		}
         printGameOverMessage(backend.victorious());
+	}
+
+	private void winGame() {
+      		playerCount += backend.getJellyfishNum();
+      		
 	}
 
 	private void instructions() {
@@ -67,9 +78,7 @@ public class JoannaFrontend implements AnnieSupport{
 	}
 
 	private void respondToInput(String input) {
-		if( input.equals("")){
-			
-		}
+		
 	}
 
 	private void displayScore() {
@@ -78,34 +87,49 @@ public class JoannaFrontend implements AnnieSupport{
 
 	private void displayBoard() {
 		CaveExplorer.print(updateBoard());
-		for(int row = 0; row< plots.length; row++){
-			for(int col = 0; col< plots[row].length ; col ++){
-				System.out.print(plots[row][col].getContents());
-				}
-			System.out.print("\n");
-		}
+		
 		
 	}
 
 	
 	private String updateBoard() {
-		String map ="";
-		for(int i = 0; i < plots.length - 1; i++)
+		String map = "\n ";
+		for(int i = 0; i < plots[0].length - 1; i++)
 			map += "____";
-		for(int row = 0; row< plots.length; row++){
-			for(int col = 0; col< plots[row].length ; col ++){
-				map += "|";
+		map += "___\n";
+		for(AnnieJoannaPlot[] row: plots)
+			for(int i = 0; i < 3; i++) {
+				String text = "";
+				for(AnnieJoannaPlot plot: row) {
+					if(plot.getConnection(1) != null )
+						text += " ";
+					else
+						text += "|";
+					if(i == 0)
+						text += "   ";
+					else if(i == 1)
+						text += " " + plot.getContents() + " ";
+					else if(i == 2)
+						if(plot.getConnection(2) != null)
+							text += "   ";
+						else
+							text += "___";
 				}
-			map += "__";
-			System.out.print("\n");
-		}
+				text += "|";
+				map += text + "\n";
+			}
+	
+		
+		
 		return map;
-	}
+}
 
 	
 	/***
+	 *   ___ ___ ___ ___ ___ 
+	 *  | 
+	 * 
 	 *    
-	 *  
 	 *    
 	 * 
 	 * 

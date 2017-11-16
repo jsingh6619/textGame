@@ -12,6 +12,8 @@ public interface JoannaSupport {
 
 	AnnieAI getOpponent();
 
+	int getJellyfishNum();
+
 	
 
 }
