@@ -1,5 +1,7 @@
 package annieJoannaMinigame;
 
+import java.util.Scanner;
+
 import caveExplorer.*;
 
 public class JoannaFrontend implements AnnieSupport{
@@ -17,6 +19,7 @@ public class JoannaFrontend implements AnnieSupport{
 		won = false;
 		opponentName = "Kevin C Cucumber";
 		plots = backend.getPlots();
+		CaveExplorer.in = new Scanner(System.in);
 	} 
 
 	public static void main(String[] args) {
