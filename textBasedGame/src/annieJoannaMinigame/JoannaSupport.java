@@ -10,6 +10,6 @@ public interface JoannaSupport {
 
 	boolean victorious();
 
-	AnnieJoannaPlot[][] getPlots();
+	
 
 }

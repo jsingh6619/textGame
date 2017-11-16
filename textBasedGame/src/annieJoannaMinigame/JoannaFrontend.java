@@ -10,14 +10,14 @@ public class JoannaFrontend implements AnnieSupport{
 	private int playerCount;
 	private int opponentCount;
 	private boolean won;
-	private String opponentName;
+	
 	public static AnnieJoannaPlot[][] plots;
 	
 	public JoannaFrontend() {
 		backend = new AnnieBackend(this);
 		playerCount = opponentCount = 0;
 		won = false;
-		opponentName = "Kevin C Cucumber";
+		
 		plots = backend.getPlots();
 		CaveExplorer.in = new Scanner(System.in);
 	} 
@@ -52,7 +52,7 @@ public class JoannaFrontend implements AnnieSupport{
 		s+= determineWinner("Spongebob", getPlayerCount());
 		CaveExplorer.print(s);
 	} else {
-		s+= determineWinner(opponentName, getOpponentCount());
+		s+= determineWinner(backend.getName(), getOpponentCount());
 		CaveExplorer.print(s);
 	}
 	
@@ -90,6 +90,8 @@ public class JoannaFrontend implements AnnieSupport{
 	
 	private String updateBoard() {
 		String map ="";
+		for(int i = 0; i < CaveExplorer.caves[0].length - 1; i++)
+			map += "____";
 		for(int row = 0; row< plots.length; row++){
 			for(int col = 0; col< plots[row].length ; col ++){
 				map += "|";
@@ -100,6 +102,18 @@ public class JoannaFrontend implements AnnieSupport{
 		return map;
 	}
 
+	
+	/***
+	 *    
+	 *  
+	 *    
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
 	public int getPlayerCount() {
 		
 		return playerCount;
