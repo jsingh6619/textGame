@@ -9,6 +9,8 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	private JasSupportAI ai;
 	private int pScore;
 	private int sScore;
+	private int cardX;
+	private int cardY;
 	private AbidCard[] hand;
 
 	public AbidCard[] getHand() {
@@ -18,6 +20,8 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public JasBackend() {
 		setpScore(0);
 		setsScore(0);
+		cardX = -1;
+		cardY = -1;
 	}
 	
 	public void setCard(int x, int y) {
@@ -115,42 +119,28 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public void setAI(AbedAI ai) {
 		this.ai= ai;
 	}
+	
+	public int getCardX() {
+		return cardX;
+	}
+
+	public void setCardX(int cardX) {
+		this.cardX = cardX;
+	}
+	
+	public int getCardY() {
+		return cardY;
+	}
+
+	public void setCardY(int cardY) {
+		this.cardY = cardY;
+	}
 
 	public AbidCard getLastCard() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void getLastMove() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getUserScore() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getAiScore() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getLastMoveX() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getLastMoveY() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public AbidCard[][] getBoard() {
 		// TODO Auto-generated method stub
 		return null;
