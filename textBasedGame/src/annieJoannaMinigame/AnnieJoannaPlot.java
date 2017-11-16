@@ -2,40 +2,71 @@ package annieJoannaMinigame;
 
 public class AnnieJoannaPlot {
 	
+	private AnnieJoannaPlot[] borderingPlots;
+	private Object[] connections;
 	private boolean jellyfishPresent;
-	private String defaultContents;
 	private String contents;
+	private String defaultContents;
 
-	public AnnieJoannaPlot(boolean value) {
-		this.jellyfishPresent = value;
-		defaultContents=" ";
-		if(value)
-		{
-			setContents("J");
-		}
-		else {
-			setContents(defaultContents);
-		}
+	public AnnieJoannaPlot(boolean jellyfishPresent) {
+		borderingPlots = new AnnieJoannaPlot[4];
+		connections = new Object[4];
+		this.jellyfishPresent = jellyfishPresent;
+		defaultContents = " ";
+		setContents(jellyfishPresent);
 	}
 
-	public String getDefaultContents() {
-		return defaultContents;
+	private void setContents(boolean jellyfishPresent) {
+		if(jellyfishPresent)
+			contents = "O";
+		else
+			contents = defaultContents;
+	}
+	
+	public String getContents() {
+		return contents;
+	}
+	
+	public void setContents(String contents) {
+		this.contents = contents;
 	}
 
 	public boolean isJellyfishPresent() {
 		return jellyfishPresent;
 	}
-
-	public void setJellyfishPresent(boolean jellyfishPresent) {
-		this.jellyfishPresent = jellyfishPresent;
+	
+	public void catchJellyfish() {
+		jellyfishPresent = false;
 	}
 
-	public String getContents() {
-		return contents;
+	public Object getConnection(int index) {
+		return connections[index];
+	}
+	
+	public AnnieJoannaPlot getPlot(int index) {
+		return borderingPlots[index];
+	}
+	
+	public void enter(String symbol) {
+		contents = symbol;
+	}
+	
+	public void leave() {
+		contents = defaultContents;
+	}
+	
+	public void setConnection(int direction, AnnieJoannaPlot otherPlot, Object connection) {
+		addPlot(direction, otherPlot, connection);
+		otherPlot.addPlot(oppositeDirection(direction), this, connection);
 	}
 
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void addPlot(int direction, AnnieJoannaPlot otherPlot, Object connection) {
+		borderingPlots[direction] = otherPlot;
+		connections[direction] = connection;
 	}
-		
+	
+	private int oppositeDirection(int dir) {
+		return (dir + 2) % 4;
+	}
+
 }

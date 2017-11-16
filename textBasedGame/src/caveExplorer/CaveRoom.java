@@ -133,7 +133,7 @@ public class CaveRoom {
 
 	private static void setUpJFF() {
 		for(int col = 5; col <= 8; col++) {
-			String description = c[4][col].getDescription() + " You're in the Jellyfish Fields.";
+			String description = c[4][col].getDescription() + " You are in the Jellyfish Fields.";
 			if(col == 5)
 				c[4][col].setDescription(description);
 			else
@@ -145,7 +145,7 @@ public class CaveRoom {
 
 	private static void setUpTree() {
 		for(int col = 0; col <= 2; col++) {
-				String description = c[4][col].getDescription() + " You're at Sandy's treedome.";
+				String description = c[4][col].getDescription() + " You are at Sandy's treedome.";
 				c[4][col].setDescription(description);
 		}
 		setBlock(new int[] {4, 0}, new int[] {4, 2});
@@ -153,6 +153,10 @@ public class CaveRoom {
 	}
 
 	private static void setUpMarket() {
+		for(int col = 0; col <= 1; col++) {
+			String description = c[2][col].getDescription() + " You are at the Barg'N-Mart.";
+			c[2][col].setDescription(description);
+		}
 		setBlock(new int[] {2, 0}, new int[] {2, 1});
 		setDoorway(c[2][0], c[1][0], NORTH, true);
 	}
@@ -160,7 +164,7 @@ public class CaveRoom {
 	private static void setUpConcertHall() {
 		for(int row = 0; row <= 1; row++)
 			for(int col = 8; col <= 9; col++) {
-				String description = c[row][col].getDescription() + " You're at the Philharmonic Concert Hall.";
+				String description = c[row][col].getDescription() + " You are at the Philharmonic Concert Hall.";
 				c[row][col].setDescription(description);
 			}
 		setBlock(new int[] {0, 8}, new int[] {1, 9});
@@ -173,22 +177,18 @@ public class CaveRoom {
 	
 	private static void setUpKK() {
 		for(int col = 5; col <= 7; col++) {
-			String description = c[1][col].getDescription() + " This is the Krusty Krab.";
+			String description = c[1][col].getDescription() + " You are at the Krusty Krab.";
 			if(col == 6)
 				c[1][col] = new AbedRoom(description);
 			c[1][col].setDescription(description);
 		}
 		setBlock(new int[] {1, 5}, new int[] {1, 7});
-		openCloseKK(true);
+		setDoorway(c[1][5], c[2][5], SOUTH, true);
 	}
-	
-	public static void openCloseKK(boolean open) {
-		setDoorway(c[1][5], c[2][5], SOUTH, open);
-	}
-	
+		
 	private static void setUpPineapple() {
 		for(int col = 1; col <= 2; col++) {
-			String description = c[0][col].getDescription() + " This is your pineapple under the sea.";
+			String description = c[0][col].getDescription() + " You are in your pineapple under the sea.";
 			c[0][col].setDescription(description);
 		}
 		setBlock(new int[] {0, 1}, new int[] {0, 2});
@@ -230,7 +230,6 @@ public class CaveRoom {
 	}
 
 	public static void setBlock(int[] topLeft, int[] bottomRight) {
-		CaveRoom[][] c = CaveExplorer.caves;
 		for(int row = topLeft[0]; row < bottomRight[0]; row++)
 			for(int col = topLeft[1]; col < bottomRight[1]; col++) {
 				c[row][col].setConnection(SOUTH, c[row + 1][col], new Door());	
@@ -250,10 +249,6 @@ public class CaveRoom {
 			CaveExplorer.inventory.updateMap();
 			if(CaveExplorer.currentRoom instanceof AnnieRoom)
 				CaveExplorer.currentRoom.performAction(-1);
-			if(CaveExplorer.currentRoom instanceof AbedRoom && ((AbedRoom) CaveExplorer.currentRoom).getNPC().isActive())
-				openCloseKK(false);
-			else if(CaveExplorer.currentRoom instanceof AbedRoom && !((AbedRoom) CaveExplorer.currentRoom).getNPC().isActive())
-				openCloseKK(true);
 		} else
 			System.out.println("You can't do that!");
 	}
