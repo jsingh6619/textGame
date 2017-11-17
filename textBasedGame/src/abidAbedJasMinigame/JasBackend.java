@@ -86,7 +86,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public void cardChosen(int index) {
 		if(hand[index]!=null) {
 			possiblePlace();
-			placeCard(getCardX(), getCardY());
+			placeCard(getCardRow(), getCardCol());
 			removeCard(index);
 		}
 		else {
@@ -104,9 +104,9 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 
 	public void possiblePlace() {
-		setCardX();
-		setCardY();
-		if(!emptyCoordinates(getCardX(), getCardY())) {
+		setCardRow();
+		setCardCol();
+		if(!emptyCoordinates(getCardRow(), getCardCol())) {
 			CaveExplorer.print("Those coordinates are not available. Choose other ones.");
 			possiblePlace();
 		}
@@ -182,20 +182,20 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		this.ai= ai;
 	}
 	
-	public int getCardX() {
+	public int getCardRow() {
 		return cardX;
 	}
 
-	public void setCardX() {
+	public void setCardRow() {
 		CaveExplorer.print("Enter the y - coordinate of the board you want to place your card in");
 		cardY = Integer.parseInt(CaveExplorer.in.nextLine());
 	}
 	
-	public int getCardY() {
+	public int getCardCol() {
 		return cardY;
 	}
 
-	public void setCardY() {
+	public void setCardCol() {
 		CaveExplorer.print("Enter the y - coordinate of the board you want to place your card in");
 		cardY = Integer.parseInt(CaveExplorer.in.nextLine());
 	}

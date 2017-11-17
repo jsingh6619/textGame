@@ -8,7 +8,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 
 	public int getLastUserX() 
 	{
-		return backend.getCardX();
+		return backend.getCardRow();
 	}
 	public int getLastUserY()
 	{
@@ -43,7 +43,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	
 	public void computerMove() 
 	{
-		int row = backend.getCardX();
+		int row = backend.getCardRow();
 		int col = backend.getCardY();
 		AbidCard opponentCard = backend.getLastCard();
 		backend.placeCard(row,col);
