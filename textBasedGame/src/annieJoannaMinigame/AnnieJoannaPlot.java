@@ -1,4 +1,4 @@
-package annieJoannaMinigame;
+	package annieJoannaMinigame;
 
 public class AnnieJoannaPlot {
 	
