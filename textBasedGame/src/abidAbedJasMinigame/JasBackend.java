@@ -79,29 +79,37 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		return true;
 	}
 
-	/*
-	 * check to see if valid x,y coordinate
-	 */
 	public void cardChosen(int index) {
 		if(hand[index]!=null) {
-			CaveExplorer.print("Enter the x - coordinate of the board you want to place your card in");
-			int inputx = Integer.parseInt(CaveExplorer.in.nextLine());
-			CaveExplorer.print("Enter the y - coordinate of the board you want to place your card in");
-			int inputy = Integer.parseInt(CaveExplorer.in.nextLine());
-			placeCard(inputx, inputy);
-			removeCard(index);
+			if(possiblePlace()) {
+				placeCard(getXCoordinate(), getYCoordinate());
+				removeCard(index);
+			}
+			else {
+				while(!possib)
+			}
 		}
 		else {
 			//asks the user to choose a different card
 		}
 	}
-	/*
-	 * if no card there already, it will place the card there
-	 */
-	public void placeCard(int inputx, int inputy) {
-		if() {
-		
-		}
+	
+	public boolean possiblePlace() {
+		return emptyCoordinates(getXCoordinate(), getYCoordinate());
+	}
+	
+	public int getXCoordinate() {
+		CaveExplorer.print("Enter the x - coordinate of the board you want to place your card in");
+		return Integer.parseInt(CaveExplorer.in.nextLine());
+	}
+	
+	public int getYCoordinate() {
+		CaveExplorer.print("Enter the y - coordinate of the board you want to place your card in");
+		return Integer.parseInt(CaveExplorer.in.nextLine());
+	}
+	
+	public boolean emptyCoordinates(int inputx, int inputy) {
+		return frontend.isEmpty(inputx,inputy);
 	}
 	
 	public AbidCard getLastCard() {
@@ -183,5 +191,4 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public void setCardY(int cardY) {
 		this.cardY = cardY;
 	}
-
 }
