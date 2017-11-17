@@ -34,27 +34,22 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		}
 		
 	}
-	public AbidCard[] strongestTop(AbidCard[] hand)
-	{
-		for(int i = 0; i < hand.length;i++)
-		{
-			if(hand[i].getTop() < hand[i+1].getTop())
-			
-		}
-		return hand;
-	}
 	
 	public void play()
 	{
 		dealCards();
 		computerMove();
 	}
-	@Override
+	
 	public void computerMove() 
 	{
+		int row = backend.getCardX();
+		int col = backend.getCardY();
+		AbidCard opponentCard = backend.getLastCard();
+		backend.placeCard(row,col);
 		
 	}
-	
+
 
 	
 	
