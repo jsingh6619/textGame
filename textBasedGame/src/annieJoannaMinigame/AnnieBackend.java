@@ -62,11 +62,11 @@ public class AnnieBackend implements JoannaSupport {
 	
 	public String getValidUserInput() {
 		String input = CaveExplorer.in.nextLine();
+		if(input.equals("cheat"))
+			return input;
 		while(!isValid(input)) {
 			CaveExplorer.print("Try again! You can only use 'w', 'a', 's', or 'd' to move.");
 			input = CaveExplorer.in.nextLine();
-			if(input.equals("cheat"))
-				break;
 		}
 		return input;
 	}
