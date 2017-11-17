@@ -54,17 +54,13 @@ public class AnnieAI {
 	
 	public void move() {
 		AnnieJoannaPlot[][] plots = JoannaFrontend.plots;
-		int[] move = calcMove();
-		int newRow = move[0];
-		int newCol = move[1];
+		int[] newPosition = calcMove();
 		int loopCount = 0;
-		while(alreadyVisited(plots[newRow][newCol]) && loopCount < 4) {
-			move = calcMove();
-			newRow = move[0];
-			newCol = move[1];
+		while(alreadyVisited(plots[newPosition[0]][newPosition[1]]) && loopCount < 4) {
+			newPosition = calcMove();
 			loopCount++;
 		}
-		setPosition(newRow, newCol);
+		setPosition(newPosition[0], newPosition[1]);
 	}
 
 	private boolean alreadyVisited(AnnieJoannaPlot plot) {
@@ -77,17 +73,12 @@ public class AnnieAI {
 	private int[] calcMove() {
 		int[][] possible = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
 		int index = (int)(Math.random() * possible.length);
+		while(currentPlot.getConnection(index) == null)
+			index = (int)(Math.random() * possible.length);
 		int[] newPosition = new int[2];
 		newPosition[0] = currentRow + possible[index][0];
 		newPosition[1] = currentCol + possible[index][1];
-		while(currentPlot.getConnection(index) == null) {
-			index = (int)(Math.random() * possible.length);
-			newPosition[0] = currentRow + possible[index][0];
-			newPosition[1] = currentCol + possible[index][1];
-		}
 		return newPosition;
 	}
-	
-	
 
 }
