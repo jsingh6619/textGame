@@ -6,15 +6,15 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	private AbedSupportBack backend;
 	private AbidCard[] hand;
 
-	public int getLastUserX() 
+	public int getLastUserRow() 
 	{
 		return backend.getCardRow();
 	}
-	public int getLastUserY()
+	public int getLastUserCol()
 	{
-		return backend.getCardY();
+		return backend.getCardCol();
 	}
-	public AbidCard getLastUserCard()
+	public AbidCard getLastUserCard().
 	{
 		return backend.getLastCard();
 	}
