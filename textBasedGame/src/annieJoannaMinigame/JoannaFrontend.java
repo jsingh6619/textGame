@@ -6,8 +6,9 @@ import caveExplorer.*;
 
 public class JoannaFrontend implements AnnieSupport{
 
+	
 	private JoannaSupport backend;
-	private int playerCount;
+	private int jellyfishCount;
 	private AnnieJoannaPlot currentRoom;
 	private boolean won;
 	private int row;
@@ -17,7 +18,7 @@ public class JoannaFrontend implements AnnieSupport{
 	
 	public JoannaFrontend() {
 		backend = new AnnieBackend(this);
-		playerCount  = 0;
+		jellyfishCount = 0;
 		won = false;
 		row = 0;
 		col = 0;
@@ -50,7 +51,7 @@ public class JoannaFrontend implements AnnieSupport{
 	}
 
 	private void winGame() {
-      		playerCount += backend.getJellyfishNum();
+      		jellyfishCount += backend.getJellyfishNum();
       		
 	}
 
@@ -64,10 +65,10 @@ public class JoannaFrontend implements AnnieSupport{
 		String s = "GAME OVER";
 	if(victorious) {
 		won = true;
-		s+= determineWinner("Spongebob", getPlayerCount());
+		s+= determineWinner("Spongebob", getJellyfishCount());
 		CaveExplorer.print(s);
 	} else {
-		s+= determineWinner(backend.getOpponent().getName(), getOpponentCount());
+		s+= determineWinner(backend.getOpponent().getName(), backend.getOpponent().getJellyfishCount());
 		CaveExplorer.print(s);
 	}
 	
@@ -105,7 +106,7 @@ public class JoannaFrontend implements AnnieSupport{
 			for(int i = 0; i < 3; i++) {
 				String text = "";
 				for(AnnieJoannaPlot plot: row) {
-					if(plot.getConnection(1) != null )
+					if(plot.getConnection(AnnieJoannaPlot.WEST) != null )
 						text += " ";
 					else
 						text += "|";
@@ -114,7 +115,7 @@ public class JoannaFrontend implements AnnieSupport{
 					else if(i == 1)
 						text += " " + plot.getContents() + " ";
 					else if(i == 2)
-						if(plot.getConnection(2) != null)
+						if(plot.getConnection(AnnieJoannaPlot.SOUTH) != null)
 							text += "   ";
 						else
 							text += "___";
@@ -142,14 +143,14 @@ public class JoannaFrontend implements AnnieSupport{
 	 * 
 	 * 
 	 */
-	public int getPlayerCount() {
-		
-		return playerCount;
-	}
+	
 
 	
-	public int getOpponentCount() {
-		return opponentCount;
+	
+
+	@Override
+	public int getJellyfishCount() {
+		return jellyfishCount;
 	}
 
 	
