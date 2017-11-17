@@ -11,26 +11,25 @@ public class JoannaFrontend implements AnnieSupport{
 	private int jellyfishCount;
 	private AnnieJoannaPlot currentRoom;
 	private boolean won;
-	private int row;
-	private int col;
+	private AnnieAI opponent;
 	
 	public static AnnieJoannaPlot[][] plots;
 	
 	public JoannaFrontend() {
 		backend = new AnnieBackend(this);
+		opponent = backend.getOpponent();
 		jellyfishCount = 0;
 		won = false;
-		row = 0;
-		col = 0;
-		currentRoom = plots[row][col];
-		currentRoom.enter("S");
+		currentRoom = plots[0][0];
+		currentRoom.enter("X");
 		CaveExplorer.in = new Scanner(System.in);
+		
 	} 
 
 	public static void main(String[] args) {
+			JoannaFrontend demo = new JoannaFrontend();
+			demo.play();
 		
-		JoannaFrontend demo = new JoannaFrontend();
-		demo.play();
 	}
 
 	public void play() {
@@ -46,8 +45,11 @@ public class JoannaFrontend implements AnnieSupport{
 	        respondToInput(input);
 	        backend.computerMove();
 	        updateScore();
+	        
 		}
+		 displayBoard();
         printGameOverMessage(backend.victorious());
+        
 	}
 
 	private void winGame() {
@@ -55,67 +57,53 @@ public class JoannaFrontend implements AnnieSupport{
     }
 
 	private void instructions() {
-		
+		CaveExplorer.print("Compete against " + opponent.getName() + " in jellyfishing.  Whoever catches the most jellyfish wins.\nIf you win, you get to keep 1 of every 3 jellyfish you caught; if you tie, you don't get anything.");
 	}
 
 	private void printGameOverMessage(boolean victorious) {
-		String s = "GAME OVER";
+		String s = "-----GAME OVER-----" + "\n";
 		if(victorious) {
+			if(opponent.getJellyfishCount() != jellyfishCount) {
 			won = true;
-			s+= determineWinner("Spongebob", getJellyfishCount());
-			CaveExplorer.print(s);
+			s+= determineWinner("You", getJellyfishCount());
+			} else {
+				s+= "You tied with" +opponent.getName(); 
+			}
 	} 	else {
-			s+= determineWinner(backend.getOpponent().getName(), backend.getOpponent().
-			getJellyfishCount());
-			CaveExplorer.print(s);
+			s+= determineWinner(opponent.getName(), opponent.getJellyfishCount());
+			
 		}
+		CaveExplorer.print(s);
 	}
 
 	private String determineWinner(String name, int n) {
-		return "The winner is " + name +" with a total of " + n + " jellyfish.";
+		return  name +" won. " + name+ " caught a total of " + n + " jellyfish.";
 	}
 
 	private void updateScore() {
+		CaveExplorer.print("You: " + jellyfishCount + "\n" + opponent.getName() +": "+ opponent.getJellyfishCount() );
 		
 	}
 
 	private void respondToInput(String input) {
 		int dir = changeToDir(input);
-		if(dir == 0 && row != 0) {
+		if(currentRoom.getConnection(dir) != null) {
 			currentRoom.leave();
-			currentRoom = plots[row--][col];
-			currentRoom.enter("S");
-		}else {
-			if(dir == 1 && col != plots.length) {
-				currentRoom.leave();
-				currentRoom = plots[row][col++];
-				currentRoom.enter("S");
-			}else {
-					if(dir == 2 && row != plots.length) {
-						currentRoom.leave();
-						currentRoom = plots[row++][col];
-						currentRoom.enter("S");
-					}else {
-						if(dir == 3 && col != 0) {
-							currentRoom.leave();
-							currentRoom = plots[row][col--];
-							currentRoom.enter("S");
-						}else {
-							findValidMoves();
-						}
-						
-					}
-				}
+			currentRoom = currentRoom.getPlot(dir);
+			currentRoom.enter("X");
+			if(currentRoom.isJellyfishPresent()) {
+				currentRoom.catchJellyfish();
+				jellyfishCount++;
 			}
+			
+		}else {
+			CaveExplorer.print("There's something blocking your way.");
 		}
-
-	private void findValidMoves() {
-		CaveExplorer.print("You can't move that direction");
-		
 	}
 
+	
 	private int changeToDir(String input) {
-		String s = "wdsa"; // 0 
+		String s = "wasd"; // 0 
 		return s.indexOf(input); 
 	}
 
@@ -188,6 +176,12 @@ public class JoannaFrontend implements AnnieSupport{
 	public int getJellyfishCount() {
 		return jellyfishCount;
 	}
+
+	public boolean isWon() {
+		return won;
+	}
+
+	
 		
 
 }

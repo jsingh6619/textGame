@@ -34,10 +34,7 @@ public class JoannaNPC extends NPC {
 			CaveExplorer.print("Here's the cake!");
 			
 			
-		}
-		
-			
-			
+		}				
 		
 	}
 	
