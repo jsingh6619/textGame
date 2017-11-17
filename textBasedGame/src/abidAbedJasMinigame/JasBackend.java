@@ -3,7 +3,7 @@
  */
 package abidAbedJasMinigame;
 
-import caveExplorer.CaveExplorer;
+import caveExplorer.*;
 
 public class JasBackend implements AbidSupportBack, AbedSupportBack{
 
@@ -13,6 +13,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	private int sScore;
 	private int cardX;
 	private int cardY;
+	public static AbidCard[][] board; 
 	private AbidCard[] hand;
 	private int xCoordinate;
 	private int yCoordinate;
@@ -30,7 +31,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 	
 	public void setCard(int x, int y) {
-		
+		board[x][y] = hand[index];
 	}
 	
 	public int randomNum() {
@@ -98,7 +99,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	 * how to put card in the board?
 	 * just fill out the 2d array but dont know what is called
 	 */
-	public void placeCard(int x, int y) {
+	public void placeCard(int row, int col) {
 		
 	}
 
@@ -119,13 +120,13 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		return null;
 	}
 
-	/*
-	 * Talk to Abed and tell him to call backend.getCardY & backend.getCardX
-	 public AbidCard[][] getBoard() {
-		return getCardX();
-		return getCardY();
+	public static void setUpBoard() {
+		board = new AbidCard[4][4];
+		for(int row = 0; row < board.length; row++)
+			for(int col = 0; col < board[row].length; col++)
+				board[row][col] = null;
 	}
-	*/
+	
 	
 	
 	
@@ -198,4 +199,47 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		CaveExplorer.print("Enter the y - coordinate of the board you want to place your card in");
 		cardY = Integer.parseInt(CaveExplorer.in.nextLine());
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
