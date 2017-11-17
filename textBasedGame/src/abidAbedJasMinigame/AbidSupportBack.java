@@ -8,7 +8,7 @@ public interface AbidSupportBack {
 
 	boolean stillPlaying();
 
-	String getValidUserInput();
+	void getValidUserInput();
 
 	String victorious();
 	

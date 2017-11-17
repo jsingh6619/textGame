@@ -21,8 +21,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 				displayBoard();
 				displayHand();
 		        displayScore();
-		        String input = backend.getValidUserInput();
-		        respondToInput(input);
+		        backend.getValidUserInput();
 		        ai.computerMove();
 		        analyzeBoard();
 		        updateScore();
@@ -31,7 +30,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 		 	}
 
 	
-	public void displayBoard() {
+	public void createBoard() {
 		String board = "_";
 		for(int i = 0; i < 4; i++) {
 			board += "______";
@@ -53,21 +52,24 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	/*	
 	    _________________________
 	    |  6  |     |     |     |
-	    |6 S 6|     |     |     |
+	    | 0,0 | 0,1 |     | 0,4 |
 	    |__6__|__ __|__ __|__ __|
 	    |	  |     |     |     |  
-	    |	  |     |     |     |
+	    |1,0  |     |     |     |
 	    |__ __|__ __|__ __|__ __|
 	    |  6  |     |     |     |
 	    |6 S 6|     |     |     |
 	    |__6__|__ __|__ __|__ __|
 	    | 	  |     |     |     |
-	    |	  |     |     |     |
+	    |4,  4|     |     | 4,4 |
 	    |__ __|__ __|__ __|__ __|
 	*/
 	}
+	public void displayBoard() {
+		
+	}
 	public void putDownCard() {
-		//places the card onto the board
+	
 	}
 	public void displayCard(AbidCard stats) {
 		String card = "_______\n";
@@ -95,4 +97,5 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 		String score = "Plankton:" ;
 		
 	}
+
 }
