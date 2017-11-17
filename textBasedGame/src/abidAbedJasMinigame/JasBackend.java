@@ -14,6 +14,8 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	private int cardX;
 	private int cardY;
 	private AbidCard[] hand;
+	private int xCoordinate;
+	private int yCoordinate;
 
 	public AbidCard[] getHand() {
 		return hand;
@@ -24,6 +26,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		setsScore(0);
 		cardX = -1;
 		cardY = -1;
+		xCoordinate = -1;
 	}
 	
 	public void setCard(int x, int y) {
@@ -81,31 +84,31 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 
 	public void cardChosen(int index) {
 		if(hand[index]!=null) {
-			if(possiblePlace()) {
-				placeCard(getXCoordinate(), getYCoordinate());
-				removeCard(index);
-			}
-			else {
-				while(!possib)
-			}
+			possiblePlace();
+			placeCard(getCardX(), getCardY());
+			removeCard(index);
 		}
 		else {
-			//asks the user to choose a different card
+			CaveExplorer.print("Choose a different card.");
+			cardChosen(Integer.parseInt(CaveExplorer.in.nextLine()));
 		}
 	}
 	
-	public boolean possiblePlace() {
-		return emptyCoordinates(getXCoordinate(), getYCoordinate());
+	/*
+	 * how to put card in the board?
+	 * just fill out the 2d array but dont know what is called
+	 */
+	public void placeCard(int x, int y) {
+		
 	}
-	
-	public int getXCoordinate() {
-		CaveExplorer.print("Enter the x - coordinate of the board you want to place your card in");
-		return Integer.parseInt(CaveExplorer.in.nextLine());
-	}
-	
-	public int getYCoordinate() {
-		CaveExplorer.print("Enter the y - coordinate of the board you want to place your card in");
-		return Integer.parseInt(CaveExplorer.in.nextLine());
+
+	public void possiblePlace() {
+		setCardX();
+		setCardY();
+		if(!emptyCoordinates(getCardX(), getCardY())) {
+			CaveExplorer.print("Those coordinates are not available. Choose other ones.");
+			possiblePlace();
+		}
 	}
 	
 	public boolean emptyCoordinates(int inputx, int inputy) {
@@ -113,14 +116,16 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 	
 	public AbidCard getLastCard() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public AbidCard[][] getBoard() {
-		// TODO Auto-generated method stub
-		return null;
+	/*
+	 * Talk to Abed and tell him to call backend.getCardY & backend.getCardX
+	 public AbidCard[][] getBoard() {
+		return getCardX();
+		return getCardY();
 	}
+	*/
 	
 	
 	
@@ -180,15 +185,17 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		return cardX;
 	}
 
-	public void setCardX(int cardX) {
-		this.cardX = cardX;
+	public void setCardX() {
+		CaveExplorer.print("Enter the y - coordinate of the board you want to place your card in");
+		cardY = Integer.parseInt(CaveExplorer.in.nextLine());
 	}
 	
 	public int getCardY() {
 		return cardY;
 	}
 
-	public void setCardY(int cardY) {
-		this.cardY = cardY;
+	public void setCardY() {
+		CaveExplorer.print("Enter the y - coordinate of the board you want to place your card in");
+		cardY = Integer.parseInt(CaveExplorer.in.nextLine());
 	}
 }
