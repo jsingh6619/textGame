@@ -44,7 +44,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	public void computerMove() 
 	{
 		int row = backend.getCardRow();
-		int col = backend.getCardY();
+		int col = backend.getCardCol();
 		AbidCard opponentCard = backend.getLastCard();
 		backend.placeCard(row,col);
 		
