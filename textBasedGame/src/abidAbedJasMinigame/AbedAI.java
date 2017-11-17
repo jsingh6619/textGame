@@ -14,7 +14,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	{
 		return backend.getCardCol();
 	}
-	public AbidCard getLastUserCard().
+	public AbidCard getLastUserCard()
 	{
 		return backend.getLastCard();
 	}
