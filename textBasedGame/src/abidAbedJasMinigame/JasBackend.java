@@ -14,12 +14,19 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	private int cardRow;
 	private int cardCol;
 	public static AbidCard[][] board; 
-	private AbidCard[] hand;
+	private static AbidCard[] hand;
 	private int rowCoordinate;
 	private int colCoordinate;
 
 	public AbidCard[] getHand() {
 		return hand;
+	}
+	
+	public static void main(String[] args)
+	{
+		JasBackend a  = new JasBackend();
+		a.generateHand();
+		System.out.println(hand[1].getTop());
 	}
 
 	public JasBackend() {
@@ -31,11 +38,15 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		colCoordinate = -1;
 	}
 	
+	public String toString() {
+			return hand[1].getOwner(); 
+	}
+	
 	public void setCard(int row, int col, int index) {
 		board[row][col] = hand[index];
 	}
 	
-	public int randomNum() {
+	public static int randomNum() {
 		return (int)(Math.random() * 9);
 	}
 	
@@ -57,7 +68,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public void generateHand() {
 		hand = new AbidCard[5];
 		for (int i = 0; i < hand.length; i++) {
-			hand[i] = new AbidCard(randomNum(), randomNum(), randomNum(), randomNum(), "S");
+			hand[i] = new AbidCard(1, 2, 1, 4, "S");
 		}
 	}
 	
@@ -86,7 +97,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 
 	public void cardChosen(int index) {
 		possiblePlace();
-		placeCard(getCardRow(), getCardCol());
+		setCard(getCardRow(), getCardCol(), index);
 		removeCard(index);
 	}
 	
@@ -99,14 +110,6 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		else {
 			cardChosen(Integer.parseInt(CaveExplorer.in.nextLine()));
 		}
-	}
-	
-	/*
-	 * how to put card in the board?
-	 * just fill out the 2d array but dont know what is called
-	 */
-	public void placeCard(int row, int col) {
-		
 	}
 
 	public void possiblePlace() {
