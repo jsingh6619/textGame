@@ -48,17 +48,18 @@ public class AnnieBackend implements JoannaSupport {
 	}
 
 	public boolean stillPlaying() {
+		return getJellyfishNum() > 0;
+	}
+
+	public int getJellyfishNum() {
+		int count = 0;
 		for(int row = 0; row < plots.length; row++)
 			for(int col = 0; col < plots[row].length; col++)
 				if(plots[row][col].isJellyfishPresent())
-					return true;
-		return false;
+					count++;
+		return count;
 	}
-
-	public AnnieAI getOpponent() {
-		return opponent;
-	}
-
+	
 	public String getValidUserInput() {
 		String input = CaveExplorer.in.nextLine();
 		while(!isValid(input)) {
@@ -82,13 +83,8 @@ public class AnnieBackend implements JoannaSupport {
 		return frontend.getJellyfishCount() > opponent.getJellyfishCount();
 	}
 
-	public int getJellyfishNum() {
-		int count = 0;
-		for(int row = 0; row < plots.length; row++)
-			for(int col = 0; col < plots[row].length; col++)
-				if(plots[row][col].isJellyfishPresent())
-					count++;
-		return count;
+	public AnnieAI getOpponent() {
+		return opponent;
 	}
-	
+
 }

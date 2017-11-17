@@ -70,8 +70,8 @@ public class AnnieJoannaPlot {
 		connections[direction] = connection;
 	}
 	
-	private int oppositeDirection(int dir) {
-		return (dir + 2) % 4;
+	private int oppositeDirection(int direction) {
+		return (direction + 2) % 4;
 	}
 
 }
