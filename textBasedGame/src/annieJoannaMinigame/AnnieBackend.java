@@ -8,11 +8,6 @@ public class AnnieBackend implements JoannaSupport {
 	private AnnieJoannaPlot[][] plots;
 	private AnnieAI opponent;
 	
-	public static final int NORTH = 0;
-	public static final int WEST = 1;
-	public static final int SOUTH = 2;
-	public static final int EAST = 3;
-
 	public AnnieBackend(AnnieSupport frontend) {
 		this.frontend = frontend;
 		JoannaFrontend.plots = new AnnieJoannaPlot[6][6];
@@ -34,13 +29,13 @@ public class AnnieBackend implements JoannaSupport {
 	public void setBlock(int[] topLeft, int[] bottomRight) {
 		for(int row = topLeft[0]; row < bottomRight[0]; row++)
 			for(int col = topLeft[1]; col < bottomRight[1]; col++) {
-				plots[row][col].setConnection(SOUTH, plots[row + 1][col], new Object());	
-				plots[row][col].setConnection(EAST, plots[row][col + 1], new Object());
+				plots[row][col].setConnection(AnnieJoannaPlot.SOUTH, plots[row + 1][col], new Object());	
+				plots[row][col].setConnection(AnnieJoannaPlot.EAST, plots[row][col + 1], new Object());
 			}
 		for(int row = topLeft[0]; row < bottomRight[0]; row++)
-			plots[row][bottomRight[1]].setConnection(SOUTH, plots[row + 1][bottomRight[1]], new Object());	
+			plots[row][bottomRight[1]].setConnection(AnnieJoannaPlot.SOUTH, plots[row + 1][bottomRight[1]], new Object());	
 		for(int col = topLeft[1]; col < bottomRight[1]; col++)
-			plots[bottomRight[0]][col].setConnection(EAST, plots[bottomRight[0]][col + 1], new Object());
+			plots[bottomRight[0]][col].setConnection(AnnieJoannaPlot.EAST, plots[bottomRight[0]][col + 1], new Object());
 	}
 
 	private void setUpPlots() {
@@ -66,11 +61,11 @@ public class AnnieBackend implements JoannaSupport {
 
 	public String getValidUserInput() {
 		String input = CaveExplorer.in.nextLine();
-		if(input.equals("cheat"))
-			return input;
 		while(!isValid(input)) {
 			CaveExplorer.print("Try again! You can only use 'w', 'a', 's', or 'd' to move.");
 			input = CaveExplorer.in.nextLine();
+			if(input.equals("cheat"))
+				break;
 		}
 		return input;
 	}

@@ -8,6 +8,11 @@ public class AnnieJoannaPlot {
 	private String contents;
 	private String defaultContents;
 
+	public static final int NORTH = 0;
+	public static final int WEST = 1;
+	public static final int SOUTH = 2;
+	public static final int EAST = 3;
+	
 	public AnnieJoannaPlot(boolean jellyfishPresent) {
 		borderingPlots = new AnnieJoannaPlot[4];
 		connections = new Object[4];
