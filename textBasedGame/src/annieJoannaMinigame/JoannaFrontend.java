@@ -62,15 +62,14 @@ public class JoannaFrontend implements AnnieSupport{
 	private void printGameOverMessage(boolean victorious) {
 		String s = "-----GAME OVER-----" + "\n";
 		if(victorious) {
-			if(opponent.getJellyfishCount() != jellyfishCount) {
 			won = true;
 			s+= determineWinner("You", getJellyfishCount());
+		}else {
+			if(opponent.getJellyfishCount() != jellyfishCount) {
+				s+= determineWinner(opponent.getName(), opponent.getJellyfishCount());
 			} else {
 				s+= "You tied with" +opponent.getName(); 
 			}
-	} 	else {
-			s+= determineWinner(opponent.getName(), opponent.getJellyfishCount());
-			
 		}
 		CaveExplorer.print(s);
 	}
