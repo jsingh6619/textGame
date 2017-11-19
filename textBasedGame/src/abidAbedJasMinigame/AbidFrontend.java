@@ -60,7 +60,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 					board += "|__"+backendBoard[row][col].getBottom()+"__";
 				}
 				else {
-					board += "|    ";
+					board += "|__ __";
 				}
 			}
 			board += "|\n";
