@@ -96,7 +96,13 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	    |__ __|__ __|__ __|__ __|
 	*/
 	}
-	
+	public void displayCard(AbidCard stats) {
+		String card = "_______\n";
+		card += "|  "+stats.getTop() +"  |\n";
+		card += "|"+stats.getLeft()+" "+stats.getOwner()+" "+stats.getRight()+"|\n";
+		card += "|__"+stats.getBottom() +"__|";
+		
+		System.out.println(card);
 		/*
 		 _______
 		 |  6  |
@@ -104,6 +110,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 		 |__6__|
 		 */
 		
+	}
 	public void displayHand(AbidCard[] hand) {
 		for(int i = 0; i< hand.length; i++) {
 			displayCard(hand[i]);
