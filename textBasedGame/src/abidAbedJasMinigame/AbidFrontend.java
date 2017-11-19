@@ -30,12 +30,43 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 		 	}
 
 	
-	public void createBoard() {
+	public void displayBoard(AbidCard[][] backendBoard) {
+		
 		String board = "_";
 		for(int i = 0; i < 4; i++) {
 			board += "______";
 		}
-		for(int k = 0; k < 4; k++) {
+		for(int row = 0; row < 4; row++) {
+			for(int col = 0; col < 4; col++) {
+				if(backendBoard[row][col] != null) {
+					board += "|  "+backendBoard[row][col].getTop()+"  ";
+				}
+				else {
+					board += "|    ";
+				}
+			}
+			board += "|\n";
+			for(int col = 0; col < 4; col++) {
+				if(backendBoard[row][col] != null) {
+					board += "|"+backendBoard[row][col].getLeft()+" "+backendBoard[row][col].getOwner()+" "+backendBoard[row][col].getRight();
+				}
+				else {
+					board += "|    ";
+				}
+			}
+			board += "|\n";
+			for(int col = 0; col < 4; col++) {
+				if(backendBoard[row][col] != null) {
+					board += "|  "+backendBoard[row][col].getBottom()+"  ";
+				}
+				else {
+					board += "|    ";
+				}
+			}
+			board += "|\n";
+			
+		}
+		/*for(int k = 0; k < 4; k++) {
 			for(int i = 0; i < 2; i++) {
 			board += "\n|";
 			
@@ -45,9 +76,9 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 			}
 			board += "\n|";
 			for(int i = 0;i < 4; i++) {
-				board += "__ __|";
+				board += "__"++" __|";
 			}
-		}
+	*/	
 		System.out.println(board);
 	/*	
 	    _________________________
@@ -61,23 +92,11 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	    |6 S 6|     |     |     |
 	    |__6__|__ __|__ __|__ __|
 	    | 	  |     |     |     |
-	    |4,  4|     |     | 4,4 |
+	    |4,  0|     |     | 4,4 |
 	    |__ __|__ __|__ __|__ __|
 	*/
 	}
-	public void displayBoard() {
-		
-	}
-	public void putDownCard() {
 	
-	}
-	public void displayCard(AbidCard stats) {
-		String card = "_______\n";
-		card += "|  "+stats.getTop() +"  |\n";
-		card += "|"+stats.getLeft()+" "+stats.getOwner()+" "+stats.getRight()+"|\n";
-		card += "|__"+stats.getBottom() +"__|";
-		
-		System.out.println(card);
 		/*
 		 _______
 		 |  6  |
@@ -85,17 +104,15 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 		 |__6__|
 		 */
 		
-	}
-	public void displayHand() {
-		AbidCard[] hand = backend.getHand();
+	public void displayHand(AbidCard[] hand) {
 		for(int i = 0; i< hand.length; i++) {
 			displayCard(hand[i]);
 		}
 	}
 	@Override
 	public void displayScore() {
-		String score = "Plankton:" ;
-		
+		String score = "Plankton: "+backend.getPlanktonScore()+"\nSpongebob: "+backend.getSpongebobScore(); 
+		System.out.println(score)
 	}
 
 }
