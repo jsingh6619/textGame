@@ -57,7 +57,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 			board += "|\n";
 			for(int col = 0; col < 4; col++) {
 				if(backendBoard[row][col] != null) {
-					board += "|  "+backendBoard[row][col].getBottom()+"  ";
+					board += "|__"+backendBoard[row][col].getBottom()+"__";
 				}
 				else {
 					board += "|    ";
@@ -112,7 +112,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	@Override
 	public void displayScore() {
 		String score = "Plankton: "+backend.getPlanktonScore()+"\nSpongebob: "+backend.getSpongebobScore(); 
-		System.out.println(score)
+		System.out.println(score);
 	}
 
 }
