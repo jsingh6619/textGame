@@ -50,7 +50,8 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		AbidCard opponentCard = backend.getLastCard();
 		if(opponentCard == null)
 		{
-			backend.setCard(0,3,hand[strongestCardBottom()]);
+			backend.setCard(0,3,strongestCardBottomIndex(),hand);
+			hand[strongestCardBottomIndex()] = null;
 		}
 		
 	}
@@ -58,7 +59,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	{
 		for(int i = 0 ; i < hand.length;i++)
 		{
-			int index = 0
+			int index = 0;
 			if(hand[i].getBottom() < hand[i + 1].getBottom())
 			{
 				index = i;
