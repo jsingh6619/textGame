@@ -19,9 +19,9 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		return backend.getLastCard();
 	}
 	
-	private int generateNum()
+	private int generateNum(int multiplier)
 	{
-		return (int)Math.random() * 9 + 1;
+		return (int)Math.random() * multiplier + 1;
 	}
 
 
@@ -30,7 +30,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		hand = new AbidCard[5];
 		for(int i = 0; i < hand.length;i++)
 		{
-			hand[i] = new AbidCard(generateNum(),generateNum(),generateNum(),generateNum(),"P");
+			hand[i] = new AbidCard(generateNum(9),generateNum(9),generateNum(9),generateNum(9),"P");
 		}
 		
 	}
@@ -41,12 +41,34 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		computerMove();
 	}
 	
-	public void computerMove() 
+	public void firstMove() 
 	{
+		
 		int row = backend.getCardRow();
 		int col = backend.getCardCol();
 		AbidCard opponentCard = backend.getLastCard();
-		backend.placeCard(row,col);
+		if(opponentCard == null)
+		{
+			backend.setCard(0,3,strongestCardBottom());
+		}
+		
+	}
+	private AbidCard strongestCardBottom() 
+	{
+		for(int i = 0 ; i < hand.length;i++)
+		{
+			AbidCard a = null;
+			if(hand[i].getBottom() < hand[i + 1].getBottom())
+			{
+				a = hand[i];
+			}
+			return a;
+		}
+		return null; 
+	}
+
+	public void computerMove()
+	{
 		
 	}
 
