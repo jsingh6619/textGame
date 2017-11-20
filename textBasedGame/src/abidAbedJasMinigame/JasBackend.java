@@ -216,7 +216,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	
 	public AbidCard[][] getBoard() {
 		// TODO Auto-generated method stub
-		return null;
+		return board;
 	}
 	
 	
