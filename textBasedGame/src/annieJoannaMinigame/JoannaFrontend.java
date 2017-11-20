@@ -47,20 +47,22 @@ public class JoannaFrontend implements AnnieSupport{
 	        updateScore();
 		}
 		 displayBoard();
+        displayScore();
         printGameOverMessage(backend.victorious());
         
 	}
 
 	private void winGame() {
 		jellyfishCount += backend.getJellyfishNum();
+		opponent.setJellyfishCount(0);
     }
 
 	private void instructions() {
-		CaveExplorer.print("Compete against " + opponent.getName() + " in jellyfishing.  Whoever catches the most jellyfish wins.\nIf you win, you get to keep 1 of every 3 jellyfish you caught; if you tie, you don't get anything.");
+		CaveExplorer.print("Compete against " + opponent.getName() + " in jellyfishing. Whoever catches the most jellyfish wins.\nIf you win, you get to keep 1 of every 3 jellyfish caught; if you tie, you don't get anything.");
 	}
 
 	private void printGameOverMessage(boolean victorious) {
-		String s = "-----GAME OVER-----" + "\n";
+		String s = "\n----- GAME OVER -----\n\n";
 		if(victorious) {
 			won = true;
 			s+= determineWinner("You", getJellyfishCount());
@@ -75,12 +77,23 @@ public class JoannaFrontend implements AnnieSupport{
 	}
 
 	private String determineWinner(String name, int n) {
-		return  name +" won. " + name+ " caught a total of " + n + " jellyfish.";
+		return  name +" won with a total of " + n + " jellyfish.";
 	}
 
 	private void updateScore() {
-		CaveExplorer.print("You: " + jellyfishCount + "\n" + opponent.getName() +": "+ opponent.getJellyfishCount() );
-		
+		AnnieJoannaPlot opponentPlot = opponent.getCurrentPlot();
+		if(!currentRoom.equals(opponentPlot)) {
+			if(currentRoom.isJellyfishPresent()) {
+				currentRoom.catchJellyfish();
+				jellyfishCount++;
+			}
+			if(opponentPlot.isJellyfishPresent()) {
+				opponentPlot.catchJellyfish();
+				opponent.setJellyfishCount(opponent.getJellyfishCount() + 1);
+			}
+		} else {
+			currentRoom.catchJellyfish();
+		}
 	}
 
 	private void respondToInput(String input) {
@@ -88,14 +101,9 @@ public class JoannaFrontend implements AnnieSupport{
 		if(currentRoom.getConnection(dir) != null) {
 			currentRoom.leave();
 			currentRoom = currentRoom.getPlot(dir);
-			currentRoom.enter("X");
-			if(currentRoom.isJellyfishPresent()) {
-				currentRoom.catchJellyfish();
-				jellyfishCount++;
-			}
-			
+			currentRoom.enter("X");			
 		}else {
-			CaveExplorer.print("There's something blocking your way.");
+			CaveExplorer.print("You can't do that!");
 		}
 	}
 
@@ -106,7 +114,7 @@ public class JoannaFrontend implements AnnieSupport{
 	}
 
 	private void displayScore() {
-	
+		CaveExplorer.print("You: " + jellyfishCount + "\n" + opponent.getName() +": "+ opponent.getJellyfishCount() );
 	}
 
 	private void displayBoard() {
@@ -183,3 +191,4 @@ public class JoannaFrontend implements AnnieSupport{
 		
 
 }
+
