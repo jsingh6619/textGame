@@ -120,6 +120,8 @@ public class CaveRoom {
 		gary.setPosition(0, 1);
 		NPC krabs = new JasKrabsNPC();
 		krabs.setPosition(1, 7);
+		NPC seller = new StoreKeeperJo();
+		seller.setPosition(2, 1);
  	}
 
 	private static void setUpBuildings() {
@@ -129,7 +131,10 @@ public class CaveRoom {
 		setUpMarket();
 		setUpTree();
 		setUpJFF();
+	
 	}
+
+	
 
 	private static void setUpJFF() {
 		for(int col = 5; col <= 8; col++) {
@@ -155,7 +160,8 @@ public class CaveRoom {
 	private static void setUpMarket() {
 		for(int col = 0; col <= 1; col++) {
 			String description = c[2][col].getDescription() + " You are at the Barg'N-Mart.";
-			c[2][col].setDescription(description);
+			c[2][col] = new JoannaStore(description + " Press 'e' to look through the products.");
+		
 		}
 		setBlock(new int[] {2, 0}, new int[] {2, 1});
 		setDoorway(c[2][0], c[1][0], NORTH, true);
