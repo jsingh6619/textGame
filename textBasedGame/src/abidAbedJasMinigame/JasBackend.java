@@ -20,18 +20,17 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public AbidCard[] getHand() {
 		return hand;
 	}
-	
-	public static void main(String[] args)
-	{
-		JasBackend a  = new JasBackend();
-		a.generateHand();
-	}
 
-	public JasBackend() {
+	public JasBackend(JasSupportFront frontend) {
+		this.frontend = frontend;
 		setpScore(0);
 		setsScore(0);
 		cardRow = -1;
 		cardCol = -1;
+		generateHand();
+		hand = getHand();
+		setUpBoard();
+		board = getBoard();
 	}
 	
 	public String toString() {
