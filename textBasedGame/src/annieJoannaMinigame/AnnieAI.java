@@ -2,6 +2,7 @@ package annieJoannaMinigame;
 
 public class AnnieAI {
 	
+	private AnnieBackend backend;
 	private AnnieJoannaPlot[] visited;
 	private AnnieJoannaPlot currentPlot;
 	private String name;
@@ -10,7 +11,8 @@ public class AnnieAI {
 	private int currentCol;
 	private int jellyfishCount;
 
-	public AnnieAI(String name, String symbol) {
+	public AnnieAI(String name, String symbol, AnnieBackend caller) {
+		backend = caller;
 		visited = new AnnieJoannaPlot[0];
 		currentPlot = null;
 		this.name = name;
@@ -20,7 +22,7 @@ public class AnnieAI {
 	}
 	
 	public void setPosition(int row, int col) {
-		AnnieJoannaPlot[][] plots = JoannaFrontend.plots;
+		AnnieJoannaPlot[][] plots = backend.getPlots();
 		if(row >= 0 && row < plots.length && col >= 0 && col < plots[row].length) {
 			if(currentPlot != null)
 				currentPlot.leave();
@@ -53,7 +55,7 @@ public class AnnieAI {
 	}
 	
 	public void move() {
-		AnnieJoannaPlot[][] plots = JoannaFrontend.plots;
+		AnnieJoannaPlot[][] plots = backend.getPlots();
 		int[] newPosition = calcMove();
 		int loopCount = 0;
 		while(alreadyVisited(plots[newPosition[0]][newPosition[1]]) && loopCount < 4) {

@@ -10,15 +10,15 @@ public class AnnieBackend implements JoannaSupport {
 	
 	public AnnieBackend(AnnieSupport frontend) {
 		this.frontend = frontend;
-		JoannaFrontend.plots = new AnnieJoannaPlot[5][11];
-		plots = JoannaFrontend.plots;
+		plots = frontend.getPlots();
+		plots = new AnnieJoannaPlot[5][11];
 		setUpPlots();
 		setUpConnections();
 		setUpAI();
 	}
 	
 	private void setUpAI() {
-		opponent = new AnnieAI("Kevin C. Cucumber", "K");
+		opponent = new AnnieAI("Kevin C. Cucumber", "K", this);
 		opponent.setPosition(plots.length - 1, plots[plots.length - 1].length - 1);
 	}
 
@@ -107,6 +107,10 @@ public class AnnieBackend implements JoannaSupport {
 
 	public AnnieAI getOpponent() {
 		return opponent;
+	}
+
+	public AnnieJoannaPlot[][] getPlots() {
+		return plots;
 	}
 
 }
