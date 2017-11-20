@@ -14,6 +14,8 @@ public interface JoannaSupport {
 
 	int getJellyfishNum();
 
+	AnnieJoannaPlot[][] getPlots();
+
 	
 
 }
