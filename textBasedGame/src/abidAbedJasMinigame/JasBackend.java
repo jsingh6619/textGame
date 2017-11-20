@@ -15,8 +15,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	private int cardCol;
 	public static AbidCard[][] board; 
 	private static AbidCard[] hand;
-	private int rowCoordinate;
-	private int colCoordinate;
+
 
 	public AbidCard[] getHand() {
 		return hand;
@@ -26,7 +25,6 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	{
 		JasBackend a  = new JasBackend();
 		a.generateHand();
-		System.out.println(hand[1].getTop());
 	}
 
 	public JasBackend() {
@@ -34,15 +32,13 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		setsScore(0);
 		cardRow = -1;
 		cardCol = -1;
-		rowCoordinate = -1;
-		colCoordinate = -1;
 	}
 	
 	public String toString() {
 			return hand[1].getOwner(); 
 	}
 	
-	public void setCard(int row, int col, int index) {
+	public void setCard(int row, int col, int index, AbidCard[] hand) {
 		board[row][col] = hand[index];
 	}
 	
@@ -97,7 +93,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 
 	public void cardChosen(int index) {
 		possiblePlace();
-		setCard(getCardRow(), getCardCol(), index);
+		setCard(getCardRow(), getCardCol(), index, hand);
 		removeCard(index);
 	}
 	
@@ -140,36 +136,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 			for(int col = 0; col < board[row].length; col++)
 				board[row][col] = null;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	
 	//GETTERS & SETTERS
 	public int getPlanktonScore() {
@@ -215,51 +182,6 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 	
 	public AbidCard[][] getBoard() {
-		// TODO Auto-generated method stub
 		return board;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
