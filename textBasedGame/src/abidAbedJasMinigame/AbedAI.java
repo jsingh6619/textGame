@@ -14,6 +14,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	{
 		return backend.getCardCol();
 	}
+	
 	public AbidCard getLastUserCard()
 	{
 		return backend.getLastCard();
@@ -49,22 +50,22 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		AbidCard opponentCard = backend.getLastCard();
 		if(opponentCard == null)
 		{
-			backend.setCard(0,3,strongestCardBottom());
+			backend.setCard(0,3,hand[strongestCardBottom()]);
 		}
 		
 	}
-	private AbidCard strongestCardBottom() 
+	private int strongestCardBottomIndex() 
 	{
 		for(int i = 0 ; i < hand.length;i++)
 		{
-			AbidCard a = null;
+			int index = 0
 			if(hand[i].getBottom() < hand[i + 1].getBottom())
 			{
-				a = hand[i];
+				index = i;
 			}
-			return a;
+			return index;
 		}
-		return null; 
+		return 0; 
 	}
 
 	public void computerMove()

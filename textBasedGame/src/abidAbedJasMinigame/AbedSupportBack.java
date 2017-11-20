@@ -3,6 +3,7 @@ package abidAbedJasMinigame;
 public interface AbedSupportBack 
 {
 
+	
 
 
 	int getSpongebobScore();
