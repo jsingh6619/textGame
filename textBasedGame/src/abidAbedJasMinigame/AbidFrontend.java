@@ -4,29 +4,31 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	
 	private AbidSupportBack backend;
 	private AbidSupportAI ai;
-	
+	private AbidCard[][] board;
 	
 	public static final void main(String[] args) {
 		AbidFrontend demo = new AbidFrontend();
-		
 		demo.play();
-		demo.displayHand();
-		demo.displayBoard();
 		
 	}
+	
+	public AbidFrontend() {
+		this.backend = new JasBackend(this);
+	}
+	
 	public void play(){
-			ai.dealCards();
-			backend.generateHand();
+		//	ai.dealCards();
+			board = backend.getBoard();
+			displayBoard(board);
 			while(backend.stillPlaying()){
-				displayBoard();
-				displayHand();
+		//		displayHand();
 		        displayScore();
 		        backend.getValidUserInput();
 		        ai.computerMove();
-		        analyzeBoard();
-		        updateScore();
+		  //      analyzeBoard();
+		  //      updateScore();
 		    }
-		        printGameOverMessage(backend.victorious());
+		   //     printGameOverMessage(backend.victorious());
 		 	}
 
 	
@@ -36,13 +38,14 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 		for(int i = 0; i < 4; i++) {
 			board += "______";
 		}
+		board += "\n";
 		for(int row = 0; row < 4; row++) {
 			for(int col = 0; col < 4; col++) {
 				if(backendBoard[row][col] != null) {
 					board += "|  "+backendBoard[row][col].getTop()+"  ";
 				}
 				else {
-					board += "|    ";
+					board += "|     ";
 				}
 			}
 			board += "|\n";
@@ -51,7 +54,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 					board += "|"+backendBoard[row][col].getLeft()+" "+backendBoard[row][col].getOwner()+" "+backendBoard[row][col].getRight();
 				}
 				else {
-					board += "|    ";
+					board += "|     ";
 				}
 			}
 			board += "|\n";
