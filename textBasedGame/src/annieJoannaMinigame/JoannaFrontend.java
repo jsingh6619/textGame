@@ -13,7 +13,7 @@ public class JoannaFrontend implements AnnieSupport{
 	private boolean won;
 	private AnnieAI opponent;
 	
-	public static AnnieJoannaPlot[][] plots;
+	private AnnieJoannaPlot[][] plots;
 	
 	public JoannaFrontend() {
 		backend = new AnnieBackend(this);
@@ -187,7 +187,9 @@ public class JoannaFrontend implements AnnieSupport{
 		return won;
 	}
 
-	
+	public AnnieJoannaPlot[][] getPlots() {
+		return plots;
+	}
 		
 
 }
