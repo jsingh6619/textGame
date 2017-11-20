@@ -72,19 +72,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 			board += "|\n";
 			
 		}
-		/*for(int k = 0; k < 4; k++) {
-			for(int i = 0; i < 2; i++) {
-			board += "\n|";
-			
-				for(int j = 0; j < 4; j++) {
-					board += "     |";
-				}
-			}
-			board += "\n|";
-			for(int i = 0;i < 4; i++) {
-				board += "__"++" __|";
-			}
-	*/	
+		
 		System.out.println(board);
 	/*	
 	    _________________________
@@ -102,25 +90,57 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	    |__ __|__ __|__ __|__ __|
 	*/
 	}
-	public void displayCard(AbidCard stats) {
+/*public void displayCard(AbidCard stats) {
 		String card = "_______\n";
 		card += "|  "+stats.getTop() +"  |\n";
 		card += "|"+stats.getLeft()+" "+stats.getOwner()+" "+stats.getRight()+"|\n";
 		card += "|__"+stats.getBottom() +"__|";
 		
 		System.out.println(card);
-		/*
+		
 		 _______
 		 |  6  |
 		 |6 S 6|
 		 |__6__|
-		 */
+		 
 		
 	}
+*/
 	public void displayHand(AbidCard[] hand) {
-		for(int i = 0; i< hand.length; i++) {
-			displayCard(hand[i]);
+		String board = "_";
+		for(int i = 0; i < 5; i++) {
+			board += "______";
 		}
+		board += "\n";
+			for(int col = 0; col < 5; col++) {
+				if(hand[col] != null) {
+					board += "|  "+hand[col].getTop()+"  ";
+				}
+				else {
+					board += "|     ";
+				}
+			}
+			board += "|\n";
+			for(int col = 0; col < 5; col++) {
+				if(hand[col] != null) {
+					board += "|"+hand[col].getLeft()+" "+hand[col].getOwner()+" "+hand[col].getRight();
+				}
+				else {
+					board += "|     ";
+				}
+			}
+			board += "|\n";
+			for(int col = 0; col < 5; col++) {
+				if(hand[col] != null) {
+					board += "|__"+hand[col].getBottom()+"__";
+				}
+				else {
+					board += "|__ __";
+				}
+			}
+			board += "|\n";
+		
+		System.out.println(board);
 	}
 	@Override
 	public void displayScore() {
