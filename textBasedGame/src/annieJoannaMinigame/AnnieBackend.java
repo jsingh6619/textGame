@@ -10,7 +10,7 @@ public class AnnieBackend implements JoannaSupport {
 	
 	public AnnieBackend(AnnieSupport frontend) {
 		this.frontend = frontend;
-		JoannaFrontend.plots = new AnnieJoannaPlot[6][6];
+		JoannaFrontend.plots = new AnnieJoannaPlot[5][11];
 		plots = JoannaFrontend.plots;
 		setUpPlots();
 		setUpConnections();
@@ -23,7 +23,29 @@ public class AnnieBackend implements JoannaSupport {
 	}
 
 	private void setUpConnections() {
-		setBlock(new int[] {0, 0}, new int[] {5, 5});
+		setBlock(new int[] {0, 0}, new int[] {4, 0});
+		setBlock(new int[] {0, 10}, new int[] {4, 10});
+		setBlock(new int[] {0, 0}, new int[] {0, 2});
+		setBlock(new int[] {0, 8}, new int[] {0, 10});
+		setBlock(new int[] {4, 0}, new int[] {4, 2});
+		setBlock(new int[] {4, 8}, new int[] {4, 10});
+		setBlock(new int[] {0, 3}, new int[] {0, 7});
+		setBlock(new int[] {0, 7}, new int[] {4, 7});
+		setBlock(new int[] {0, 3}, new int[] {4, 3});
+		setBlock(new int[] {4, 3}, new int[] {4, 7});
+		setBlock(new int[] {1, 1}, new int[] {1, 9});
+		setBlock(new int[] {1, 9}, new int[] {3, 9});
+		setBlock(new int[] {1, 1}, new int[] {3, 1});
+		setBlock(new int[] {3, 1}, new int[] {3, 9});
+		setBlock(new int[] {2, 0}, new int[] {2, 3});
+		setBlock(new int[] {2, 7}, new int[] {2, 10});
+		setBlock(new int[] {0, 2}, new int[] {1, 2});
+		setBlock(new int[] {0, 8}, new int[] {1, 8});
+		setBlock(new int[] {3, 2}, new int[] {4, 2});
+		setBlock(new int[] {3, 8}, new int[] {4, 8});
+		setBlock(new int[] {1, 4}, new int[] {2, 4});
+		setBlock(new int[] {2, 6}, new int[] {3, 6});
+		setBlock(new int[] {2, 4}, new int[] {2, 6});
 	}
 	
 	public void setBlock(int[] topLeft, int[] bottomRight) {

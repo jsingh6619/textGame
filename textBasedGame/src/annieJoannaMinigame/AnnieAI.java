@@ -28,10 +28,6 @@ public class AnnieAI {
 			currentCol = col;
 			currentPlot = plots[row][col];
 			addToVisited(currentPlot);
-			if(currentPlot.isJellyfishPresent()) {
-				currentPlot.catchJellyfish();
-				jellyfishCount++;
-			}
 			currentPlot.enter(symbol);
 		}
 	}
@@ -46,6 +42,10 @@ public class AnnieAI {
 
 	public int getJellyfishCount() {
 		return jellyfishCount;
+	}
+	
+	public void setJellyfishCount(int jellyfishCount) {
+		this.jellyfishCount = jellyfishCount;
 	}
 	
 	public String getName() {
@@ -79,6 +79,10 @@ public class AnnieAI {
 		newPosition[0] = currentRow + possible[index][0];
 		newPosition[1] = currentCol + possible[index][1];
 		return newPosition;
+	}
+
+	public AnnieJoannaPlot getCurrentPlot() {
+		return currentPlot;
 	}
 
 }
