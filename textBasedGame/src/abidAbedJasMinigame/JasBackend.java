@@ -63,7 +63,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public void generateHand() {
 		hand = new AbidCard[5];
 		for (int i = 0; i < hand.length; i++) {
-			hand[i] = new AbidCard(1, 2, 1, 4, "S");
+			hand[i] = new AbidCard(randomNum(), randomNum(), randomNum(), randomNum(), "S");
 		}
 	}
 	
