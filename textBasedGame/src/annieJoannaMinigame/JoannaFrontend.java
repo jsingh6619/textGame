@@ -18,6 +18,7 @@ public class JoannaFrontend implements AnnieSupport{
 	public JoannaFrontend() {
 		backend = new AnnieBackend(this);
 		opponent = backend.getOpponent();
+		plots = backend.getPlots();
 		jellyfishCount = 0;
 		won = false;
 		currentRoom = plots[0][0];
@@ -190,6 +191,7 @@ public class JoannaFrontend implements AnnieSupport{
 	public AnnieJoannaPlot[][] getPlots() {
 		return plots;
 	}
+	
 		
 
 }
