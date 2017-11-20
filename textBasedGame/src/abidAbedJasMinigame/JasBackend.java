@@ -98,12 +98,13 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	
 	public void getValidUserInput() {
 		CaveExplorer.print("What card do you want to play?");
-		if(hand[Integer.parseInt(CaveExplorer.in.nextLine())]!=null) {
+		int num = Integer.parseInt(CaveExplorer.in.nextLine());
+		if(hand[num]!=null) {
 			CaveExplorer.print("Choose a different card.");
 			getValidUserInput();
 		}
 		else {
-			cardChosen(Integer.parseInt(CaveExplorer.in.nextLine()));
+			cardChosen(num);
 		}
 	}
 
