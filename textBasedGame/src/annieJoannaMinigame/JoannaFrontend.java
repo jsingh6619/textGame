@@ -56,6 +56,7 @@ public class JoannaFrontend implements AnnieSupport{
 	private void winGame() {
 		jellyfishCount += backend.getJellyfishNum();
 		opponent.setJellyfishCount(0);
+		backend.catchAllJellyfish();
     }
 
 	private void instructions() {
