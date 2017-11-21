@@ -38,13 +38,13 @@ public class JoannaFrontend implements AnnieSupport{
 		while(backend.stillPlaying()){
 	        displayBoard();
 	        displayScore();
-	        backend.computerMove();
 	        String input = backend.getValidUserInput();
 	        if(input.equals("cheat")) {
 	        	winGame();
 	        	break;
 	        }
 	        respondToInput(input);
+	        backend.computerMove();
 	        updateScore();
 		}
 		 displayBoard();
