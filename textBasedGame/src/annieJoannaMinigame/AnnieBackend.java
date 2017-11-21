@@ -112,5 +112,14 @@ public class AnnieBackend implements JoannaSupport {
 	public AnnieJoannaPlot[][] getPlots() {
 		return plots;
 	}
+	
+	public void catchAllJellyfish() {
+		for(AnnieJoannaPlot[] row: plots)
+			for(AnnieJoannaPlot col: row)
+				if(col.isJellyfishPresent()) {
+					col.catchJellyfish();
+					col.leave();
+				}
+	}
 
 }

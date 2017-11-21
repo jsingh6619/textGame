@@ -1,4 +1,4 @@
-	package annieJoannaMinigame;
+package annieJoannaMinigame;
 
 public class AnnieJoannaPlot {
 	
@@ -32,10 +32,6 @@ public class AnnieJoannaPlot {
 		return contents;
 	}
 	
-	public void setContents(String contents) {
-		this.contents = contents;
-	}
-
 	public boolean isJellyfishPresent() {
 		return jellyfishPresent;
 	}
