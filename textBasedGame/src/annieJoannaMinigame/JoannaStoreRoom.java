@@ -20,7 +20,7 @@ public class JoannaStoreRoom extends NPCRoom {
 		{
 			interact(direction);
 		}
-		else {
+		else { 
 			super.performAction(direction);
 	}
 	

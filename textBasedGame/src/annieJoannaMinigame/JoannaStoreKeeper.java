@@ -16,7 +16,7 @@ public class JoannaStoreKeeper extends NPC {
 	
 	}
 	
-	public void interact(int n) {
+	public void interact(int n) { 
 		printS('z',0,10);
 		printS('x',1,10);
 		printS('c',2,10);
