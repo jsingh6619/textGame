@@ -148,4 +148,16 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 		System.out.println(score);
 	}
 
+	@Override
+	public void displayCard(AbidCard stats) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayBoard() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
