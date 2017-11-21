@@ -9,7 +9,7 @@ public class AnnieNPC extends NPC {
 
 	public AnnieNPC() {
 		netsLeft = 5;
-		netCost = 30;
+		netCost = 20;
 	}
 	
 	public String getSymbol() {

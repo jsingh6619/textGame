@@ -220,7 +220,7 @@ public class CaveRoom {
 	
 	private static void setUpTreasure() {
 		int[][] coords = {{0, 6}, {3, 9}, {4, 4}, {2, 3}};
-		int[] amounts = {10, 20, 30, 40};
+		int[] amounts = {20, 30, 40, 50};
 		for(int i = 0; i < coords.length; i++) {
 			String description = c[coords[i][0]][coords[i][1]].getDescription();
 			c[coords[i][0]][coords[i][1]] = new AnnieRoom(description, amounts[i]);
