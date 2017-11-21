@@ -1,5 +1,7 @@
 package abidAbedJasMinigame;
 
+import caveExplorer.*;
+
 public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	
 	private AbidSupportBack backend;
