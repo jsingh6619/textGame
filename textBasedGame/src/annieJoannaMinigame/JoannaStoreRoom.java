@@ -13,7 +13,7 @@ public class JoannaStoreRoom extends NPCRoom {
 		
 		if(direction > 3)//z
 		{
-			interact(direction);
+			getNPC().interact(direction);
 		}
 		else { 
 			super.performAction(direction);

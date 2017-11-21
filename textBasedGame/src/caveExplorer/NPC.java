@@ -82,4 +82,9 @@ public class NPC {
 		return newPosition;
 	}
 
+	public void interact(int direction) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
