@@ -33,10 +33,8 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	
 	public void displayBoard(AbidCard[][] backendBoard) {
 		
-		String board = "_";
-		for(int i = 0; i < 4; i++) {
-			board += "______";
-		}
+		String board = " _______________________";
+
 		board += "\n";
 		for(int row = 0; row < 4; row++) {
 			for(int col = 0; col < 4; col++) {
@@ -103,10 +101,8 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	}
 */
 	public void displayHand(AbidCard[] hand) {
-		String board = "_";
-		for(int i = 0; i < 5; i++) {
-			board += "______";
-		}
+		String board = " _____________________________";
+		
 		board += "\n";
 			for(int col = 0; col < 5; col++) {
 				if(hand[col] != null) {
