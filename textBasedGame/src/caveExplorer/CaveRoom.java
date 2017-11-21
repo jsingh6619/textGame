@@ -114,7 +114,7 @@ public class CaveRoom {
 		squid.setPosition(0, 8);
 		NPC merchant = new AnnieNPC();
 		merchant.setPosition(4, 5);
-		NPC plankton = new Plankton();
+		NPC plankton = new AbedPlankton();
 		plankton.setPosition(1, 6);
 		NPC gary = new Gary();
 		gary.setPosition(0, 1);

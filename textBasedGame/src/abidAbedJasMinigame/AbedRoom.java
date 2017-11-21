@@ -4,7 +4,7 @@ import caveExplorer.NPCRoom;
 
 public class AbedRoom extends NPCRoom
 {
-	private Plankton p;
+	private AbedPlankton p;
 	public AbedRoom(String description)
 	{
 		super(description);
