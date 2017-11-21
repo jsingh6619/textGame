@@ -4,14 +4,9 @@ import caveExplorer.CaveExplorer;
 import caveExplorer.NPCRoom;
 
 public class JoannaStoreRoom extends NPCRoom {
-	
-	private String[] items;
-	private boolean[] bought;
 
 	public JoannaStoreRoom(String description) {
 		super(description);
-		
-
 	}
 	
 	public void performAction(int direction) {

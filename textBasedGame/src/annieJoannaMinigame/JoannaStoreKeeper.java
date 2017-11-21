@@ -52,7 +52,7 @@ public class JoannaStoreKeeper extends NPC {
 	}
 
 	public void printS(char l, int idx, int amt) {
-		CaveExplorer.print("Press '" + l+"' to buy " + JoannaStoreRoom.getItems()[idx] + " for $" +amt);
+		CaveExplorer.print("Press '" + l+"' to buy " + items[idx] + " for $" +amt);
 	}
 	
 	public String getSymbol() {
@@ -63,10 +63,6 @@ public class JoannaStoreKeeper extends NPC {
 		return "You approach the stop keeper. Press 'e' to browse the items in store.";
 	}
 	
-	public String[] getItems() {
-		return items;
-	}
-
 	public void boughtItem(int idx, int amt) {
 		CaveExplorer.print("You have successfully bought " + items[idx] + ". This item is no longer in stock.");
 		CaveExplorer.inventory.setBooleanAtIndex(bought, idx, true);
