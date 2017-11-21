@@ -16,6 +16,8 @@ public interface JoannaSupport {
 
 	AnnieJoannaPlot[][] getPlots();
 
+	void catchAllJellyfish();
+
 	
 
 }
