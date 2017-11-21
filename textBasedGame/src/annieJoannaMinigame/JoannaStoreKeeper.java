@@ -67,12 +67,27 @@ public class JoannaStoreKeeper extends NPC {
 				CaveExplorer.print("You have successfully bought " + items[idx] + ". This item is no longer in stock.");
 				CaveExplorer.inventory.setBooleanAtIndex(bought, idx, true);
 				CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney()-amt);
+				updateInventory(idx);
 			} else {
 				CaveExplorer.print("You don't have enough to buy (a)" +items[idx]+".");
 			}
 		} else {
 			CaveExplorer.print("You already bought this item. It is no longer in stock.");
 		}
+		
+	}
+
+	public void updateInventory(int idx) {
+		if(idx <= 2) {
+			CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getHave(), idx, true);
+		} else {
+			if(idx == 3) {
+				CaveExplorer.inventory.setHasFood(true);
+			} else {
+				CaveExplorer.inventory.setGotClarinet(true);
+			}
+		}
+
 		
 	}
 }
