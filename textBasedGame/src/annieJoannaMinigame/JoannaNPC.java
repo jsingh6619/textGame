@@ -31,6 +31,7 @@ public class JoannaNPC extends NPC {
 		}
 		else {
 			CaveExplorer.inventory.setCake(true);
+			CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getDone(), 3, true);
 			CaveExplorer.print("Looks like you have all the ingredients so here's the cake!");
 			
 			

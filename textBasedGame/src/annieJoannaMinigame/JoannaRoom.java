@@ -12,7 +12,7 @@ public class JoannaRoom extends NPCRoom {
 	   
 	public void performAction(int direction) {
 		if(direction ==  4 && CaveExplorer.inventory.getNets()==0) {
-			CaveExplorer.print("First you need to buy a net. Look for the merchant in the end of the room. Once you have bought a net come back to play the game."); //instructions for game
+			CaveExplorer.print("First you need to buy a net. Look for the merchant in the end of the room. Once you have bought a net come back to play the game."); 
 		}
 		else {
 		

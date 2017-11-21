@@ -1,11 +1,11 @@
 package annieJoannaMinigame;
 
-import caveExplorer.CaveExplorer;
-import caveExplorer.NPC;
+import caveExplorer.*;
 
-public class StoreKeeperJo extends NPC {
 
-	public StoreKeeperJo() {
+public class JoannaStoreKeeper extends NPC {
+
+	public JoannaStoreKeeper() {
 
 	
 	}
@@ -39,3 +39,4 @@ public class StoreKeeperJo extends NPC {
 			}
 	 */
 }
+
