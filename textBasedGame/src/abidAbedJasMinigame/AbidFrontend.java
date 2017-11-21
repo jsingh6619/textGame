@@ -4,8 +4,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	
 	private AbidSupportBack backend;
 	private AbidSupportAI ai;
-	private AbidCard[][] board;
-	private AbidCard[] hand;
+
 	
 	public static final void main(String[] args) {
 		AbidFrontend demo = new AbidFrontend();
@@ -19,17 +18,12 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	
 	public void play(){
 		//	ai.dealCards();
-			board = backend.getBoard();
-			displayBoard(board);
-			hand = backend.getHand();
-			displayHand(hand);
 			while(backend.stillPlaying()){
-		//		displayHand();
+				displayBoard(backend.getBoard());
+				displayHand(backend.getHand());
 		        displayScore();
 		        backend.getValidUserInput();
-		        ai.computerMove();
-		  //      analyzeBoard();
-		  //      updateScore();
+		    //    ai.computerMove();
 		    }
 		   //     printGameOverMessage(backend.victorious());
 		 	}
