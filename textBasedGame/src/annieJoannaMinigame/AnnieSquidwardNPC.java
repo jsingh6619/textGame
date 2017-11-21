@@ -24,7 +24,7 @@ public class AnnieSquidwardNPC extends NPC {
 			panic();
 		else {
 			takeClarinet();
-			CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getDone(), 6, true);
+			CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getDone(), 4, true);
 		}
 	}
 	
@@ -37,9 +37,9 @@ public class AnnieSquidwardNPC extends NPC {
 	private void panic() {
 		if(!visited) {
 			CaveExplorer.print("SpongeBob! My clarinet broke. I can't play the recital without a clarinet!");
-			CaveExplorer.inventory.setTaskAtIndex(6, "Help Squidward get a clarinet");
+			CaveExplorer.inventory.setTaskAtIndex(4, "Help Squidward get a clarinet");
 			visited = true;
-		} else if(visited)
+		} else
 			CaveExplorer.print("SpongeBob! I need a clarinet!");
 	}
 
