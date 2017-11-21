@@ -23,6 +23,7 @@ public class Gary extends NPC{
 				setHungry(false);
 				CaveExplorer.inventory.setHasFood(false);
 				CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getDone(), 0 , true);
+				CaveExplorer.print("You've successfully fed Gary.");
 			}
 			else {
 				CaveExplorer.print("You don't have any snail food. You can buy more at the store.");

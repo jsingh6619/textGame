@@ -11,7 +11,7 @@ public class JasKrabsNPC extends NPC {
 	}
 	
 	public String getDescription() {
-		return "You come across Mr. Krabs talking to his safe about plans to fill it up even more. You overhear your name in the process. Press 'e' to interact.";
+		return "You come across Mr. Krabs talking to his safe about plans to fill it up even more. Press 'e' to interact.";
 	}
 	
 	public String getSymbol() {
@@ -19,7 +19,7 @@ public class JasKrabsNPC extends NPC {
 	}
 	
 	public void interact() {
-		CaveExplorer.print("Hey Spongebob, I see you have some jellyfish. How about you sell them to me and I give you money?");
+		CaveExplorer.print("Hey SpongeBob, I see you have jellyfish. How about you sell it to me and I give you money? \nRespond with 'yes' to sell your jellyfish for $" + exchange + " each.");
 		if(CaveExplorer.in.nextLine().toLowerCase().equals("yes")) {
 			sellJellyfish(CaveExplorer.inventory.getJellyfish());
 		}

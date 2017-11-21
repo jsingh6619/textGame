@@ -25,9 +25,10 @@ public class JoannaNPC extends NPC {
 
 	public void interact() {
 		if(!checkBookleanList()) {
-			CaveExplorer.print("Hi SpongeBob! I can't make a cake unless you have all 3 ingredients. You're missing either eggs, milk, or flour.");	
-			CaveExplorer.inventory.setTaskAtIndex(3, "Buy everything you need for the cake");
-		} else {
+			CaveExplorer.print("Hi SpongeBob! I can't make a cake unless you have all the ingredients. You're missing either eggs, milk, or flour.");	
+			CaveExplorer.inventory.setTaskAtIndex(3, "Get Sandy the ingredients to make a cake");
+		} else if(cake){
+			cake = false;
 			CaveExplorer.inventory.setCake(true);
 			CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getDone(), 3, true);
 			CaveExplorer.print("Here's your cake!");
@@ -36,7 +37,9 @@ public class JoannaNPC extends NPC {
 				
 			}
 			
-		}				
+		} else {
+			CaveExplorer.print("Leave me alone. I already made you a cake.");	
+		}
 		
 	}
 	

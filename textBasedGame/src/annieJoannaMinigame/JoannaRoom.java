@@ -12,7 +12,7 @@ public class JoannaRoom extends NPCRoom {
 	   
 	public void performAction(int direction) {
 		if(direction ==  4 && CaveExplorer.inventory.getNets()==0) {
-			CaveExplorer.print("You need a net to catch jellyfish. Look for the merchant in the end of the room."); 
+			CaveExplorer.print("You need a net to catch jellyfish. Look for the merchant at the end of the jellyfish fields."); 
 		}
 		else {
 		
@@ -35,7 +35,7 @@ public class JoannaRoom extends NPCRoom {
 	}
 	
 	public void printValidMoves() {
-		System.out.println("You can only enter 'w', 'a', 's', or 'd' to move,  or you can press 'e' to play.");
+		System.out.println("You can only enter 'w', 'a', 's', or 'd' to move,  or you can press 'e' to catch jellyfish.");
 	}
 	
 	public String validMoves() {

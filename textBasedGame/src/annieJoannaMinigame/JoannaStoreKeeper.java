@@ -11,7 +11,7 @@ public class JoannaStoreKeeper extends NPC {
 	private String[] keys;
 	
 	public JoannaStoreKeeper() {
-		String[] temp = {"eggs", "milk", "flour","Gary's food","clarient"};
+		String[] temp = {"eggs", "milk", "flour","snail food","clarinet"};
 		items = temp;
 		boolean[] arr = {false,false,false,false,false};
 		bought = arr;
@@ -34,7 +34,7 @@ public class JoannaStoreKeeper extends NPC {
 	}
 
 	public void printS(String l, int idx) {
-		CaveExplorer.print("Press '" + l+"' to buy " + items[idx] + " for $" +price[idx]);
+		CaveExplorer.print("Press '" + l+"' to buy (a) " + items[idx] + " for $" +price[idx] +".");
 	}
 	
 	public void printItems() {
@@ -47,22 +47,22 @@ public class JoannaStoreKeeper extends NPC {
 	}
 	
 	public String getSymbol() {
-		return "W";
+		return "E";
 	}
 	
 	public String getDescription(){
-		return "You approach the stop keeper. Press 'e' to browse the items in store.";
+		return "You approach the cashier. Press 'e' to browse the items in store.";
 	}
 	
 	public void boughtItem(int idx) {
 		if(!bought[idx]) {
 			if(CaveExplorer.inventory.getMoney() >= price[idx]) {
-				CaveExplorer.print("You have successfully bought " + items[idx] + ".");
+				CaveExplorer.print("You have successfully bought (a) " + items[idx] + ".");
 				CaveExplorer.inventory.setBooleanAtIndex(bought, idx, true);
 				CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney()-price[idx]);
 				updateInventory(idx);
 			} else {
-				CaveExplorer.print("You don't have enough to buy (a)" +items[idx]+".");
+				CaveExplorer.print("You don't have enough to buy (a) " +items[idx]+".");
 			}
 		} else {
 			CaveExplorer.print("You already bought this item. It is no longer in stock.");
