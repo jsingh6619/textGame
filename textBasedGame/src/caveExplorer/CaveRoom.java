@@ -160,8 +160,10 @@ public class CaveRoom {
 	private static void setUpMarket() {
 		for(int col = 0; col <= 1; col++) {
 			String description = c[2][col].getDescription() + " You are at the Barg'N-Mart.";
-			c[2][col] = new JoannaStoreRoom(description + " Press 'e' to look through the products.");
-		
+			if(col == 1)
+				c[2][col] = new JoannaStoreRoom(description);
+			else
+				c[2][col].setDescription(description);
 		}
 		setBlock(new int[] {2, 0}, new int[] {2, 1});
 		setDoorway(c[2][0], c[1][0], NORTH, true);
