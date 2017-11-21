@@ -25,27 +25,11 @@ public class JoannaStoreKeeper extends NPC {
 		if(n ==4) {
 			printItems();
 		}
-		if(n == 5)//z
-		{
-			boughtItem(0,10);
+		for( int i =0; i <= 4; i++) {
+			if( n == i + 5)
+				boughtItem(i);
+			
 		}
-		if(n == 6)//x
-		{
-			boughtItem(1,10);
-		}
-		if(n == 7)//c
-		{
-			boughtItem(2,10);
-		}
-		if(n == 8)//v
-		{
-			boughtItem(3,20);
-		}
-		if(n == 9)//b
-		{
-			boughtItem(4,50);
-		}
-		
 		
 	}
 
@@ -70,12 +54,12 @@ public class JoannaStoreKeeper extends NPC {
 		return "You approach the stop keeper. Press 'e' to browse the items in store.";
 	}
 	
-	public void boughtItem(int idx, int amt) {
+	public void boughtItem(int idx) {
 		if(!bought[idx]) {
-			if(CaveExplorer.inventory.getMoney() >= amt) {
+			if(CaveExplorer.inventory.getMoney() >= price[idx]) {
 				CaveExplorer.print("You have successfully bought " + items[idx] + ".");
 				CaveExplorer.inventory.setBooleanAtIndex(bought, idx, true);
-				CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney()-amt);
+				CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney()-price[idx]);
 				updateInventory(idx);
 			} else {
 				CaveExplorer.print("You don't have enough to buy (a)" +items[idx]+".");
@@ -87,17 +71,14 @@ public class JoannaStoreKeeper extends NPC {
 	}
 
 	public void updateInventory(int idx) {
-		if(idx <= 2) {
+		if(idx <= 2)
 			CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getHave(), idx, true);
-		} else {
-			if(idx == 3) {
+		else {
+			if(idx == 3)
 				CaveExplorer.inventory.setHasFood(true);
-			} else {
+			else
 				CaveExplorer.inventory.setGotClarinet(true);
-			}
 		}
-
-		
 	}
 }
 

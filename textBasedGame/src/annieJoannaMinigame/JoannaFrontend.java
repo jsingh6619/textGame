@@ -13,6 +13,7 @@ public class JoannaFrontend implements AnnieSupport{
 	private boolean won;
 	private AnnieAI opponent;
 	
+	
 	private AnnieJoannaPlot[][] plots;
 	
 	public JoannaFrontend() {
@@ -24,13 +25,11 @@ public class JoannaFrontend implements AnnieSupport{
 		currentRoom = plots[0][0];
 		currentRoom.enter("X");
 		CaveExplorer.in = new Scanner(System.in);
-		
 	} 
 
 	public static void main(String[] args) {
 			JoannaFrontend demo = new JoannaFrontend();
 			demo.play();
-		
 	}
 
 	public void play() {
@@ -50,7 +49,6 @@ public class JoannaFrontend implements AnnieSupport{
 		 displayBoard();
         displayScore();
         printGameOverMessage(backend.victorious());
-        
 	}
 
 	private void winGame() {
@@ -69,11 +67,10 @@ public class JoannaFrontend implements AnnieSupport{
 			won = true;
 			s+= determineWinner("You", getJellyfishCount());
 		}else {
-			if(opponent.getJellyfishCount() != jellyfishCount) {
+			if(opponent.getJellyfishCount() != jellyfishCount)
 				s+= determineWinner(opponent.getName(), opponent.getJellyfishCount());
-			} else {
+			else
 				s+= "You tied with " +opponent.getName(); 
-			}
 		}
 		CaveExplorer.print(s);
 	}
@@ -93,9 +90,8 @@ public class JoannaFrontend implements AnnieSupport{
 				opponentPlot.catchJellyfish();
 				opponent.setJellyfishCount(opponent.getJellyfishCount() + 1);
 			}
-		} else {
+		} else
 			currentRoom.catchJellyfish();
-		}
 	}
 
 	private void respondToInput(String input) {
@@ -108,7 +104,6 @@ public class JoannaFrontend implements AnnieSupport{
 			CaveExplorer.print("You can't do that!");
 		}
 	}
-
 	
 	private int changeToDir(String input) {
 		String s = "wasd"; // 0 
@@ -123,7 +118,6 @@ public class JoannaFrontend implements AnnieSupport{
 		CaveExplorer.print(updateBoard());	
 	}
 
-	
 	private String updateBoard() {
 		String map = "\n ";
 		for(int i = 0; i < plots[0].length - 1; i++)
@@ -151,35 +145,7 @@ public class JoannaFrontend implements AnnieSupport{
 				map += text + "\n";
 			}
 		return map;
-}
-
-	
-	/***
-	 *   
- _______________________
-|                       |
-|                       |
-|                       |
-|                       |
-|                       |
-|                       |
-|                       |
-|                       |
-|                       |
-|                       |
-|                       |
-|                       |
-|                       |
-|                       |
-|                       |
-|                       |
-|                       |
-|___ ___ ___ ___ ___ ___|
- *  
-	 * 
-	 
-	 * 
-	 */
+	}
 	
 	public int getJellyfishCount() {
 		return jellyfishCount;
@@ -192,8 +158,9 @@ public class JoannaFrontend implements AnnieSupport{
 	public AnnieJoannaPlot[][] getPlots() {
 		return plots;
 	}
-	
-		
 
+	public String getOpponentName() {
+		return opponent.getName();
+	}
 }
 
