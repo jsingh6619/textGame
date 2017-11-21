@@ -3,11 +3,11 @@ package caveExplorer;
 public class Inventory {
 	
 	private String map;
-	private int food;
+	private boolean hasFood;
+	private boolean gotClarinet;
 	private int money;
 	private int nets;
 	private int jellyfish;
-	private boolean gotClarinet;
 	private String[] tasks;
 	private boolean[] done;
 	private String[] ingredients;
@@ -17,9 +17,9 @@ public class Inventory {
 	public Inventory() {
 		money = nets = jellyfish = 0;
 		gotClarinet = false;
-		String[] temp = {"Feed Gary breakfast", "Catch jellyfish", "Feed Gary lunch", "Go to work", "Get cake from Sandy", "Feed Gary dinner", "Go to Squidward's recital"};
+		String[] temp = {"Feed Gary", "Catch jellyfish", "Go to work", "Get cake from Sandy", "Go to Squidward's recital"};
 		tasks = temp;
-		boolean[] temp2 = {false, false, false, false, false, false, false};
+		boolean[] temp2 = {false, false, false, false, false};
 		done = temp2;
 		String[] arr = {"eggs", "milk", "flour"};
 		ingredients = arr;
@@ -29,12 +29,12 @@ public class Inventory {
 		cake = false;
 	}
 	
-	public int getFood() {
-		return food;
+	public boolean getHasFood() {
+		return hasFood;
 	}
 
-	public void setFood(int food) {
-		this.food = food;
+	public void setHasFood(boolean hasFood) {
+		this.hasFood = hasFood;
 	}
 	
 	public boolean isCake() {
@@ -79,8 +79,6 @@ public class Inventory {
 			description += "\n" + "You have $" + money + ".";
 		if(nets > 0)
 			description += "\n" + "You have " + nets + " net(s).";
-		if(food > 0)
-			description += "\n" + "You have " + food + "can(s) of snail food.";
 		if(jellyfish > 0)
 			description += "\n" + "You have " + jellyfish + " jellyfish (you can sell it to Mr. Krabs for money).";
 		return description;
