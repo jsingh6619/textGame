@@ -16,7 +16,7 @@ public class JoannaNPC extends NPC {
 		return "S";
 	}
 	public String getDescription() {
-		return "Hi I'm Sandy! Press 'e' to interact with me. hehe";
+		return "Sandy is standing here. Press 'e' to interact.";
 	}
 
 	public boolean isCake() {
@@ -26,18 +26,15 @@ public class JoannaNPC extends NPC {
 	public void interact() {
 		if(!checkBookleanList())
 		{
-			CaveExplorer.print("You're missing either eggs,milk, or flour.");
+			CaveExplorer.print("Hi Spongebob! It seems like you're missing either eggs,milk, or flour. I can't give you the cake unless you have all 3 ingredients.");
 			
 		}
 		else {
 			CaveExplorer.inventory.setCake(true);
-			CaveExplorer.print("Here's the cake!");
+			CaveExplorer.print("Looks like you have all the ingredients so here's the cake!");
 			
 			
-		}
-		
-			
-			
+		}				
 		
 	}
 	

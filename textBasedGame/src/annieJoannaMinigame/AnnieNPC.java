@@ -17,7 +17,7 @@ public class AnnieNPC extends NPC {
 	}
 	
 	public String getDescription() {
-		return "There is a merchant here. Press 'e' to buy a net.";
+		return "There is a merchant here. Press 'e' to buy a net for $" + netCost + ".";
 	}
 	
 	public void interact() {
