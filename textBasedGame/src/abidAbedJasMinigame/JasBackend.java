@@ -13,6 +13,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	private int sScore;
 	private int cardRow;
 	private int cardCol;
+	private boolean sWinner;
 	public static AbidCard[][] board; 
 	private static AbidCard[] hand;
 
@@ -23,6 +24,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 
 	public JasBackend(JasSupportFront frontend) {
 		this.frontend = frontend;
+		sWinner = false;
 		setpScore(0);
 		setsScore(0);
 		cardRow = -1;
@@ -76,6 +78,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	
 	public String victorious() {
 		if(getSpongebobScore() > getPlanktonScore()) {
+			sWinner = true;
 			return "Spnogebob is the winner!";
 		}
 		else {
@@ -99,6 +102,11 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public void getValidUserInput() {
 		CaveExplorer.print("What card do you want to play?");
 		int num = Integer.parseInt(CaveExplorer.in.nextLine());
+		//CHEAT
+		if(num == 9999) {
+			setsScore(9999);
+			victorious();
+		}
 		if(hand[num]!=null) {
 			CaveExplorer.print("Choose a different card.");
 			getValidUserInput();
@@ -183,5 +191,9 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	
 	public AbidCard[][] getBoard() {
 		return board;
+	}
+	
+	public boolean getSWinner() {
+		return sWinner;
 	}
 }

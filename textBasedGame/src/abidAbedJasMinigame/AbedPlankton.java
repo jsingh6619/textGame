@@ -2,18 +2,18 @@ package abidAbedJasMinigame;
 
 import caveExplorer.CaveExplorer;
 import caveExplorer.NPC;
-import abidAbedJasMinigame.PlanktonFight;
+import abidAbedJasMinigame.AbedPlanktonFight;
 
-public class Plankton extends NPC
+public class AbedPlankton extends NPC
 {
 	private String activeDescription;
 	private String inactiveDescription;
 	private boolean active;
-	public Plankton()
+	public AbedPlankton()
 	{
 		active = true;
 		this.activeDescription = "HAHAHA THE FORMULA WILL BE MINE";
-		this.inactiveDescription = "Leave me alone, plan  xyz hasn't started yet.";
+		this.inactiveDescription = "Leave me alone, plan z hasn't started yet.";
 		
 	}
 	public String getSymbol() 
@@ -21,14 +21,14 @@ public class Plankton extends NPC
 		return "P";
 	}
 	public void interact()
-	{
+	{\
 		
-		PlanktonFight game = new PlanktonFight();
-		CaveExplorer.print("So you think you can stop me?");
+		AbedPlanktonFight game = new AbedPlanktonFight();
+		CaveExplorer.print("So you think you can ?");
 		String s = CaveExplorer.in.nextLine();
 		while(!s.equals("yes")) 
 		{
-			CaveExplorer.print("Cmon i want a challenge try AGAIN!!!!!");
+			CaveExplorer.print("Cmon you bafoon, 	!!!!!");
 		}
 		game.start();
 		active = false;

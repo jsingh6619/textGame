@@ -7,7 +7,7 @@ public class JasKrabsNPC extends NPC {
 	private int exchange;
 	
 	public JasKrabsNPC() {
-		exchange = 5;
+		exchange = 15;
 	}
 	
 	public String getDescription() {
@@ -26,7 +26,7 @@ public class JasKrabsNPC extends NPC {
 	}
 
 	private void sellJellyfish(int jellyfish) {
-		CaveExplorer.inventory.setMoney(jellyfish * exchange);
+		CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney() + jellyfish * exchange);
 		CaveExplorer.inventory.resetJellyfish();
 	}
 }
