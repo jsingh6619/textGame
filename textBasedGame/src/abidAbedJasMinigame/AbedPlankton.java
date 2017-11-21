@@ -21,7 +21,7 @@ public class AbedPlankton extends NPC
 		return "P";
 	}
 	public void interact()
-	{\
+	{
 		
 		AbedPlanktonFight game = new AbedPlanktonFight();
 		CaveExplorer.print("So you think you can ?");
