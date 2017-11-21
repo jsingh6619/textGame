@@ -26,14 +26,17 @@ public class JoannaNPC extends NPC {
 	public void interact() {
 		if(!checkBookleanList())
 		{
-			CaveExplorer.print("Hi Spongebob! It seems like you're missing either eggs,milk, or flour. I can't give you the cake unless you have all 3 ingredients.");
+			CaveExplorer.print("Hi SpongeBob! I can't make a cake unless you have all 3 ingredients. You're missing either eggs, milk, or flour.");
 			
 		}
 		else {
 			CaveExplorer.inventory.setCake(true);
 			CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getDone(), 3, true);
-			CaveExplorer.print("Looks like you have all the ingredients so here's the cake!");
-			
+			CaveExplorer.print("Here's your cake!");
+			for(int i = 0; i <= 2; i++) {
+				CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getHave(), i, false);
+				
+			}
 			
 		}				
 		

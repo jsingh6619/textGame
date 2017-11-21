@@ -8,6 +8,8 @@ public class JoannaStoreKeeper extends NPC {
 	private String[] items;
 	private boolean[] bought;
 	private int[] price;
+	private String[] keys;
+	
 	public JoannaStoreKeeper() {
 		String[] temp = {"eggs", "milk", "flour","Gary's food","clarient"};
 		items = temp;
@@ -15,15 +17,13 @@ public class JoannaStoreKeeper extends NPC {
 		bought = arr;
 		int[] money = {10,10,10,20,50};
 		price = money;
+		String[] charc = {"z","x","c","v","b"};
+		keys = charc;
 	}
 	
 	public void interact(int n) { 
 		if(n ==4) {
-			printS('z',0);
-			printS('x',1);
-			printS('c',2);
-			printS('v',3);
-			printS('b',4);
+			printItems();
 		}
 		if(n == 5)//z
 		{
@@ -49,8 +49,17 @@ public class JoannaStoreKeeper extends NPC {
 		
 	}
 
-	public void printS(char l, int idx) {
+	public void printS(String l, int idx) {
 		CaveExplorer.print("Press '" + l+"' to buy " + items[idx] + " for $" +price[idx]);
+	}
+	
+	public void printItems() {
+		for(int i = 0; i < items.length; i++) {
+			if(!bought[i])
+			{
+				printS(keys[i], i);
+			}
+		}
 	}
 	
 	public String getSymbol() {
@@ -64,7 +73,7 @@ public class JoannaStoreKeeper extends NPC {
 	public void boughtItem(int idx, int amt) {
 		if(!bought[idx]) {
 			if(CaveExplorer.inventory.getMoney() >= amt) {
-				CaveExplorer.print("You have successfully bought " + items[idx] + ". This item is no longer in stock.");
+				CaveExplorer.print("You have successfully bought " + items[idx] + ".");
 				CaveExplorer.inventory.setBooleanAtIndex(bought, idx, true);
 				CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney()-amt);
 				updateInventory(idx);

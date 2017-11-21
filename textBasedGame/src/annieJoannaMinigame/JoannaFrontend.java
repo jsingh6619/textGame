@@ -72,7 +72,7 @@ public class JoannaFrontend implements AnnieSupport{
 			if(opponent.getJellyfishCount() != jellyfishCount) {
 				s+= determineWinner(opponent.getName(), opponent.getJellyfishCount());
 			} else {
-				s+= "You tied with" +opponent.getName(); 
+				s+= "You tied with " +opponent.getName(); 
 			}
 		}
 		CaveExplorer.print(s);
