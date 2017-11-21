@@ -10,46 +10,25 @@ public class JoannaStoreRoom extends NPCRoom {
 
 	public JoannaStoreRoom(String description) {
 		super(description);
-		String[] temp = {"eggs", "milk", "flour","Gary's food","clarient"};
-		items = temp;
-		boolean[] arr = {false,false,false,false,false};
-		bought = arr;
+		
 
 	}
 	
 	public void performAction(int direction) {
 		
-		if(direction == 5)//z
+		if(direction > 3)//z
 		{
-			boughtItem(0,10);
+			interact(direction);
 		}
-		if(direction == 6)//x
-		{
-			boughtItem(1,10);
-		}
-		if(direction == 7)//c
-		{
-			boughtItem(2,10);
-		}
-		if(direction == 8)//v
-		{
-			boughtItem(3,20);
-		}
-		if(direction == 9)//b
-		{
-			boughtItem(4,50);
-		}
+		else {
+			super.performAction(direction);
 	}
 	
 	
 
 	
 	
-	public void boughtItem(int idx, int amt) {
-		CaveExplorer.print("You have successfully bought " + items[idx] + ". This item is no longer in stock.");
-		CaveExplorer.inventory.setBooleanAtIndex(bought, idx, true);
-		CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney()-amt);
-		
+	
 	}
 	
 	public void printValidMoves() {
