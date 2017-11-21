@@ -18,14 +18,7 @@ public class JoannaStoreRoom extends NPCRoom {
 	}
 	
 	public void performAction(int direction) {
-		if(direction == 4)
-		{
-			printS('z',0,10);
-			printS('x',1,10);
-			printS('c',2,10);
-			printS('v',3,20);
-			printS('b',4,50);
-		}
+		
 		if(direction == 5)//z
 		{
 			boughtItem(0,10);
@@ -50,9 +43,7 @@ public class JoannaStoreRoom extends NPCRoom {
 	
 	
 
-	public void printS(char l, int idx, int amt) {
-		CaveExplorer.print("Press '" + l+"' to buy " + items[idx] + " for $" +amt);
-	}
+	
 	
 	public void boughtItem(int idx, int amt) {
 		CaveExplorer.print("You have successfully bought " + items[idx] + ". This item is no longer in stock.");

@@ -11,7 +11,11 @@ public class JoannaStoreKeeper extends NPC {
 	}
 	
 	public void interact() {
-		CaveExplorer.print("Let's interact! Type 'bye' to stop.");
+		printS('z',0,10);
+		printS('x',1,10);
+		printS('c',2,10);
+		printS('v',3,20);
+		printS('b',4,50);
 		String s = CaveExplorer.in.nextLine();
 		while(!s.equals("bye")) {
 			CaveExplorer.print("Yeah... I don't do a whole lot.");
@@ -21,6 +25,10 @@ public class JoannaStoreKeeper extends NPC {
 		active = false;
 	}
 
+	public void printS(char l, int idx, int amt) {
+		CaveExplorer.print("Press '" + l+"' to buy " + items[idx] + " for $" +amt);
+	}
+	
 	public String getSymbol() {
 		return "W";
 	}
