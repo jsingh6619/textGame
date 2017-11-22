@@ -16,7 +16,7 @@ public class AbedRoom extends NPCRoom
 	public void printValidMoves() 
 	{
 		System.out.println("You can only enter 'w', 'a', 's', or 'd' to move "
-		+ "or you can press 'z' to start challenge..");
+		+ "or you can press 'e' to start challenge..");
 	}
 	public void performAction(int direction)
 	{
