@@ -1,5 +1,7 @@
 package abidAbedJasMinigame;
 
+import java.util.Scanner;
+
 import caveExplorer.*;
 
 public class AbidFrontend implements JasSupportFront , AbedSupportFront {
@@ -16,6 +18,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	
 	public AbidFrontend() {
 		this.backend = new JasBackend(this);
+		CaveExplorer.in = new Scanner(System.in);
 	}
 	
 	public void play(){
