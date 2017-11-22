@@ -62,7 +62,7 @@ public class JoannaFrontend implements AnnieSupport{
 	}
 
 	private void printGameOverMessage(boolean victorious) {
-		String s = "\n----- GAME OVER -----\n\n";
+		String s = "\n------- GAME OVER -------\n\n";
 		if(victorious) {
 			won = true;
 			s+= determineWinner("You", getJellyfishCount());
