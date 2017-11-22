@@ -22,8 +22,17 @@ public class JoannaStoreKeeper extends NPC {
 	}
 	
 	public void interact(int n) { 
-		if(n ==4) {
-			printItems();
+		int count = 0; 
+		for(boolean j: bought) {
+			if (j)
+			count++;
+		}
+		if(n ==4) {	
+			if(count < 5) {
+				printItems();
+			} else {
+				CaveExplorer.print("You've already bought out the entire store.");	
+			}
 		}
 		for( int i =0; i <= 4; i++) {
 			if( n == i + 5)
@@ -65,17 +74,9 @@ public class JoannaStoreKeeper extends NPC {
 				CaveExplorer.print("You don't have enough to buy (a) " +items[idx]+".");
 			}
 		} else {	
-			int count = 0; 
-			for(boolean j: bought) {
-				if (j)
-				count++;
-			}
-			if(count == 5) {
-					CaveExplorer.print("You've already bought out the entire store.");
-			} else {
 				CaveExplorer.print("That key does nothing.");
 			}
-		}
+		
 		
 	}
 
