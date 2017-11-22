@@ -64,8 +64,17 @@ public class JoannaStoreKeeper extends NPC {
 			} else {
 				CaveExplorer.print("You don't have enough to buy (a) " +items[idx]+".");
 			}
-		} else {
-			CaveExplorer.print("You've already bought out the entire store.");
+		} else {	
+			int count = 0; 
+			for(boolean j: bought) {
+				if (j)
+				count++;
+			}
+			if(count == 5) {
+					CaveExplorer.print("You've already bought out the entire store.");
+			} else {
+				CaveExplorer.print("That key does nothing.");
+			}
 		}
 		
 	}
