@@ -4,11 +4,9 @@ import caveExplorer.*;
 
 public class AnnieNPC extends NPC {
 	
-	private int netsLeft;
 	private int netCost;
 
 	public AnnieNPC() {
-		netsLeft = 6;
 		netCost = 15;
 	}
 	
@@ -21,15 +19,11 @@ public class AnnieNPC extends NPC {
 	}
 	
 	public void interact() {
-		if(netsLeft > 0)
-			if(CaveExplorer.inventory.getMoney() >= netCost) {
-				netsLeft--;
-				CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney() - netCost);
-				CaveExplorer.inventory.setNets(CaveExplorer.inventory.getNets() + 1);
-				CaveExplorer.print("You bought a net!");
-			} else
-				CaveExplorer.print("You don't have enough money for a net.");
-		else
-			CaveExplorer.print("The merchant does not have any more nets.");
+		if(CaveExplorer.inventory.getMoney() >= netCost) {
+			CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney() - netCost);
+			CaveExplorer.inventory.setNets(CaveExplorer.inventory.getNets() + 1);
+			CaveExplorer.print("You bought a net!");
+		} else
+			CaveExplorer.print("You don't have enough money for a net.");
 	}
 }

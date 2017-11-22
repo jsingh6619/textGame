@@ -24,21 +24,21 @@ public class JoannaNPC extends NPC {
 	}
 
 	public void interact() {
-		if(!checkBookleanList()) {
-			CaveExplorer.print("Hi SpongeBob! I can't make a cake unless you have all the ingredients. You're missing either eggs, milk, or flour.");	
-			CaveExplorer.inventory.setTaskAtIndex(3, "Get Sandy the ingredients to make a cake");
-		} else if(cake){
-			cake = false;
-			CaveExplorer.inventory.setCake(true);
-			CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getDone(), 3, true);
-			CaveExplorer.print("Here's your cake!");
-			for(int i = 0; i <= 2; i++) {
-				CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getHave(), i, false);
-				
-			}
-			
-		} else {
-			CaveExplorer.print("Leave me alone. I already made you a cake.");	
+		if(cake) {
+			if(!checkBookleanList()) {
+				CaveExplorer.print("Sandy: Hi SpongeBob! I can't make a cake unless you have all the ingredients. You're missing either eggs, milk, or flour.");	
+				CaveExplorer.inventory.setTaskAtIndex(3, "Get Sandy the ingredients to make a cake");
+			} else {
+				cake = false;
+				CaveExplorer.inventory.setCake(true);
+				CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getDone(), 3, true);
+				CaveExplorer.print("Sandy: Here's your cake!");
+				for(int i = 0; i <= 2; i++) {
+					CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getHave(), i, false);
+				}
+			} 
+		}else {
+			CaveExplorer.print("Sandy: Leave me alone. I already made you a cake.");	
 		}
 		
 	}
