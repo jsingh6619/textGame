@@ -155,9 +155,7 @@ public class JoannaFrontend implements AnnieSupport{
 		return won;
 	}
 
-	public AnnieJoannaPlot[][] getPlots() {
-		return plots;
-	}
+	
 
 	public String getOpponentName() {
 		return opponent.getName();
