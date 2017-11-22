@@ -85,6 +85,11 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 			CaveExplorer.print("Plankton is the winner!");
 		}
 	}
+	
+	public void cheat() {
+		hand = null;
+		victorious();
+	}
 
 	public boolean stillPlaying() {
 		if(hand == null) {
@@ -105,7 +110,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		//CHEAT
 		if(num == 9999) {
 			setsScore(9999);
-			victorious();
+			cheat();
 		}
 		else {
 			if(hand[num]!=null) {
