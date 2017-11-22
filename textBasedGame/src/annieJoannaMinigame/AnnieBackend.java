@@ -10,7 +10,6 @@ public class AnnieBackend implements JoannaSupport {
 	
 	public AnnieBackend(AnnieSupport frontend) {
 		this.frontend = frontend;
-		plots = frontend.getPlots();
 		plots = new AnnieJoannaPlot[5][11];
 		setUpPlots();
 		setUpConnections();
