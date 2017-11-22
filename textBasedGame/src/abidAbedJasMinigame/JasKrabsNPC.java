@@ -29,7 +29,7 @@ public class JasKrabsNPC extends NPC {
 			}
 		}
 		else {
-			CaveExplorer.print("Get back to flipping patties!");
+			CaveExplorer.print("Mr. Krabs: Get back to flipping patties!");
 		}
 	}
 

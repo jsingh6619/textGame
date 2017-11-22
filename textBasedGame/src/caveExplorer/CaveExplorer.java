@@ -30,7 +30,7 @@ public class CaveExplorer {
 			print(currentRoom.getDirections());
 			print("What would you like to do?");
 			currentRoom.interpretInput(in.nextLine());
-			if(inventory.numTasksLeft() == 2)
+			if(inventory.numTasksLeft() == 1)
 				CaveRoom.openCloseCH(true);
 			if(inventory.numTasksLeft() == 0)
 				playing = false;
