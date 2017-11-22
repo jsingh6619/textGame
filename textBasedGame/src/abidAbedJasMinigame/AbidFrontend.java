@@ -16,6 +16,10 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 		
 	}
 	
+	public AbidSupportBack getBackend()
+	{
+		return backend;
+	}
 	public AbidFrontend() {
 		this.backend = new JasBackend(this);
 		CaveExplorer.in = new Scanner(System.in);
