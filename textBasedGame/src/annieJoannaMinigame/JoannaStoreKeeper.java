@@ -42,8 +42,8 @@ public class JoannaStoreKeeper extends NPC {
 			if(!bought[i])
 			{
 				printS(keys[i], i);
-			}
-		}
+			} 
+		} 
 	}
 	
 	public String getSymbol() {
@@ -65,7 +65,7 @@ public class JoannaStoreKeeper extends NPC {
 				CaveExplorer.print("You don't have enough to buy (a) " +items[idx]+".");
 			}
 		} else {
-			CaveExplorer.print("That key does nothing.");
+			CaveExplorer.print("You've already bought out the entire store.");
 		}
 		
 	}
