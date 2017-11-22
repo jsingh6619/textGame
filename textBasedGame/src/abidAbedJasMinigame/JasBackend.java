@@ -101,9 +101,9 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public void cardChosen(int index) {
 		possiblePlace();
 		setCard(getCardRow(), getCardCol(), index, hand);
-		fightCards(getCardRow(), getCardCol(), index, hand);
+		//fightCards(getCardRow(), getCardCol(), index, hand);
 		removeCard(index);
-		updateScore();
+		//updateScore();
 	}
 	
 	//have booleans to see if card is at the 
@@ -123,7 +123,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 
 	public void getValidUserInput() {
 		CaveExplorer.print("What card do you want to play?");
-		int num = Integer.parseInt(CaveExplorer.in.nextLine());
+		int num = Integer.parseInt(CaveExplorer.in.nextLine()) - 1;
 		//CHEAT
 		if(num == 9999) {
 			setsScore(9999);
