@@ -28,8 +28,8 @@ public class JoannaFrontend implements AnnieSupport{
 	} 
 
 	public static void main(String[] args) {
-			JoannaFrontend demo = new JoannaFrontend();
-			demo.play();
+		JoannaFrontend demo = new JoannaFrontend();
+		demo.play();
 	}
 
 	public void play() {
@@ -46,7 +46,7 @@ public class JoannaFrontend implements AnnieSupport{
 	        backend.computerMove();
 	        updateScore();
 		}
-		 displayBoard();
+		displayBoard();
         displayScore();
         printGameOverMessage(backend.victorious());
 	}
