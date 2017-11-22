@@ -101,10 +101,26 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public void cardChosen(int index) {
 		possiblePlace();
 		setCard(getCardRow(), getCardCol(), index, hand);
+		fightCards(getCardRow(), getCardCol(), index, hand);
 		removeCard(index);
-		
+		updateScore();
 	}
 	
+	//have booleans to see if card is at the 
+	public void fightCards(int row, int col, int card, AbidCard[] hand) {
+		if(row == 0) {
+			attackLeft();
+			attackRight();
+			attackBottom();
+		}
+		else {
+			attackTop();
+			attackLeft();
+			attackRight()
+			attackBottom();
+		}
+	}
+
 	public void getValidUserInput() {
 		CaveExplorer.print("What card do you want to play?");
 		int num = Integer.parseInt(CaveExplorer.in.nextLine());
