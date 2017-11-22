@@ -76,13 +76,13 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		hand[index] = null;
 	}
 	
-	public String victorious() {
+	public void victorious() {
 		if(getSpongebobScore() > getPlanktonScore()) {
 			sWinner = true;
-			return "Spnogebob is the winner!";
+			CaveExplorer.print("Spongebob is the winner!");
 		}
 		else {
-			return "Plankton is the winner!";
+			CaveExplorer.print("Plankton is the winner!");
 		}
 	}
 
@@ -107,12 +107,14 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 			setsScore(9999);
 			victorious();
 		}
-		if(hand[num]!=null) {
-			CaveExplorer.print("Choose a different card.");
-			getValidUserInput();
-		}
 		else {
-			cardChosen(num);
+			if(hand[num]!=null) {
+				CaveExplorer.print("Choose a different card.");
+				getValidUserInput();
+			}
+			else {
+				cardChosen(num);
+			}
 		}
 	}
 
