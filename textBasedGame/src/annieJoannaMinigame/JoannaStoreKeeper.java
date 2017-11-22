@@ -65,7 +65,7 @@ public class JoannaStoreKeeper extends NPC {
 				CaveExplorer.print("You don't have enough to buy (a) " +items[idx]+".");
 			}
 		} else {
-			CaveExplorer.print("You already bought this item. It is no longer in stock.");
+			CaveExplorer.print("That key does nothing.");
 		}
 		
 	}
