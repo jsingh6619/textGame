@@ -199,14 +199,14 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		return cardRow;
 	}
 
-	public void setCardCol() {
-		CaveExplorer.print("Enter the y - coordinate of the board you want to place your card in");
+	public void setCardRow() {
+		CaveExplorer.print("Enter the row of the board you want to place your card in");
 		int num = Integer.parseInt(CaveExplorer.in.nextLine());
 		if(num >= 0 && num < 4) {
-			cardCol = num;
+			cardRow = num;
 		}
 		else {
-			setCardCol();
+			setCardRow();
 		}
 	}
 	
@@ -214,14 +214,14 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		return cardCol;
 	}
 
-	public void setCardRow() {
-		CaveExplorer.print("Enter the x - coordinate of the board you want to place your card in");
+	public void setCardCol() {
+		CaveExplorer.print("Enter the column of the board you want to place your card in");
 		int num = Integer.parseInt(CaveExplorer.in.nextLine());
 		if(num >= 0 && num < 4) {
-			cardRow = num;
+			cardCol = num;
 		}
 		else {
-			setCardRow();
+			setCardCol();
 		}
 	}
 	
