@@ -33,7 +33,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 				displayHand(backend.getHand());
 		        displayScore();
 		        backend.getValidUserInput();
-		    //    ai.computerMove();
+		        ai.computerMove();
 		    }
 		   //     printGameOverMessage(backend.victorious());
 		 	}

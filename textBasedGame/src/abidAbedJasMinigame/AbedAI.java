@@ -7,9 +7,10 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	private AbidCard[] hand;
 
 	
-	public AbedAI(AbedSupportFront front)
+	public AbedAI(AbedSupportFront front,AbedSupportBack back)
 	{
 		this.frontend = front;
+		this.backend = back;
 	}
 	public int getLastUserRow() 
 	{
