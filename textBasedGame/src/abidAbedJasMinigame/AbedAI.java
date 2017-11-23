@@ -50,27 +50,67 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		AbidCard opponentCard = backend.getLastCard();
 		if(opponentCard == null)
 		{
-			backend.setCard(0,3,strongestCardBottomIndex(),hand);
-			hand[strongestCardBottomIndex()] = null;
+			backend.setCard(0,3,strongestCardIndex("bottom"),hand);
+			hand[strongestCardIndex("bottom")] = null;
 		}
 		
 	}
-	private int strongestCardBottomIndex() 
+	private int strongestCardIndex(String p) 
 	{
-		for(int i = 0 ; i < hand.length;i++)
+		if(p.equals("bottom"))
 		{
-			int index = 0;
-			if(hand[i].getBottom() < hand[i + 1].getBottom())
+			for(int i = 0 ; i < hand.length;i++)
 			{
-				index = i;
+				int index = 0;
+				if(hand[i].getBottom() < hand[i + 1].getBottom())
+				{
+					index = i;
+				}
+				return index;
 			}
-			return index;
+		}
+		if(p.equals("top"))
+		{
+			for(int i = 0 ; i < hand.length;i++)
+			{
+				int index = 0;
+				if(hand[i].getTop() < hand[i + 1].getTop())
+				{
+					index = i;
+				}
+				return index;
+			}
+		}
+		if(p.equals("left"))
+		{
+			for(int i = 0 ; i < hand.length;i++)
+			{
+				int index = 0;
+				if(hand[i].getLeft() < hand[i + 1].getLeft())
+				{
+					index = i;
+				}
+				return index;
+			}
+		}
+		if(p.equals("right"))
+		{
+			for(int i = 0 ; i < hand.length;i++)
+			{
+				int index = 0;
+				if(hand[i].getRight() < hand[i + 1].getRight())
+				{
+					index = i;
+				}
+				return index;
+			}
 		}
 		return 0; 
 	}
-
+	
 	public void computerMove()
 	{
+		firstMove();
 		
 	}
 
