@@ -5,7 +5,8 @@ public interface AbedSupportBack
 
 	
 
-
+	
+	AbidCard[][] getBoard();
 	int getSpongebobScore();
 	int getPlanktonScore();
 	int getCardRow();//returns where the card was on board Xcoordinate
