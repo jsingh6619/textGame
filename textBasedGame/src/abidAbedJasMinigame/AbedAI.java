@@ -109,15 +109,15 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		{
 			setMove(0,3,"bottom");
 		}
-		if(backend.getBoard()[0][0] == null)
+		else if(backend.getBoard()[0][0] == null)
 		{
 			setMove(0,0,"bottom");
 		}
-		if(backend.getBoard()[3][3] == null)
+		else if(backend.getBoard()[3][3] == null)
 		{
 			setMove(3,3,"top");
 		}
-		if(backend.getBoard()[3][0] == null)
+		else if(backend.getBoard()[3][0] == null)
 		{
 			setMove(3,0,"top");
 		}
