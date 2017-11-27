@@ -49,17 +49,11 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		computerMove();
 	}
 	
-	public void firstMove() 
+	public void setMove(int row, int col,String p) 
 	{
-		
-		int row = backend.getCardRow();
-		int col = backend.getCardCol();
-		AbidCard opponentCard = backend.getLastCard();
-		if(opponentCard == null)
-		{
-			backend.setCard(0,3,strongestCardIndex("bottom"),hand);
-			hand[strongestCardIndex("bottom")] = null;
-		}
+	
+		backend.setCard(row,col,strongestCardIndex(p),hand);
+		hand[strongestCardIndex("bottom")] = null;
 		
 	}
 	private int strongestCardIndex(String p) 
@@ -117,7 +111,23 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	
 	public void computerMove()
 	{
-		firstMove();
+		if(backend.getBoard()[0][3] == null)
+		{
+			setMove(0,3,"bottom");
+		}
+		if(backend.getBoard()[0][0] == null)
+		{
+			setMove(0,0,"bottom");
+		}
+		if(backend.getBoard()[3][3] == null)
+		{
+			setMove(3,3,"top");
+		}
+		if(backend.getBoard()[3][0] == null)
+		{
+			setMove(3,0,"top");
+		}
+		
 		
 	}
 
