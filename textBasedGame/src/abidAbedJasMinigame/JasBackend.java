@@ -74,10 +74,12 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 
 	public boolean stillPlaying() {
-		if(hand == null) {
-			return false;
+		for(int i=0; i<hand.length;i++) {
+			if(hand[i] != null) {
+				return true;
+			}
 		}
-		return true;
+			return false;
 	}
 
 	public void cardChosen(int index) {
