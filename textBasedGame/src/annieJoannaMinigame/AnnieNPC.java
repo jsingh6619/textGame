@@ -7,7 +7,7 @@ public class AnnieNPC extends NPC {
 	private int netCost;
 
 	public AnnieNPC() {
-		netCost = 20;
+		netCost = 25;
 	}
 	
 	public String getSymbol() {

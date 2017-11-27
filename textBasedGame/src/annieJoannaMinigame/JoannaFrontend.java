@@ -28,8 +28,8 @@ public class JoannaFrontend implements AnnieSupport{
 	} 
 
 	public static void main(String[] args) {
-			JoannaFrontend demo = new JoannaFrontend();
-			demo.play();
+		JoannaFrontend demo = new JoannaFrontend();
+		demo.play();
 	}
 
 	public void play() {
@@ -46,7 +46,7 @@ public class JoannaFrontend implements AnnieSupport{
 	        backend.computerMove();
 	        updateScore();
 		}
-		 displayBoard();
+		displayBoard();
         displayScore();
         printGameOverMessage(backend.victorious());
 	}
@@ -62,7 +62,7 @@ public class JoannaFrontend implements AnnieSupport{
 	}
 
 	private void printGameOverMessage(boolean victorious) {
-		String s = "\n----- GAME OVER -----\n\n";
+		String s = "\n------- GAME OVER -------\n\n";
 		if(victorious) {
 			won = true;
 			s+= determineWinner("You", getJellyfishCount());
@@ -155,9 +155,7 @@ public class JoannaFrontend implements AnnieSupport{
 		return won;
 	}
 
-	public AnnieJoannaPlot[][] getPlots() {
-		return plots;
-	}
+	
 
 	public String getOpponentName() {
 		return opponent.getName();
