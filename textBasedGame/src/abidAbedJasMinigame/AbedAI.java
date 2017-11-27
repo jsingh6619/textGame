@@ -29,7 +29,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	
 	private int generateNum(int multiplier)
 	{
-		return (int)Math.random() * multiplier + 1;
+		return (int)(Math.random() * multiplier);
 	}
 
 
@@ -57,7 +57,11 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 			for(int i = 0 ; i < hand.length;i++)
 			{
 				int index = 0;
-				if(hand[i].getBottom() < hand[i + 1].getBottom())
+				if(hand[i] == null)
+				{
+					i++;
+				}
+				else if(hand[i].getBottom() < hand[i + 1].getBottom())
 				{
 					index = i;
 				}
@@ -69,11 +73,18 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 			for(int i = 0 ; i < hand.length;i++)
 			{
 				int index = 0;
-				if(hand[i].getTop() < hand[i + 1].getTop())
-				{
-					index = i;
+				if(hand[i] != null && hand[i+1] !=null)
+				{	
+					if(hand[i].getTop() < hand[i + 1].getTop())
+					{
+						index = i;
+					}
+					return index;
 				}
-				return index;
+				else 
+				{
+					i++;
+				}
 			}
 		}
 		if(p.equals("left"))
@@ -81,7 +92,11 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 			for(int i = 0 ; i < hand.length;i++)
 			{
 				int index = 0;
-				if(hand[i].getLeft() < hand[i + 1].getLeft())
+				if(hand[i] == null)
+				{
+					i++;
+				}
+				else if(hand[i].getLeft() < hand[i + 1].getLeft())
 				{
 					index = i;
 				}
@@ -93,7 +108,11 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 			for(int i = 0 ; i < hand.length;i++)
 			{
 				int index = 0;
-				if(hand[i].getRight() < hand[i + 1].getRight())
+				if(hand[i] == null)
+				{
+					i++;
+				}
+				else if(hand[i].getRight() < hand[i + 1].getRight())
 				{
 					index = i;
 				}
@@ -104,6 +123,45 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	}
 	
 	public void computerMove()
+	{
+		
+		int row = generateNum(4);
+		int col = generateNum(4);
+		int index = generateNum(5);
+		if(backend.getBoard()[row][col] != null)
+		{
+			 row = generateNum(4);
+			 col = generateNum(4);
+		}
+		if(hand[index] == null)
+		{
+			index = generateNum(5);
+		}
+		backend.setCard(row,col,index,hand);
+		hand[index] = null;
+		/*if(hand.length == 5)
+		{
+			firstMove();
+		}
+		if(backend.getPlanktonScore() < backend.getSpongebobScore())
+		{
+			aggressivePlay();
+		}
+		else if(backend.getPlanktonScore() > backend.getSpongebobScore())
+		{
+			conservativePlay();
+		}
+		*/
+	}
+	private void conservativePlay() 
+	{
+		
+	}
+	private void aggressivePlay() 
+	{
+		     
+	}
+	public void firstMove()
 	{
 		if(backend.getBoard()[0][3] == null)
 		{
@@ -122,10 +180,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 			setMove(3,0,"top");
 		}
 		
-		
 	}
-	
-
 	
 	
 
