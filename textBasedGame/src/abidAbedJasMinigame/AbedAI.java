@@ -29,7 +29,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	
 	private int generateNum(int multiplier)
 	{
-		return (int)Math.random() * multiplier ;
+		return (int)(Math.random() * multiplier);
 	}
 
 
@@ -125,17 +125,17 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	public void computerMove()
 	{
 		
-		int row = generateNum(3);
-		int col = generateNum(3);
-		int index = generateNum(5) + 1;
-		while(backend.getBoard()[row][col] != null)
+		int row = generateNum(4);
+		int col = generateNum(4);
+		int index = generateNum(5);
+		if(backend.getBoard()[row][col] != null)
 		{
-			 row = generateNum(3);
-			 col = generateNum(3);
+			 row = generateNum(4);
+			 col = generateNum(4);
 		}
-		while(hand[index] == null)
+		if(hand[index] == null)
 		{
-			index = generateNum(5) + 1;
+			index = generateNum(5);
 		}
 		backend.setCard(row,col,index,hand);
 		hand[index] = null;
