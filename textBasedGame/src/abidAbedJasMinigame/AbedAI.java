@@ -43,12 +43,6 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		
 	}
 	
-	public void play()
-	{
-		dealCards();
-		computerMove();
-	}
-	
 	public void setMove(int row, int col,String p) 
 	{
 	
@@ -130,7 +124,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		
 		
 	}
-
+	
 
 	
 	
