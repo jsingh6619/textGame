@@ -14,7 +14,6 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public static AbidCard[][] board; 
 	private static AbidCard[] hand;
 
-
 	public AbidCard[] getHand() {
 		return hand;
 	}
@@ -34,7 +33,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 	
 	public String toString() {
-			return hand[1].getOwner(); 
+		return hand[1].getOwner(); 
 	}
 	
 	public void setCard(int row, int col, int index, AbidCard[] hand) {
@@ -224,19 +223,17 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 			setsScore(9999);
 			cheat();
 		}
-		else if (num < 0 || num > 4){
-			CaveExplorer.print("Choose a different card.");
-			getValidUserInput();
+		else if (num < 0 || num > 4 || hand[num] == null){
+			invalidCard();
 		}
 		else {
-			if(hand[num] == null) {
-				CaveExplorer.print("Choose a different card.");
-				getValidUserInput();
-			}
-			else {
-				cardChosen(num);
-			}
+			cardChosen(num);
 		}
+	}
+	
+	public void invalidCard() {
+		CaveExplorer.print("Choose a different card.");
+		getValidUserInput();
 	}
 
 	public void possiblePlace() {
