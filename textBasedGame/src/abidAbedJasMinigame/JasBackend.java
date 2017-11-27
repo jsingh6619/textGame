@@ -126,7 +126,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		CaveExplorer.print("What card do you want to play?");
 		int num = Integer.parseInt(CaveExplorer.in.nextLine()) - 1;
 		//CHEAT
-		if(num == 9999) {
+		if(num == 9998) {
 			setsScore(9999);
 			cheat();
 		}
