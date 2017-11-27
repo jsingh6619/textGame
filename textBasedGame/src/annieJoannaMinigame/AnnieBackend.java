@@ -93,7 +93,7 @@ public class AnnieBackend implements JoannaSupport {
 	}
 
 	private boolean isValid(String input) {
-		return "wasd".indexOf(input) > -1 && input.length() == 1;
+		return "wasd".indexOf(input) > -1 && input.length() == 1 || input.equals("cheat");
 	}
 
 	public void computerMove() {

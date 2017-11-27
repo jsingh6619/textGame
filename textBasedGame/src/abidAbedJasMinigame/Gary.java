@@ -10,7 +10,7 @@ public class Gary extends NPC{
 		this.isHungry = true;
 	}
 	public String getDescription() {
-		return "Hey look it's your beloved pet Gary :). Press 'e' to interact.";
+		return "Hey look, it's your beloved pet Gary. Press 'e' to interact.";
 	}
 	public void setHungry(boolean isHungry) {
 		this.isHungry = isHungry;

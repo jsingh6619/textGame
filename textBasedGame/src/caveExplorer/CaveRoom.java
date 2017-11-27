@@ -255,7 +255,9 @@ public class CaveRoom {
 			CaveExplorer.currentRoom = borderingRooms[direction];
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
-			if(CaveExplorer.currentRoom instanceof AnnieRoom)
+			if(CaveExplorer.currentRoom instanceof AnnieRoom )
+				CaveExplorer.currentRoom.performAction(-1);
+			if(CaveExplorer.currentRoom instanceof AbedRoom)
 				CaveExplorer.currentRoom.performAction(-1);
 		} else
 			System.out.println("You can't do that!");

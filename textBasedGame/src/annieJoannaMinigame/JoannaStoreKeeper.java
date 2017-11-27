@@ -31,7 +31,7 @@ public class JoannaStoreKeeper extends NPC {
 			if(count < 5) {
 				printItems();
 			} else {
-				CaveExplorer.print("StoreKeeper: You've already bought out the entire store. Get out of here!");	
+				CaveExplorer.print("Eugene: You've already bought out the entire store. Get out of here!");	
 			}
 		}
 		for( int i =0; i <= 4; i++) {
@@ -71,10 +71,10 @@ public class JoannaStoreKeeper extends NPC {
 				CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney()-price[idx]);
 				updateInventory(idx);
 			} else {
-				CaveExplorer.print("StoreKeeper: You don't have enough to buy " +items[idx]+". Come back when you've got more cash.");
+				CaveExplorer.print("Eugene: You don't have enough to buy " +items[idx]+". Come back when you've got more cash.");
 			}
 		} else {	
-				CaveExplorer.print("That key does nothing.");
+				CaveExplorer.print("Eugene: We don't have any more.");
 			}
 		
 		
