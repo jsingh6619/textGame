@@ -38,7 +38,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 		        CaveExplorer.print("Plankton's Turn");
 		        ai.computerMove();
 		    }
-		   //     printGameOverMessage(backend.victorious());
+				backend.victorious();
 		 	}
 
 	
