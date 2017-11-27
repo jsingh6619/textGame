@@ -22,14 +22,19 @@ public class JasKrabsNPC extends NPC {
 		CaveExplorer.print("Mr. Krabs: Hey SpongeBob, I see you have jellyfish. How about you sell it to me and I give you money? \nRespond with 'ok' to sell your jellyfish for $" + exchange + " each.");
 		if(CaveExplorer.in.nextLine().equals("ok")) {
 			sellJellyfish(CaveExplorer.inventory.getJellyfish());
-			CaveExplorer.print("Mr. Krabs: It's a pleasure doing business, SpongeBob.");
+			CaveExplorer.print("Mr. Krabs: Now get back to flipping patties, SpongeBob.");
 		} else {
-			CaveExplorer.print("Okay, I guess not.");
+			CaveExplorer.print("Mr. Krabs: Guess I have to catch the jellyfish myself.");
 		}
 	}
 
-	private void sellJellyfish(int jellyfish) {
+	public void sellJellyfish(int jellyfish) {
 		CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney() + jellyfish * exchange);
-		CaveExplorer.inventory.resetJellyfish();
+		resetJellyfish();
+	}
+	
+	public void resetJellyfish() {
+		int jellyfish = 0;
+		CaveExplorer.inventory.setJellyfish(jellyfish);
 	}
 }
