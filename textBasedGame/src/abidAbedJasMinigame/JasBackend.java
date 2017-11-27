@@ -24,7 +24,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 
 	public JasBackend(JasSupportFront frontend,JasSupportAI ai) {
 		this.frontend = frontend;
-		this.ai = ai;
+		this.ai = new AbedAI((AbedSupportFront) frontend, this); 
 		sWinner = false;
 		setpScore(0);
 		setsScore(0);
