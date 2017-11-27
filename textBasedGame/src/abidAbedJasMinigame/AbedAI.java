@@ -11,6 +11,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	{
 		this.frontend = front;
 		this.backend = back;
+		dealCards();
 	}
 	public int getLastUserRow() 
 	{
