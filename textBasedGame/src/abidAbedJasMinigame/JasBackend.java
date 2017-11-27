@@ -101,136 +101,116 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		setCard(getCardRow(), getCardCol(), index, hand);
 		fightCards(getCardRow(), getCardCol(), index, hand);
 		removeCard(index);
-		//updateScore();
+		updateScore();
 	}
 	
-	public void fightCards(int row, int col, int card, AbidCard[] hand) {
-		if(row == 0) {
-			if(col == 0) {
-				attackRight(row, col, card, hand);
-				attackBottom(row, col, card, hand);
-			}
-			else if(col == 3) {
-				attackLeft(row, col, card, hand);
-				attackBottom(row, col, card, hand);
-			}
-			else {
-				attackLeft(row, col, card, hand);
-				attackRight(row, col, card, hand);
-				attackBottom(row, col, card, hand);
-			}
-		}
-		else if(row == 3) {
-			if(col == 0) {
-				attackTop(row, col, card, hand);
-				attackRight(row, col, card, hand);
-			}
-			else if(col == 3) {
-				attackTop(row, col, card, hand);
-				attackLeft(row, col, card, hand);
-			}
-			else {
-				attackTop(row, col, card, hand);
-				attackLeft(row, col, card, hand);
-				attackRight(row, col, card, hand);
-			}
-
-		}
-		else {
-			if(col == 0) {
-				attackTop(row, col, card, hand);
-				attackRight(row, col, card, hand);
-				attackBottom(row, col, card, hand);
-			}
-			else if(col == 3) {
-				attackTop(row, col, card, hand);
-				attackLeft(row, col, card, hand);
-				attackBottom(row, col, card, hand);
-			}
-			else {
-				attackTop(row, col, card, hand);
-				attackLeft(row, col, card, hand);
-				attackRight(row, col, card, hand);
-				attackBottom(row, col, card, hand);
+	public void updateScore() {
+		setsScore(0);
+		setpScore(0);
+		for(int row = 0; row <  4; row++) {
+			for(int col = 0; col < 4; col++) {
+				if(board[row][col]!= null) {
+					if(board[row][col].getOwner().equals("S")) {
+						setsScore(getSpongebobScore() + 1);
+					}
+					else {
+						setpScore(getPlanktonScore() + 1);
+					}
+				}
 			}
 		}
 	}
 
-	public void attackBottom(int row, int col, int card, AbidCard[] hand) {
-		if(!emptyCoordinates(row + 1, col) || hand[card].getOwner() == board[row + 1][col].getOwner()) {
-			AbidCard oppCard = board[row + 1][col];
-			if(hand[card].getBottom() > oppCard.getTop()) {
-				oppCard.setOwner(hand[card].getOwner());
-			}
-			else if(hand[card].getBottom() < oppCard.getTop()) {
-				hand[card].setOwner(oppCard.getOwner());
-			}
-			else {
-				if(Math.random() > .5) {
+	public void fightCards(int row, int col, int card, AbidCard[] hand) {
+		attackTop(row, col, card, hand);
+		attackLeft(row, col, card, hand);
+		attackRight(row, col, card, hand);
+		attackBottom(row, col, card, hand);
+	}
+
+	public void attackBottom(int row, int col, int card, AbidCard[] hand){
+		if(row != 3) {
+			if(!emptyCoordinates(row + 1, col)){
+				AbidCard oppCard = board[row + 1][col];
+				if(hand[card].getBottom() > oppCard.getTop()) {
+					oppCard.setOwner(hand[card].getOwner());
+				}
+				else if(hand[card].getBottom() < oppCard.getTop()) {
 					hand[card].setOwner(oppCard.getOwner());
 				}
 				else {
-					oppCard.setOwner(hand[card].getOwner());
+					if(Math.random() > .5) {
+						hand[card].setOwner(oppCard.getOwner());
+					}
+					else {
+						oppCard.setOwner(hand[card].getOwner());
+					}
 				}
 			}
 		}
 	}
 
 	public void attackRight(int row, int col, int card, AbidCard[] hand) {
-		if(!emptyCoordinates(row, col + 1) || hand[card].getOwner() == board[row][col + 1].getOwner()) {
-			AbidCard oppCard = board[row][col + 1];
-			if(hand[card].getRight() > oppCard.getLeft()) {
-				oppCard.setOwner(hand[card].getOwner());
-			}
-			else if(hand[card].getRight() < oppCard.getLeft()) {
-				hand[card].setOwner(oppCard.getOwner());
-			}
-			else {
-				if(Math.random() > .5) {
+		if(col != 3) {
+			if(!emptyCoordinates(row, col + 1)) {
+				AbidCard oppCard = board[row][col + 1];
+				if(hand[card].getRight() > oppCard.getLeft()) {
+					oppCard.setOwner(hand[card].getOwner());
+				}
+				else if(hand[card].getRight() < oppCard.getLeft()) {
 					hand[card].setOwner(oppCard.getOwner());
 				}
 				else {
-					oppCard.setOwner(hand[card].getOwner());
+					if(Math.random() > .5) {
+						hand[card].setOwner(oppCard.getOwner());
+					}
+					else {
+						oppCard.setOwner(hand[card].getOwner());
+					}
 				}
 			}
 		}
 	}
 
 	public void attackLeft(int row, int col, int card, AbidCard[] hand) {
-		if(!emptyCoordinates(row, col - 1) || hand[card].getOwner() == board[row][col - 1].getOwner()) {
-			AbidCard oppCard = board[row][col - 1];
-			if(hand[card].getLeft() > oppCard.getRight()) {
-				oppCard.setOwner(hand[card].getOwner());
-			}
-			else if(hand[card].getLeft() < oppCard.getRight()) {
-				hand[card].setOwner(oppCard.getOwner());
-			}
-			else {
-				if(Math.random() > .5) {
+		if(col != 0) {
+			if(!emptyCoordinates(row, col - 1)) {
+				AbidCard oppCard = board[row][col - 1];
+				if(hand[card].getLeft() > oppCard.getRight()) {
+					oppCard.setOwner(hand[card].getOwner());
+				}
+				else if(hand[card].getLeft() < oppCard.getRight()) {
 					hand[card].setOwner(oppCard.getOwner());
 				}
 				else {
-					oppCard.setOwner(hand[card].getOwner());
+					if(Math.random() > .5) {
+						hand[card].setOwner(oppCard.getOwner());
+					}
+					else {
+						oppCard.setOwner(hand[card].getOwner());
+					}
 				}
 			}
 		}
 	}
 
 	public void attackTop(int row, int col, int card, AbidCard[] hand) {
-		if(!emptyCoordinates(row - 1, col) || hand[card].getOwner() == board[row - 1][col].getOwner()) {
-			AbidCard oppCard = board[row - 1][col];
-			if(hand[card].getTop() > oppCard.getBottom()) {
-				oppCard.setOwner(hand[card].getOwner());
-			}
-			else if(hand[card].getTop() < oppCard.getBottom()) {
-				hand[card].setOwner(oppCard.getOwner());
-			}
-			else {
-				if(Math.random() > .5) {
+		if(row != 0) {
+			if(!emptyCoordinates(row - 1, col)) {
+				AbidCard oppCard = board[row - 1][col];
+				if(hand[card].getTop() > oppCard.getBottom()) {
+					oppCard.setOwner(hand[card].getOwner());
+				}
+				else if(hand[card].getTop() < oppCard.getBottom()) {
 					hand[card].setOwner(oppCard.getOwner());
 				}
 				else {
-					oppCard.setOwner(hand[card].getOwner());
+					if(Math.random() > .5) {
+						hand[card].setOwner(oppCard.getOwner());
+					}
+					else {
+						oppCard.setOwner(hand[card].getOwner());
+					}
 				}
 			}
 		}
@@ -278,7 +258,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 
 	public AbidCard getLastCard() {
-		return null;
+		return board[getCardRow()][getCardCol()];
 	}
 
 	public static void setUpBoard() {
