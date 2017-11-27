@@ -33,8 +33,13 @@ public class JasKrabsNPC extends NPC {
 		}
 	}
 
-	private void sellJellyfish(int jellyfish) {
+	public void sellJellyfish(int jellyfish) {
 		CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney() + jellyfish * exchange);
-		CaveExplorer.inventory.resetJellyfish();
+		resetJellyfish();
+	}
+	
+	public void resetJellyfish() {
+		int jellyfish = 0;
+		CaveExplorer.inventory.setJellyfish(jellyfish);
 	}
 }

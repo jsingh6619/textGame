@@ -16,8 +16,13 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 		
 	}
 	
+	public AbidSupportBack getBackend()
+	{
+		return backend;
+	}
 	public AbidFrontend() {
-		this.backend = new JasBackend(this);
+		this.backend = new JasBackend(this,(JasSupportAI) ai);
+		this.ai = new AbedAI(this,(AbedSupportBack) backend);
 		CaveExplorer.in = new Scanner(System.in);
 	}
 	
@@ -28,17 +33,17 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 				displayHand(backend.getHand());
 		        displayScore();
 		        backend.getValidUserInput();
-		    //    ai.computerMove();
+		        displayBoard(backend.getBoard());
+		        CaveExplorer.print("Plankton's Turn");
+		        ai.computerMove();
 		    }
 		   //     printGameOverMessage(backend.victorious());
 		 	}
 
 	
 	public void displayBoard(AbidCard[][] backendBoard) {
-		
-		String board = " _______________________";
-
-		board += "\n";
+		String board = " _______________________\n";
+		int y = 0;
 		for(int row = 0; row < 4; row++) {
 			for(int col = 0; col < 4; col++) {
 				if(backendBoard[row][col] != null) {
@@ -57,7 +62,8 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 					board += "|     ";
 				}
 			}
-			board += "|\n";
+			board += "|"+y+"\n";
+			y++;
 			for(int col = 0; col < 4; col++) {
 				if(backendBoard[row][col] != null) {
 					board += "|__"+backendBoard[row][col].getBottom()+"__";
@@ -69,10 +75,10 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 			board += "|\n";
 			
 		}
-		
+		board += "   0     1     2     3\n";
 		System.out.println(board);
 	/*	
-	    _________________________
+	     ________________________
 	    |  6  |     |     |     |
 	    | 0,0 | 0,1 |     | 0,4 |
 	    |__6__|__ __|__ __|__ __|
@@ -134,6 +140,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 				}
 			}
 			board += "|\n";
+			board += "   1     2     3     4     5\n";
 		
 		System.out.println(board);
 	}

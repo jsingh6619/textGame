@@ -10,7 +10,7 @@ public interface AbidSupportBack {
 
 	void getValidUserInput();
 
-	String victorious();
+	void victorious();
 	
 	AbidCard[][] getBoard(); // the 2D board
 	

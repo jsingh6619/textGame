@@ -6,6 +6,13 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	private AbedSupportBack backend;
 	private AbidCard[] hand;
 
+	
+	public AbedAI(AbedSupportFront front,AbedSupportBack back)
+	{
+		this.frontend = front;
+		this.backend = back;
+		dealCards();
+	}
 	public int getLastUserRow() 
 	{
 		return backend.getCardRow();
@@ -36,44 +43,88 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		
 	}
 	
-	public void play()
+	public void setMove(int row, int col,String p) 
 	{
-		dealCards();
-		computerMove();
-	}
 	
-	public void firstMove() 
-	{
-		
-		int row = backend.getCardRow();
-		int col = backend.getCardCol();
-		AbidCard opponentCard = backend.getLastCard();
-		if(opponentCard == null)
-		{
-			backend.setCard(0,3,strongestCardBottomIndex(),hand);
-			hand[strongestCardBottomIndex()] = null;
-		}
+		backend.setCard(row,col,strongestCardIndex(p),hand);
+		hand[strongestCardIndex("bottom")] = null;
 		
 	}
-	private int strongestCardBottomIndex() 
+	private int strongestCardIndex(String p) 
 	{
-		for(int i = 0 ; i < hand.length;i++)
+		if(p.equals("bottom"))
 		{
-			int index = 0;
-			if(hand[i].getBottom() < hand[i + 1].getBottom())
+			for(int i = 0 ; i < hand.length;i++)
 			{
-				index = i;
+				int index = 0;
+				if(hand[i].getBottom() < hand[i + 1].getBottom())
+				{
+					index = i;
+				}
+				return index;
 			}
-			return index;
+		}
+		if(p.equals("top"))
+		{
+			for(int i = 0 ; i < hand.length;i++)
+			{
+				int index = 0;
+				if(hand[i].getTop() < hand[i + 1].getTop())
+				{
+					index = i;
+				}
+				return index;
+			}
+		}
+		if(p.equals("left"))
+		{
+			for(int i = 0 ; i < hand.length;i++)
+			{
+				int index = 0;
+				if(hand[i].getLeft() < hand[i + 1].getLeft())
+				{
+					index = i;
+				}
+				return index;
+			}
+		}
+		if(p.equals("right"))
+		{
+			for(int i = 0 ; i < hand.length;i++)
+			{
+				int index = 0;
+				if(hand[i].getRight() < hand[i + 1].getRight())
+				{
+					index = i;
+				}
+				return index;
+			}
 		}
 		return 0; 
 	}
-
+	
 	public void computerMove()
 	{
+		if(backend.getBoard()[0][3] == null)
+		{
+			setMove(0,3,"bottom");
+		}
+		else if(backend.getBoard()[0][0] == null)
+		{
+			setMove(0,0,"bottom");
+		}
+		else if(backend.getBoard()[3][3] == null)
+		{
+			setMove(3,3,"top");
+		}
+		else if(backend.getBoard()[3][0] == null)
+		{
+			setMove(3,0,"top");
+		}
+		
 		
 	}
-
+	
 
 	
 	

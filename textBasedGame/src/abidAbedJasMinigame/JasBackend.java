@@ -1,6 +1,3 @@
-/*
- * have method that checks if card is there or not before placing
- */
 package abidAbedJasMinigame;
 
 import caveExplorer.*;
@@ -17,13 +14,13 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public static AbidCard[][] board; 
 	private static AbidCard[] hand;
 
-
 	public AbidCard[] getHand() {
 		return hand;
 	}
 
-	public JasBackend(JasSupportFront frontend) {
+	public JasBackend(JasSupportFront frontend,JasSupportAI ai) {
 		this.frontend = frontend;
+		this.ai = new AbedAI((AbedSupportFront) frontend, this); 
 		sWinner = false;
 		setpScore(0);
 		setsScore(0);
@@ -36,7 +33,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 	
 	public String toString() {
-			return hand[1].getOwner(); 
+		return hand[1].getOwner(); 
 	}
 	
 	public void setCard(int row, int col, int index, AbidCard[] hand) {
@@ -45,21 +42,6 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	
 	public static int randomNum() {
 		return (int)(Math.random() * 9);
-	}
-	
-	public void sScores() {
-		setsScore(getSpongebobScore() + 1);
-	}
-	
-	public void pScores() {
-		setpScore(getPlanktonScore() + 1);
-	}
-	public void sLosesCard() {
-		setsScore(getSpongebobScore() - 1);
-	}
-	
-	public void pLosesCard() {
-		setpScore(getPlanktonScore() - 1);
 	}
 	
 	public void generateHand() {
@@ -76,14 +58,19 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		hand[index] = null;
 	}
 	
-	public String victorious() {
+	public void victorious() {
 		if(getSpongebobScore() > getPlanktonScore()) {
 			sWinner = true;
-			return "Spnogebob is the winner!";
+			CaveExplorer.print("Spongebob is the winner!");
 		}
 		else {
-			return "Plankton is the winner!";
+			CaveExplorer.print("Plankton is the winner!");
 		}
+	}
+	
+	public void cheat() {
+		hand = null;
+		victorious();
 	}
 
 	public boolean stillPlaying() {
@@ -96,24 +83,142 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public void cardChosen(int index) {
 		possiblePlace();
 		setCard(getCardRow(), getCardCol(), index, hand);
+		fightCards(getCardRow(), getCardCol(), index, hand);
 		removeCard(index);
+		updateScore();
 	}
 	
+	public void updateScore() {
+		setsScore(0);
+		setpScore(0);
+		for(int row = 0; row <  4; row++) {
+			for(int col = 0; col < 4; col++) {
+				if(board[row][col]!= null) {
+					if(board[row][col].getOwner().equals("S")) {
+						setsScore(getSpongebobScore() + 1);
+					}
+					else {
+						setpScore(getPlanktonScore() + 1);
+					}
+				}
+			}
+		}
+	}
+
+	public void fightCards(int row, int col, int card, AbidCard[] hand) {
+		attackTop(row, col, card, hand);
+		attackLeft(row, col, card, hand);
+		attackRight(row, col, card, hand);
+		attackBottom(row, col, card, hand);
+	}
+
+	public void attackBottom(int row, int col, int card, AbidCard[] hand){
+		if(row != 3) {
+			if(!emptyCoordinates(row + 1, col)){
+				AbidCard oppCard = board[row + 1][col];
+				if(hand[card].getBottom() > oppCard.getTop()) {
+					oppCard.setOwner(hand[card].getOwner());
+				}
+				else if(hand[card].getBottom() < oppCard.getTop()) {
+					hand[card].setOwner(oppCard.getOwner());
+				}
+				else {
+					if(Math.random() > .5) {
+						hand[card].setOwner(oppCard.getOwner());
+					}
+					else {
+						oppCard.setOwner(hand[card].getOwner());
+					}
+				}
+			}
+		}
+	}
+
+	public void attackRight(int row, int col, int card, AbidCard[] hand) {
+		if(col != 3) {
+			if(!emptyCoordinates(row, col + 1)) {
+				AbidCard oppCard = board[row][col + 1];
+				if(hand[card].getRight() > oppCard.getLeft()) {
+					oppCard.setOwner(hand[card].getOwner());
+				}
+				else if(hand[card].getRight() < oppCard.getLeft()) {
+					hand[card].setOwner(oppCard.getOwner());
+				}
+				else {
+					if(Math.random() > .5) {
+						hand[card].setOwner(oppCard.getOwner());
+					}
+					else {
+						oppCard.setOwner(hand[card].getOwner());
+					}
+				}
+			}
+		}
+	}
+
+	public void attackLeft(int row, int col, int card, AbidCard[] hand) {
+		if(col != 0) {
+			if(!emptyCoordinates(row, col - 1)) {
+				AbidCard oppCard = board[row][col - 1];
+				if(hand[card].getLeft() > oppCard.getRight()) {
+					oppCard.setOwner(hand[card].getOwner());
+				}
+				else if(hand[card].getLeft() < oppCard.getRight()) {
+					hand[card].setOwner(oppCard.getOwner());
+				}
+				else {
+					if(Math.random() > .5) {
+						hand[card].setOwner(oppCard.getOwner());
+					}
+					else {
+						oppCard.setOwner(hand[card].getOwner());
+					}
+				}
+			}
+		}
+	}
+
+	public void attackTop(int row, int col, int card, AbidCard[] hand) {
+		if(row != 0) {
+			if(!emptyCoordinates(row - 1, col)) {
+				AbidCard oppCard = board[row - 1][col];
+				if(hand[card].getTop() > oppCard.getBottom()) {
+					oppCard.setOwner(hand[card].getOwner());
+				}
+				else if(hand[card].getTop() < oppCard.getBottom()) {
+					hand[card].setOwner(oppCard.getOwner());
+				}
+				else {
+					if(Math.random() > .5) {
+						hand[card].setOwner(oppCard.getOwner());
+					}
+					else {
+						oppCard.setOwner(hand[card].getOwner());
+					}
+				}
+			}
+		}
+	}
+
 	public void getValidUserInput() {
 		CaveExplorer.print("What card do you want to play?");
-		int num = Integer.parseInt(CaveExplorer.in.nextLine());
+		int num = Integer.parseInt(CaveExplorer.in.nextLine()) - 1;
 		//CHEAT
-		if(num == 9999) {
+		if(num == 9998) {
 			setsScore(9999);
-			victorious();
+			cheat();
 		}
-		if(hand[num]!=null) {
-			CaveExplorer.print("Choose a different card.");
-			getValidUserInput();
+		else if (num < 0 || num > 4 || hand[num] == null){
+			invalidCard();
 		}
 		else {
 			cardChosen(num);
 		}
+	}
+	
+	public void invalidCard() {
+		CaveExplorer.print("Choose a different card.");
+		getValidUserInput();
 	}
 
 	public void possiblePlace() {
@@ -135,7 +240,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 
 	public AbidCard getLastCard() {
-		return null;
+		return board[getCardRow()][getCardCol()];
 	}
 
 	public static void setUpBoard() {
@@ -145,8 +250,6 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 				board[row][col] = null;
 	}
 		
-	
-	//GETTERS & SETTERS
 	public int getPlanktonScore() {
 		return pScore;
 	}
@@ -176,8 +279,14 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 
 	public void setCardRow() {
-		CaveExplorer.print("Enter the y - coordinate of the board you want to place your card in");
-		cardCol = Integer.parseInt(CaveExplorer.in.nextLine());
+		CaveExplorer.print("Enter the row of the board you want to place your card in");
+		int num = Integer.parseInt(CaveExplorer.in.nextLine());
+		if(num >= 0 && num < 4) {
+			cardRow = num;
+		}
+		else {
+			setCardRow();
+		}
 	}
 	
 	public int getCardCol() {
@@ -185,8 +294,14 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 
 	public void setCardCol() {
-		CaveExplorer.print("Enter the y - coordinate of the board you want to place your card in");
-		cardCol = Integer.parseInt(CaveExplorer.in.nextLine());
+		CaveExplorer.print("Enter the column of the board you want to place your card in");
+		int num = Integer.parseInt(CaveExplorer.in.nextLine());
+		if(num >= 0 && num < 4) {
+			cardCol = num;
+		}
+		else {
+			setCardCol();
+		}
 	}
 	
 	public AbidCard[][] getBoard() {
