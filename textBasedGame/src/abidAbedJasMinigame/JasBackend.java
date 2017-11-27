@@ -69,7 +69,9 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 	
 	public void cheat() {
-		hand = null;
+		for(int i = 0; i < 5; i++){
+			hand[i] = null;
+		}
 		victorious();
 	}
 
