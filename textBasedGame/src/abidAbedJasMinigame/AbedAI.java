@@ -124,6 +124,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	
 	public void computerMove()
 	{
+		
 		int row = generateNum(3);
 		int col = generateNum(3);
 		int index = generateNum(5) + 1;
