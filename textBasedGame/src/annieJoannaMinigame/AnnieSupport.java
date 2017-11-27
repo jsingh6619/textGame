@@ -4,6 +4,4 @@ public interface AnnieSupport {
 
 	int getJellyfishCount();
 
-	AnnieJoannaPlot[][] getPlots();
-
 }

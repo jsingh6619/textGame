@@ -9,12 +9,12 @@ public class AbedPlankton extends NPC
 	public AbedPlankton()
 	{
 		active = true;	
-		this.description = "Plankton is waitng to challenge you! Press e to interact.";
+		this.description = "Plankton is waiting to challenge you! Press 'e' to interact.";
 		
 	}
 	public String getInactiveDescription()
 	{
-		return "Plankton has left to chum bucket.";
+		return "Plankton has gone back to the Chum Bucket.";
 	}
 	public String getDescription()
 	{
@@ -28,11 +28,11 @@ public class AbedPlankton extends NPC
 	{
 		
 
-		CaveExplorer.print("So you think you can win ?");
+		CaveExplorer.print("Plankton: So you think you can win?");
 		String s = CaveExplorer.in.nextLine();
 		while(!s.equals("yes")) 
 		{
-			CaveExplorer.print("C'mon you bafoon, Say yes or else I am putting your brain in the robot!!!!!");
+			CaveExplorer.print("Plankton: C'mon you bafoon, say 'yes' or else I am putting your brain in the robot!");
 			s = CaveExplorer.in.nextLine();
 		}
 		start();
@@ -49,12 +49,12 @@ public class AbedPlankton extends NPC
 	public void start() 
 	{  
 		AbidFrontend a = new AbidFrontend();
-		CaveExplorer.print("hahaha lets begin.");
+		CaveExplorer.print("Plankton: Hahaha, let's begin.");
 		a.play();
 		JasBackend backend = (JasBackend) a.getBackend();
 		if(backend.getSWinner() == true)
 		{
-			CaveExplorer.print("Alright Spongebob you can go back to the Krusty Krab.");
+			CaveExplorer.print("Plankton: Alright SpongeBob, you can go back to doing work.");
 			CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getDone(),2,true);
 			setActive(false);
 			
@@ -62,8 +62,9 @@ public class AbedPlankton extends NPC
 		}
 		else
 		{
-			CaveExplorer.print("Alright you bafoon, since i feel nice I will give you another chance to win");
-			a.play();;
+			CaveExplorer.print("Plankton: Alright you bafoon, since I'm feel nice, I'll give you another chance to win.");
+			CaveExplorer.inventory.setTaskAtIndex(2,"Beat Plankton at Tetra");
+			CaveExplorer.print("Press 'e' to challenge Plankton.");
 		}
 	}
 	

@@ -44,21 +44,6 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 		return (int)(Math.random() * 9);
 	}
 	
-	public void sScores() {
-		setsScore(getSpongebobScore() + 1);
-	}
-	
-	public void pScores() {
-		setpScore(getPlanktonScore() + 1);
-	}
-	public void sLosesCard() {
-		setsScore(getSpongebobScore() - 1);
-	}
-	
-	public void pLosesCard() {
-		setpScore(getPlanktonScore() - 1);
-	}
-	
 	public void generateHand() {
 		hand = new AbidCard[5];
 		for (int i = 0; i < hand.length; i++) {

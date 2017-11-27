@@ -115,10 +115,6 @@ public class Inventory {
 	public void setJellyfish(int jellyfish) {
 		this.jellyfish = jellyfish;
 	}
-	
-	public void resetJellyfish() {
-		jellyfish = 0;
-	}
 
 	public String[] getTasks() {
 		return tasks;

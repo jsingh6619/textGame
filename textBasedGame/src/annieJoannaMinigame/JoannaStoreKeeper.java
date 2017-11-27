@@ -11,7 +11,7 @@ public class JoannaStoreKeeper extends NPC {
 	private String[] keys;
 	
 	public JoannaStoreKeeper() {
-		String[] temp = {"eggs", "milk", "flour","snail food","clarinet"};
+		String[] temp = {"eggs", "milk", "flour","snail food","a clarinet"};
 		items = temp;
 		boolean[] arr = {false,false,false,false,false};
 		bought = arr;
@@ -22,8 +22,17 @@ public class JoannaStoreKeeper extends NPC {
 	}
 	
 	public void interact(int n) { 
-		if(n ==4) {
-			printItems();
+		int count = 0; 
+		for(boolean j: bought) {
+			if (j)
+			count++;
+		}
+		if(n ==4) {	
+			if(count < 5) {
+				printItems();
+			} else {
+				CaveExplorer.print("Eugene: You've already bought out the entire store. Get out of here!");	
+			}
 		}
 		for( int i =0; i <= 4; i++) {
 			if( n == i + 5)
@@ -34,7 +43,7 @@ public class JoannaStoreKeeper extends NPC {
 	}
 
 	public void printS(String l, int idx) {
-		CaveExplorer.print("Press '" + l+"' to buy (a) " + items[idx] + " for $" +price[idx] +".");
+		CaveExplorer.print("Press '" + l+"' to buy " + items[idx] + " for $" +price[idx] +".");
 	}
 	
 	public void printItems() {
@@ -42,8 +51,8 @@ public class JoannaStoreKeeper extends NPC {
 			if(!bought[i])
 			{
 				printS(keys[i], i);
-			}
-		}
+			} 
+		} 
 	}
 	
 	public String getSymbol() {
@@ -57,16 +66,17 @@ public class JoannaStoreKeeper extends NPC {
 	public void boughtItem(int idx) {
 		if(!bought[idx]) {
 			if(CaveExplorer.inventory.getMoney() >= price[idx]) {
-				CaveExplorer.print("You have successfully bought (a) " + items[idx] + ".");
+				CaveExplorer.print("You have successfully bought " + items[idx] + ".");
 				CaveExplorer.inventory.setBooleanAtIndex(bought, idx, true);
 				CaveExplorer.inventory.setMoney(CaveExplorer.inventory.getMoney()-price[idx]);
 				updateInventory(idx);
 			} else {
-				CaveExplorer.print("You don't have enough to buy (a) " +items[idx]+".");
+				CaveExplorer.print("Eugene: You don't have enough to buy " +items[idx]+". Come back when you've got more cash.");
 			}
-		} else {
-			CaveExplorer.print("That key does nothing.");
-		}
+		} else {	
+				CaveExplorer.print("Eugene: We don't have any more.");
+			}
+		
 		
 	}
 

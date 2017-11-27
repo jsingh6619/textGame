@@ -26,7 +26,7 @@ public class JoannaNPC extends NPC {
 	public void interact() {
 		if(cake) {
 			if(!checkBookleanList()) {
-				CaveExplorer.print("Sandy: Hi SpongeBob! I can't make a cake unless you have all the ingredients. You're missing either eggs, milk, or flour.");	
+				CaveExplorer.print("Sandy: Hi SpongeBob! I can't make a cake unless you have all the ingredients. \nYou're missing either eggs, milk, or flour.");	
 				CaveExplorer.inventory.setTaskAtIndex(3, "Get Sandy the ingredients to make a cake");
 			} else {
 				cake = false;
