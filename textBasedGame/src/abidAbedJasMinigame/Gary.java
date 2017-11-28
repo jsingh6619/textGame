@@ -13,7 +13,7 @@ public class Gary extends NPC{
 		this.isHungry = true;
 		this.active = true;
 		this.activeDescription = "Hey look, it's your beloved pet Gary. Press 'e' to interact.";
-		this.inactiveDescription = "You MIGHT want to check this out. Press 'e'.";
+		this.inactiveDescription = "You MIGHT want to check this out. Press 'e' to interact.";
 	}
 	public String getDescription() {
 		if(!active) {

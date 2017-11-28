@@ -9,7 +9,7 @@ public class AbedPlankton extends NPC
 	public AbedPlankton()
 	{
 		active = true;	
-		this.description = "Plankton is waiting to challenge you! Press 'e' to interact.";
+		this.description = "Plankton is waiting to challenge you! (Gary may be able to aid you, if you've fed him.) Press 'e' to interact.";
 		
 	}
 	public String getInactiveDescription()
