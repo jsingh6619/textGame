@@ -62,7 +62,7 @@ public class AbedPlankton extends NPC
 		}
 		else
 		{
-			CaveExplorer.print("Plankton: Alright you bafoon, since I'm feel nice, I'll give you another chance to win.");
+			CaveExplorer.print("Plankton: Alright you bafoon, since I'm feeling nice, I'll give you another chance to win.");
 			CaveExplorer.inventory.setTaskAtIndex(2,"Beat Plankton at Tetra");
 			CaveExplorer.print("Press 'e' to challenge Plankton.");
 		}
