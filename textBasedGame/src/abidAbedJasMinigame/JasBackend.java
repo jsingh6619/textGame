@@ -61,7 +61,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	public void victorious() {
 		if(getSpongebobScore() > getPlanktonScore()) {
 			sWinner = true;
-			CaveExplorer.print("Spongebob is the winner!");
+			CaveExplorer.print("You are the winner!");
 		}
 		else {
 			CaveExplorer.print("Plankton is the winner!");
@@ -298,7 +298,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 			cardRow = num;
 		}
 		else {
-			CaveExplorer.print("Remember you can only enter a number from 0 to 4!");
+			CaveExplorer.print("Remember you can only enter a number from 0 to 3!");
 			setCardRow();
 		}
 	}
@@ -315,7 +315,7 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 			cardCol = num;
 		}
 		else {
-			CaveExplorer.print("Remember you can only enter a number from 0 to 4!");
+			CaveExplorer.print("Remember you can only enter a number from 0 to 3!");
 			setCardCol();
 		}
 	}

@@ -141,12 +141,6 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		backend.setCard(row,col,index,hand);
 		
 		hand[index] = null;
-		for(int i=0; i<hand.length;i++) {
-			if(hand[i] != null) {
-				CaveExplorer.print("\nPlankton's Turn");
-				break;
-			}
-		}
 		/*if(hand.length == 5)
 		{
 			firstMove();
