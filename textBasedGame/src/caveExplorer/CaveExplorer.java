@@ -23,7 +23,8 @@ public class CaveExplorer {
 	}
 
 	private static void startExploring() {
-		print("Your name is SpongeBob SquarePants and you live in a pineapple under the sea, located in Bikini Bottom. \nYour objective is to get through the day.");
+		print("Your name is SpongeBob SquarePants and you live in a pineapple under the sea, located in Bikini Bottom. \nYour objective is to get through the day."
+				+ "\n(Your last task is to attend Squidward's recital, but this event will be held at the end of the day; \ntherefore, you must complete all other tasks before you can access the concert hall.)");
 		while(playing) {
 			print(inventory.getDescription());
 			print(currentRoom.getDescription()); 
