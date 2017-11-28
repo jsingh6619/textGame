@@ -1,5 +1,7 @@
 package abidAbedJasMinigame;
 
+import caveExplorer.CaveExplorer;
+
 public class AbedAI implements AbidSupportAI, JasSupportAI
 {
 	private AbedSupportFront frontend;
@@ -137,7 +139,9 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	
 	public void computerMove()
 	{
+
 		if(nullCounter(hand) == 0)
+
 		{
 			firstMove();
 		}

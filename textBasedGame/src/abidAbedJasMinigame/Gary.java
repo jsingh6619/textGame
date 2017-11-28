@@ -29,7 +29,7 @@ public class Gary extends NPC{
 	}
 	public void interact() {
 		if(!isHungry) {
-			CaveExplorer.print("Hey would you look at that Gary's reading a book. "
+			CaveExplorer.print("Hey would you look at that, Gary's reading a book. "
 					+ "\"How to Play Plankton's Game\" \nThere are two players playing on a 4 by 4 board.\nThey are both given a hand of 5 randomly generated cards with "
 					+ "\nrandomly generated numbers on the top, bottom, left, and right."
 					+ "\nThe middle letter signifies who the card belongs to. Ex: This card says P for Plankton"
@@ -48,7 +48,6 @@ public class Gary extends NPC{
 				CaveExplorer.inventory.setHasFood(false);
 				CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getDone(), 0 , true);
 				CaveExplorer.print("Gary: Meow. \nYou've successfully fed Gary.");
-				active = false;
 			}
 			else {
 				CaveExplorer.print("You don't have any snail food. You can buy more at the store.");

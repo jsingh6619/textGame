@@ -22,4 +22,6 @@ public interface AbidSupportBack {
 
 	void generateHand();
 
+	void updateScore();
+
 }

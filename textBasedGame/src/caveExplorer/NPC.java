@@ -18,7 +18,7 @@ public class NPC {
 		this.currentRow = -1;
 		this.currentCol = -1;
 		currentRoom = null;
-		active = true;
+		setActive(true);
 	}
 
 	public boolean isActive() {
@@ -33,7 +33,7 @@ public class NPC {
 			s = CaveExplorer.in.nextLine();
 		}
 		CaveExplorer.print("Later, friend!");
-		active = false;
+		setActive(false);
 	}
 
 	public String getDescription() {
@@ -60,7 +60,7 @@ public class NPC {
 	}
 
 	public void autoMove() {
-		if(active) {
+		if(isActive()) {
 			int[] move = calculateMove();
 			int newRow = move[0];
 			int newCol = move[1];
@@ -85,6 +85,10 @@ public class NPC {
 	public void interact(int direction) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 }

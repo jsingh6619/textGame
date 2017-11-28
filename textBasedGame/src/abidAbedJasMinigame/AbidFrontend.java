@@ -30,15 +30,22 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 		//	ai.dealCards();
 			while(backend.stillPlaying()){
 				displayBoard(backend.getBoard());
-				displayHand(backend.getHand());
+				backend.updateScore();
 		        displayScore();
+				displayHand(backend.getHand());
 		        backend.getValidUserInput();
+				CaveExplorer.print("\nYour Move");
 		        displayBoard(backend.getBoard());
-		        CaveExplorer.print("Plankton's Turn");
+		        backend.updateScore();
+		        displayScore();
 		        ai.computerMove();
+				CaveExplorer.print("\nPlankton's Move");
 		    }
-		   //     printGameOverMessage(backend.victorious());
-		 	}
+			displayBoard(backend.getBoard());
+			backend.updateScore();
+	        displayScore();
+			backend.victorious();
+	}
 
 	
 	public void displayBoard(AbidCard[][] backendBoard) {
@@ -146,7 +153,7 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 	}
 	@Override
 	public void displayScore() {
-		String score = "Plankton: "+backend.getPlanktonScore()+"\nSpongebob: "+backend.getSpongebobScore(); 
+		String score = "Plankton: "+backend.getPlanktonScore()+"\nYou: "+backend.getSpongebobScore(); 
 		System.out.println(score);
 	}
 
