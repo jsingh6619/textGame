@@ -129,17 +129,16 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		int row = generateNum(4);
 		int col = generateNum(4);
 		int index = generateNum(5);
-		while(backend.getBoard()[row][col] != null)
+		if(backend.getBoard()[row][col] != null)
 		{
 			 row = generateNum(4);
 			 col = generateNum(4);
 		}
-		while(hand[index] == null)
+		if(hand[index] == null)
 		{
 			index = generateNum(5);
 		}
 		backend.setCard(row,col,index,hand);
-		
 		hand[index] = null;
 		/*if(hand.length == 5)
 		{

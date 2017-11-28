@@ -5,12 +5,21 @@ import caveExplorer.*;
 public class Gary extends NPC{
 
 	private boolean isHungry;
+	private boolean active;
+	private String activeDescription;
+	private String inactiveDescription;
 
 	public Gary() {
 		this.isHungry = true;
+		this.active = true;
+		this.activeDescription = "Hey look, it's your beloved pet Gary. Press 'e' to interact.";
+		this.inactiveDescription = "You MIGHT want to check this out. Press 'e'.";
 	}
 	public String getDescription() {
-		return "Hey look, it's your beloved pet Gary. Press 'e' to interact.";
+		if(!active) {
+			return inactiveDescription;
+		}
+		return activeDescription;
 	}
 	public void setHungry(boolean isHungry) {
 		this.isHungry = isHungry;
@@ -39,7 +48,6 @@ public class Gary extends NPC{
 				CaveExplorer.inventory.setHasFood(false);
 				CaveExplorer.inventory.setBooleanAtIndex(CaveExplorer.inventory.getDone(), 0 , true);
 				CaveExplorer.print("Gary: Meow. \nYou've successfully fed Gary.");
-				setHungry(false);
 			}
 			else {
 				CaveExplorer.print("You don't have any snail food. You can buy more at the store.");
