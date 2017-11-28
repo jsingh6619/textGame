@@ -122,36 +122,37 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 		return 0; 
 	}
 	
+	private int nullCounter(AbidCard[] a)
+	{
+		int x = 0;
+		for(int i = 0; i < a.length;i++)
+		{
+			if(hand[i] == null)
+			{
+				x++;
+			}
+		}
+		return x;
+	}
+	
 	public void computerMove()
 	{
-		
-		int row = generateNum(4);
-		int col = generateNum(4);
-		int index = generateNum(5);
-		if(backend.getBoard()[row][col] != null)
-		{
-			 row = generateNum(4);
-			 col = generateNum(4);
-		}
-		if(hand[index] == null)
-		{
-			index = generateNum(5);
-		}
-		backend.setCard(row,col,index,hand);
-		hand[index] = null;
-		/*if(hand.length == 5)
+		if(nullCounter(hand) == 0)
 		{
 			firstMove();
 		}
-		if(backend.getPlanktonScore() < backend.getSpongebobScore())
+		else
 		{
-			aggressivePlay();
+			if(backend.getPlanktonScore() < backend.getSpongebobScore())
+			{
+				aggressivePlay();
+			}
+			else if(backend.getPlanktonScore() > backend.getSpongebobScore())
+			{
+				conservativePlay();
+			}
 		}
-		else if(backend.getPlanktonScore() > backend.getSpongebobScore())
-		{
-			conservativePlay();
-		}
-		*/
+		
 	}
 	private void conservativePlay() 
 	{
@@ -159,7 +160,7 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	}
 	private void aggressivePlay() 
 	{
-		     
+		
 	}
 	public void firstMove()
 	{
