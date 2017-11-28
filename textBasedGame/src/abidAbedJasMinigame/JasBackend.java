@@ -205,18 +205,26 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 	}
 
 	public void getValidUserInput() {
+		int num = -1;
 		CaveExplorer.print("What card do you want to play?");
-		int num = Integer.parseInt(CaveExplorer.in.nextLine()) - 1;
-		//CHEAT
-		if(num == 9998) {
-			setsScore(9999);
-			cheat();
-		}
-		else if (num < 0 || num > 4 || hand[num] == null){
-			invalidCard();
+		String input = CaveExplorer.in.nextLine();
+		if(input.equals("1") || input.equals("2") || input.equals("3") || input.equals("4")|| input.equals("5")|| input.equals("9999")) {
+			num = Integer.parseInt(input) - 1;
+			//CHEAT
+			if(num == 9998) {
+				setsScore(9999);
+				cheat();
+			}
+			else if (num < 0 || num > 4 || hand[num] == null){
+				invalidCard();
+			}
+			else {
+				cardChosen(num);
+			}
 		}
 		else {
-			cardChosen(num);
+			CaveExplorer.print("Remember you can only enter a number from 1 to 5!");
+			getValidUserInput();
 		}
 	}
 	
@@ -284,11 +292,13 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 
 	public void setCardRow() {
 		CaveExplorer.print("Enter the row of the board you want to place your card in");
-		int num = Integer.parseInt(CaveExplorer.in.nextLine());
-		if(num >= 0 && num < 4) {
+		String input = CaveExplorer.in.nextLine();
+		if(input.equals("0") || input.equals("1") || input.equals("2") || input.equals("3")) {
+			int num = Integer.parseInt(input);
 			cardRow = num;
 		}
 		else {
+			CaveExplorer.print("Remember you can only enter a number from 0 to 4!");
 			setCardRow();
 		}
 	}
@@ -299,11 +309,13 @@ public class JasBackend implements AbidSupportBack, AbedSupportBack{
 
 	public void setCardCol() {
 		CaveExplorer.print("Enter the column of the board you want to place your card in");
-		int num = Integer.parseInt(CaveExplorer.in.nextLine());
-		if(num >= 0 && num < 4) {
+		String input = CaveExplorer.in.nextLine();
+		if(input.equals("0") || input.equals("1") || input.equals("2") || input.equals("3")) {
+			int num = Integer.parseInt(input);
 			cardCol = num;
 		}
 		else {
+			CaveExplorer.print("Remember you can only enter a number from 0 to 4!");
 			setCardCol();
 		}
 	}

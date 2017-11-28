@@ -30,12 +30,13 @@ public class AbidFrontend implements JasSupportFront , AbedSupportFront {
 		//	ai.dealCards();
 			while(backend.stillPlaying()){
 				displayBoard(backend.getBoard());
+				backend.updateScore();
 		        displayScore();
 				displayHand(backend.getHand());
 		        backend.getValidUserInput();
 		        displayBoard(backend.getBoard());
+		        backend.updateScore();
 		        displayScore();
-		        CaveExplorer.print("Plankton's Turn");
 		        ai.computerMove();
 		    }
 				backend.victorious();

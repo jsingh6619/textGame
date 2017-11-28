@@ -1,5 +1,7 @@
 package abidAbedJasMinigame;
 
+import caveExplorer.CaveExplorer;
+
 public class AbedAI implements AbidSupportAI, JasSupportAI
 {
 	private AbedSupportFront frontend;
@@ -124,7 +126,6 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 	
 	public void computerMove()
 	{
-		
 		int row = generateNum(4);
 		int col = generateNum(4);
 		int index = generateNum(5);
@@ -138,7 +139,14 @@ public class AbedAI implements AbidSupportAI, JasSupportAI
 			index = generateNum(5);
 		}
 		backend.setCard(row,col,index,hand);
+		
 		hand[index] = null;
+		for(int i=0; i<hand.length;i++) {
+			if(hand[i] != null) {
+				CaveExplorer.print("\nPlankton's Turn");
+				break;
+			}
+		}
 		/*if(hand.length == 5)
 		{
 			firstMove();
